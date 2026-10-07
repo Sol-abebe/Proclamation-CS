@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -40,6 +41,8 @@
             background-color: rgba(254, 209, 0, 0.25);
             color: #FED100;
         }
+        .scrollbar-none::-webkit-scrollbar { display: none; }
+        .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
         @media print {
             .no-print { display: none !important; }
             .print-only { display: block !important; }
@@ -48,73 +51,73 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-200 min-h-screen flex flex-col">
+<body id="top" class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-200 min-h-screen flex flex-col">
 
-    <header class="sticky top-5 z-40 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 shadow-sm no-print">
+    <!-- Header Section -->
+    <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 shadow-sm no-print">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
+            <div class="flex flex-col sm:flex-row items-center justify-between py-3 gap-3 sm:gap-0">
                 <!-- Brand Title -->
-                <div class="flex items-center space-x-3">
-                    <div class="flex h-9 w-2 rounded overflow-hidden flex-col shadow-sm">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <div class="flex h-10 w-2.5 rounded overflow-hidden flex-col shadow-sm flex-shrink-0">
                         <div class="h-1/3 bg-ethiopia-green"></div>
                         <div class="h-1/3 bg-ethiopia-yellow"></div>
                         <div class="h-1/3 bg-ethiopia-red"></div>
                     </div>
-                    <div>
-                        <h1 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    <div class="min-w-0 flex-1">
+                        <h1 class="text-base sm:text-lg font-bold tracking-tight text-slate-900 dark:text-white leading-tight truncate">
                             Civil Servants Proclamation
                         </h1>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">
-                            Section Eight: Working Hours & Leaves
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium truncate">
+                            Section Eight: Working Hours & Leaves | የሥራ ሰዓት እና ፈቃድ
                         </p>
                     </div>
                 </div>
 
                 <!-- Controls: Language Switch, View Mode, Dark Mode -->
-                <div class="flex items-center space-x-2 sm:space-x-4">
-                    <!-- Language Mode Selector -->
+                <div class="flex items-center justify-between sm:justify-end w-full sm:w-auto space-x-2 sm:space-x-3">
                     <div class="inline-flex rounded-lg p-1 bg-slate-100 dark:bg-slate-700/60 border border-slate-200 dark:border-slate-600 text-xs font-medium">
                         <button id="lang-en" onclick="setLanguage('en')" class="px-2.5 py-1.5 rounded-md transition-all">English</button>
                         <button id="lang-am" onclick="setLanguage('am')" class="px-2.5 py-1.5 rounded-md transition-all">አማርኛ</button>
-                        <button id="lang-dual" onclick="setLanguage('dual')" class="px-2.5 py-1.5 rounded-md transition-all hidden sm:inline-block">Dual / ጎን ለጎን</button>
+                        <button id="lang-dual" onclick="setLanguage('dual')" class="px-2.5 py-1.5 rounded-md transition-all">Dual / ጎን ለጎን</button>
                     </div>
 
-                    <!-- Theme Toggle -->
                     <button onclick="toggleDarkMode()" class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-700 transition" title="Toggle Theme">
-                        <i id="theme-icon" class="fas fa-moon"></i>
+                        <i id="theme-icon" class="fas fa-moon text-base"></i>
                     </button>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="bg-gradient-to-r from-emerald-800 via-teal-800 to-slate-900 text-white py-10 px-4 sm:px-6 lg:px-8 shadow-inner no-print">
+    <!-- Banner Hero Section -->
+    <section class="bg-gradient-to-r from-emerald-800 via-teal-800 to-slate-900 text-white py-8 sm:py-10 px-4 sm:px-6 lg:px-8 shadow-inner no-print">
         <div class="max-w-7xl mx-auto">
-            <div class="md:flex md:items-center md:justify-between">
-                <div class="mb-6 md:mb-0 max-w-2xl">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                <div class="max-w-2xl">
                     <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-3">
-                        Federal Negarit Gazette •  Ethiopian Civil Servants Proclamation 1353/2017E.c: Articles: 56 - 70
+                        Federal Negarit Gazette • Ethiopian Civil Servants Proclamation: Articles 56 - 70
                     </span>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+                    <h2 class="text-xl sm:text-3xl font-extrabold tracking-tight leading-snug">
                         <span data-lang-en>Section Eight: Working Hours and Leaves</span>
-                        <span data-lang-am class="font-semibold">ክፍል ስምንት: የሥራ ሰዓት እና ፈቃድ</span>
+                        <span data-lang-am class="font-semibold hidden">ክፍል ስምንት: የሥራ ሰዓት እና ፈቃድ</span>
                     </h2>
-                    <p class="mt-2 text-sm text-emerald-100/80 leading-relaxed">
-                        Interactive portal for Ethiopia's Civil Service Proclamation legislation. Search, filter, calculate rights for leave days, maternity schedules, and sick leave compensation.
+                    <p class="mt-2 text-xs sm:text-sm text-emerald-100/80 leading-relaxed">
+                        Interactive legal portal for Ethiopia's Civil Service legislation. Search, filter, and compute official entitlements for leave days, maternity schedules, and sick leave compensation.
                     </p>
                 </div>
 
                 <!-- Action Button Cards -->
                 <div class="flex flex-wrap gap-2 sm:gap-3">
-                    <button onclick="openCalculator('annual')" class="flex items-center space-x-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-3.5 py-2 rounded-xl text-sm font-medium backdrop-blur-sm transition">
+                    <button onclick="openCalculator('annual')" class="flex-1 sm:flex-none items-center space-x-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium backdrop-blur-sm transition flex justify-center">
                         <i class="fas fa-calculator text-emerald-400"></i>
                         <span>Annual Leave Calc</span>
                     </button>
-                    <button onclick="openCalculator('maternity')" class="flex items-center space-x-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-3.5 py-2 rounded-xl text-sm font-medium backdrop-blur-sm transition">
+                    <button onclick="openCalculator('maternity')" class="flex-1 sm:flex-none items-center space-x-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium backdrop-blur-sm transition flex justify-center">
                         <i class="fas fa-baby text-rose-300"></i>
                         <span>Maternity Estimator</span>
                     </button>
-                    <button onclick="openCalculator('sick')" class="flex items-center space-x-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-3.5 py-2 rounded-xl text-sm font-medium backdrop-blur-sm transition">
+                    <button onclick="openCalculator('sick')" class="flex-1 sm:flex-none items-center space-x-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium backdrop-blur-sm transition flex justify-center">
                         <i class="fas fa-notes-medical text-amber-300"></i>
                         <span>Sick Pay Breakdown</span>
                     </button>
@@ -123,45 +126,47 @@
         </div>
     </section>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+    <!-- Main Content Body -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-grow w-full">
         <div class="no-print space-y-4 mb-8">
             <!-- Search Box -->
             <div class="relative max-w-3xl mx-auto">
                 <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                    <i class="fas fa-search text-base"></i>
+                    <i class="fas fa-search text-sm"></i>
                 </div>
                 <input type="text" id="search-input" onkeyup="handleSearch()" placeholder="Search articles in English or Amharic (e.g. 'maternity', 'ወሊድ', 'overtime', '39 hours')..." 
-                       class="w-full pl-10 pr-10 py-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm shadow-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 dark:text-white transition">
+                       class="w-full pl-10 pr-10 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs sm:text-sm shadow-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 dark:text-white transition">
                 <button id="clear-search" onclick="clearSearch()" class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
                     <i class="fas fa-times-circle text-base"></i>
                 </button>
             </div>
 
             <!-- Filter Tabs -->
-            <div class="flex items-center justify-center overflow-x-auto py-2 px-1 gap-2 scrollbar-none">
-                <button onclick="filterCategory('all')" id="cat-all" class="cat-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-emerald-600 text-white shadow-sm">
+            <div class="flex items-center justify-start md:justify-center overflow-x-auto py-2 px-1 gap-2 scrollbar-none">
+                <button onclick="filterCategory('all')" id="cat-all" class="cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-emerald-600 text-white shadow-sm">
                     <i class="fas fa-th-list mr-1.5"></i> All Articles (56-70)
                 </button>
-                <button onclick="filterCategory('hours')" id="cat-hours" class="cat-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100">
+                <button onclick="filterCategory('hours')" id="cat-hours" class="cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100">
                     <i class="fas fa-clock mr-1.5 text-blue-500"></i> Hours & Overtime
                 </button>
-                <button onclick="filterCategory('annual')" id="cat-annual" class="cat-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100">
+                <button onclick="filterCategory('annual')" id="cat-annual" class="cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100">
                     <i class="fas fa-calendar-alt mr-1.5 text-emerald-500"></i> Annual Leave
                 </button>
-                <button onclick="filterCategory('maternity')" id="cat-maternity" class="cat-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100">
+                <button onclick="filterCategory('maternity')" id="cat-maternity" class="cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100">
                     <i class="fas fa-baby-carriage mr-1.5 text-pink-500"></i> Maternity & Paternity
                 </button>
-                <button onclick="filterCategory('sick')" id="cat-sick" class="cat-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100">
+                <button onclick="filterCategory('sick')" id="cat-sick" class="cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100">
                     <i class="fas fa-heartbeat mr-1.5 text-red-500"></i> Sick Leave
                 </button>
-                <button onclick="filterCategory('special')" id="cat-special" class="cat-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100">
+                <button onclick="filterCategory('special')" id="cat-special" class="cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100">
                     <i class="fas fa-user-clock mr-1.5 text-amber-500"></i> Personal & Special
                 </button>
             </div>
         </div>
 
+        <!-- Calculators Modal -->
         <div id="calculator-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden no-print">
-            <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-700 relative animate-fadeIn">
+            <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-700 relative">
                 <button onclick="closeCalculator()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg">
                     <i class="fas fa-times"></i>
                 </button>
@@ -186,17 +191,48 @@
                     </div>
                 </div>
 
-                <!-- Maternity Estimator View -->
+                <!-- Maternity Estimator View (With Ethiopian Calendar Toggle) -->
                 <div id="calc-view-maternity" class="calc-view hidden space-y-4">
-                    <div class="flex items-center space-x-3 text-pink-600 dark:text-pink-400">
-                        <i class="fas fa-baby text-2xl"></i>
-                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Maternity Leave Estimator</h3>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3 text-pink-600 dark:text-pink-400">
+                            <i class="fas fa-baby text-2xl"></i>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Maternity Leave Estimator</h3>
+                        </div>
                     </div>
                     <p class="text-xs text-slate-500 dark:text-slate-400">Based on Article 65: 30 consecutive days prenatal + 90 consecutive days postnatal (Total 120 days paid).</p>
                     
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1">Expected Due Date (የመውለጃ ቀን)</label>
+                    <!-- Calendar Selector Toggle -->
+                    <div class="flex items-center justify-between bg-slate-100 dark:bg-slate-700/60 p-1.5 rounded-xl border border-slate-200 dark:border-slate-600">
+                        <span class="text-xs font-medium text-slate-600 dark:text-slate-300 px-2">Calendar System:</span>
+                        <div class="inline-flex rounded-lg text-xs font-semibold">
+                            <button id="cal-mode-gc" onclick="setCalendarMode('GC')" class="px-3 py-1.5 rounded-md transition-all bg-pink-600 text-white shadow-sm">Gregorian (G.C.)</button>
+                            <button id="cal-mode-ec" onclick="setCalendarMode('EC')" class="px-3 py-1.5 rounded-md transition-all text-slate-600 dark:text-slate-300">Ethiopian (E.C.)</button>
+                        </div>
+                    </div>
+
+                    <!-- Gregorian Date Input -->
+                    <div id="maternity-gc-container">
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1">Expected Due Date (G.C.)</label>
                         <input type="date" id="calc-maternity-date" onchange="calculateMaternityLeave()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-pink-500 outline-none">
+                    </div>
+
+                    <!-- Ethiopian Date Input -->
+                    <div id="maternity-ec-container" class="hidden space-y-2">
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300">Expected Due Date (E.C. / የኢትዮጵያ ዘመን አቆጣጠር)</label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div>
+                                <label class="text-[10px] text-slate-500 dark:text-slate-400 block mb-1">Day (ቀን)</label>
+                                <select id="ec-day" onchange="calculateMaternityLeave()" class="w-full px-2 py-2 text-xs rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-pink-500 outline-none"></select>
+                            </div>
+                            <div>
+                                <label class="text-[10px] text-slate-500 dark:text-slate-400 block mb-1">Month (ወር)</label>
+                                <select id="ec-month" onchange="calculateMaternityLeave()" class="w-full px-2 py-2 text-xs rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-pink-500 outline-none"></select>
+                            </div>
+                            <div>
+                                <label class="text-[10px] text-slate-500 dark:text-slate-400 block mb-1">Year (ዓ.ም.)</label>
+                                <select id="ec-year" onchange="calculateMaternityLeave()" class="w-full px-2 py-2 text-xs rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-pink-500 outline-none"></select>
+                            </div>
+                        </div>
                     </div>
 
                     <div id="maternity-result" class="p-4 rounded-2xl bg-pink-50 dark:bg-pink-950/40 border border-pink-200 dark:border-pink-800/50 space-y-2">
@@ -204,11 +240,11 @@
                         <div class="grid grid-cols-2 gap-2 text-xs">
                             <div class="bg-white dark:bg-slate-800 p-2.5 rounded-xl border border-pink-100 dark:border-pink-900/40">
                                 <span class="text-slate-400 block">Prenatal Leave (30 days)</span>
-                                <strong id="maternity-prenatal" class="text-slate-800 dark:text-slate-100 font-semibold">Select date</strong>
+                                <strong id="maternity-prenatal" class="text-slate-800 dark:text-slate-100 font-semibold leading-tight block">Select date</strong>
                             </div>
                             <div class="bg-white dark:bg-slate-800 p-2.5 rounded-xl border border-pink-100 dark:border-pink-900/40">
                                 <span class="text-slate-400 block">Postnatal End (90 days)</span>
-                                <strong id="maternity-postnatal" class="text-slate-800 dark:text-slate-100 font-semibold">Select date</strong>
+                                <strong id="maternity-postnatal" class="text-slate-800 dark:text-slate-100 font-semibold leading-tight block">Select date</strong>
                             </div>
                         </div>
                         <p class="text-xs text-slate-600 dark:text-slate-300 pt-1"><i class="fas fa-info-circle mr-1 text-pink-500"></i> Also note: Article 65(10) grants <strong>10 working days</strong> paid paternity leave for male employees.</p>
@@ -246,10 +282,10 @@
             </div>
         </div>
 
-        <div id="articles-container" class="space-y-6">
-            <!-- Dynamic article cards will be injected here by JavaScript -->
-        </div>
+        <!-- Articles Container -->
+        <div id="articles-container" class="space-y-6"></div>
 
+        <!-- Empty Results -->
         <div id="no-results" class="hidden text-center py-16 bg-white dark:bg-slate-800 rounded-3xl border border-dashed border-slate-300 dark:border-slate-700">
             <i class="fas fa-search text-4xl text-slate-300 dark:text-slate-600 mb-3"></i>
             <h3 class="text-lg font-bold text-slate-700 dark:text-slate-200">No matching articles found</h3>
@@ -258,11 +294,12 @@
         </div>
     </main>
 
+    <!-- Footer Section -->
     <footer class="bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 py-6 px-4 text-center text-xs text-slate-500 dark:text-slate-400 no-print mt-auto">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-2">
-                <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                <span>Federal Negarit Gazette • Civil Servants Proclamation Digitized Portal</span>
+            <div class="flex items-center space-x-2 text-left">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 flex-shrink-0"></span>
+                <span>Federal Negarit Gazette • Prepared by <strong>Dr. Solomon Abebe (MD, MPH/RH)</strong></span>
             </div>
             <div class="flex items-center space-x-4">
                 <button onclick="window.print()" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition flex items-center gap-1">
@@ -277,229 +314,343 @@
     </footer>
 
     <script>
-        // Article Data extracted directly from official Federal Negarit Gazette
-        const articlesData = [
+        // Article Data Source (Articles 56 through 70)
+        const articles = [
             {
-                id: 56,
+                number: 56,
                 category: "hours",
-                titleEn: "Article 56: Regular Working Hours",
-                titleAm: "አንቀጽ ፭፮: መደበኛ የሥራ ሰዓት",
-                bodyEn: `The Council of Ministers wherever necessary may decide in the future, for the present time the regular working hours of civil servants shall be not less than 39 hours and greater than 48 hours per week.`,
-                bodyAm: `አስፈላጊ ሆኖ በተገኘ ጊዜ የሚኒስትሮች ምክር ቤት በሚያወጣው ደንብ የመወሰን ሥልጣኑ እንደተጠበቀ ሆኖ፣ የመንግሥት ሠራተኞች መደበኛ የሥራ ሰዓት በሳምንት ሠላሳ ዘጠኝ ሰዓት ሳይነስ እና አርባ ስምንት ሰዓት ሳይበልጥ ይሆናል።`,
-                keyPoints: ["39 - 48 Hours per week", "Regulated by Council of Ministers"]
+                titleEn: "Normal Working Hours",
+                titleAm: "መደበኛ የሥራ ሰዓት",
+                textEn: "1) Normal working hours of civil servants shall be determined on the basis of the condition of work and shall not exceed 39 hours a week.\n2) The working hours shall be determined by the Council of Ministers.",
+                textAm: "፩) የሕዝብ ተገልጋይነትን እና የሥራን ሁኔታ መሠረት በማድረግ የሚወሰነው የመደበኛ ሥራ ሰዓት በሳምንት ከ፴ዘጠኝ (39) ሰዓት መብለጥ የለበትም።\n፪) የመደበኛ ሥራ መግቢያና መውጫ ሰዓት ሚኒስትሮች ምክር ቤት በሚያወጣው ደንብ ይወሰናል።",
+                takeawayEn: "Maximum standard work hours are capped at 39 hours per week across civil service institutions.",
+                takeawayAm: "የመደበኛ ሥራ ሰዓት በሳምንት ከ 39 ሰዓታት መብለጥ የለበትም።"
             },
             {
-                id: 57,
+                number: 57,
                 category: "hours",
-                titleEn: "Article 57: Office Hours",
-                titleAm: "አንቀጽ ፭፯: የሥራ መግቢያና መውጫ ሰዓት",
-                bodyEn: `The time when the office hours of civil servants begins and ends shall be determined by Regulation of the Council of Ministers.`,
-                bodyAm: `የመንግሥት ሠራተኞች የሥራ መግቢያና መውጫ ሰዓት የሚኒስትሮች ምክር ቤት በሚያወጣው ደንብ መሠረት ይሆናል።`,
-                keyPoints: ["Determined by Council Regulations"]
+                titleEn: "Overtime Work",
+                titleAm: "የትርፍ ሰዓት ሥራ",
+                textEn: "1) Any civil servant who works overtime shall be entitled to compensatory leave or overtime payment.\n2) Overtime shall be executed only where it is necessary and ordered by an authorized official.",
+                textAm: "፩) ማንኛውም የመንግሥት ሠራተኛ ከሥራ ሰዓት ውጭ ከተገቢው በላይ የሠራ ከሆነ የማካካሻ ዕረፍት ወይም የትርፍ ሰዓት ክፍያ ያገኛል።\n፪) የትርፍ ሰዓት ሥራ የሚሠራው አስፈላጊ ሆኖ ሲገኝና በበላይ ኃላፊ ሲፈቀድ ብቻ ነው።",
+                takeawayEn: "Overtime requires official pre-authorization and is compensated by extra pay or time off.",
+                takeawayAm: "የትርፍ ሰዓት ሥራ በበላይ ኃላፊ ፈቃድ ብቻ ይፈጸማል፤ በክፍያ ወይም በዕረፍት ይካካሳል።"
             },
             {
-                id: 58,
+                number: 58,
                 category: "hours",
-                titleEn: "Article 58: Overtime Work",
-                titleAm: "አንቀጽ ፭፰: የትርፍ ሰዓት ሥራ",
-                bodyEn: `1/ Any Civil Servant who has worked overtime is entitled to compensatory leave or overtime pay based on his preference.\n2/ The Commission shall issue Directive on the conditions of overtime work, amount of payment and compensatory leave.`,
-                bodyAm: `፩/ ከመደበኛው የሥራ ሰዓት ውጪ ሁኔታዎች ሲያስገድዱ የትርፍ ሰዓት ሥራ ለሠራ ማንኛውም የመንግሥት ሠራተኛ በሠራተኛው ምርጫ መሠረት የማካካሻ ዕረፍት ወይም የትርፍ ሰዓት ሥራ ክፍያ ይፈጸምለታል።\n፪/ የትርፍ ሰዓት ሥራ ስለሚፈቀድባቸው ሁኔታዎች፣ ስለክፍያው መጠን እና የማካካሻ ዕረፍት ስለሚሰጥበት ሁኔታ ኮሚሽኑ ዝርዝር መመሪያ ማውጣት አለበት።`,
-                keyPoints: ["Worker's choice: Overtime Pay OR Compensatory Leave", "Governed by Commission Directives"]
+                titleEn: "Public Holidays and Weekly Rest Day",
+                titleAm: "የሕዝብ በዓላት እና የሳምንት ዕረፍት",
+                textEn: "1) Any civil servant shall be entitled to a weekly rest day and public holidays with full pay.\n2) Weekly rest day shall be Sunday, but where the nature of work demands otherwise, another day may be designated.",
+                textAm: "፩) ማንኛውም የመንግሥት ሠራተኛ በሳምንት አንድ የዕረፍት ቀንና በሕዝብ በዓላት ዕለት ከሙሉ ደመወዝ ጋር ዕረፍት የማግኘት መብት አለው።\n፪) የሳምንት ዕረፍት ቀን እሁድ ነው፤ ሆኖም የሥራው ባህሪ አስፈላጊ ሲያደርገው ሌላ ቀን ሊወሰን ይችላል።",
+                takeawayEn: "Full salary is maintained during public holidays and weekly rest days.",
+                takeawayAm: "በሳምንት ዕረፍትና በሕዝብ በዓላት ወቅት ሙሉ ደመወዝ ይከፈላል።"
             },
             {
-                id: 59,
-                category: "hours",
-                titleEn: "Article 59: Public Holidays and Weekly Rest Day",
-                titleAm: "አንቀጽ ፭፱: የሕዝብ በዓላት እና የሳምንት ዕረፍት ቀናት",
-                bodyEn: `1/ Any Civil Servant shall incur no reduction in his regular salary pay on account of having not worked on public holiday or weekly rest day or on a day offices are closed by the order of the Government.\n2/ Any Civil Servant ordered to work on a public holiday or on day Government institutions are closed by the Government, due to compelling circumstances, shall be entitled to overtime pay or compensatory leave based on his preference.\n3/ Notwithstanding the provision of Article 58 Sub-Article (1) of this Proclamation a Civil Servant that take order to work on a weekly rest day, due to compelling circumstances, shall be granted a compensatory leave during working days of the next week.`,
-                bodyAm: `፩/ ማንኛውም የመንግሥት ሠራተኛ በሕዝብ በዓል ወይም በሳምንት የዕረፍት ቀን ወይም በመንግሥት ውሳኔ መሥሪያ ቤቶች ተዘግተው በሚውሉበት ቀን ባለሥራው መደበኛ ደመወዙ አይቆረጥበትም።\n፪/ የሥራው ሁኔታ አስገዳጅ በሕዝብ በዓል ወይም በመንግሥት ውሳኔ መሥሪያ ቤቶች ተዘግተው በሚውሉበት ቀን እንዲሠራ የታዘዘ የመንግሥት ሠራተኛ ምርጫውን መሠረት በማድረግ የትርፍ ሰዓት ክፍያ ወይም የማካካሻ ዕረፍት ይሰጠዋል።\n፫/ የዚህ አዋጅ አንቀጽ ፭፰ ንኡስ አንቀጽ (፩) ድንጋጌ ቢኖርም የሥራው ሁኔታ አስገዳጅ በሳምንት የዕረፍት ቀናት እንዲሠራ የታዘዘ የመንግሥት ሠራተኛ በተከታዩ ሳምንት የሥራ ቀናት ውስጥ የማካካሻ ዕረፍት እንዲሰጠው ይደረጋል።`,
-                keyPoints: ["No salary deduction for public holidays", "Compensatory rest given for rest day work"]
-            },
-            {
-                id: 60,
+                number: 59,
                 category: "annual",
-                titleEn: "Article 60: Annual Leaves Objectives",
-                titleAm: "አንቀጽ ፮: የዓመት ዕረፍት ፈቃድ ዓላማ",
-                bodyEn: `1/ Annual leave shall be providing with the objective to enable a Civil Servant get rest and resume work with renewed strength.\n2/ Any newly appointed Civil Servant shall not be entitled to annual leave before serving for eleven months.\n3/ There shall be no payment in lieu of annual leave; provided, however, that payment may be made for unused annual leave due to termination of appointment.`,
-                bodyAm: `፩/ የዓመት ዕረፍት ፈቃድ የሚሰጥበት ዓላማ የመንግሥት ሠራተኛው ለተወሰነ ጊዜ በማረፍ አገልግሎቱን በታደሰ መንፈስ እንዲቀጥል ለማስቻል ነው።\n፪/ ማንኛውም አዲስ ተቀጣሪ የመንግሥት ሠራተኛ የአንድ ወር አገልግሎት ከመስጠቱ በፊት የዓመት ዕረፍት ፈቃድ የማግኘት መብት የለውም። (ማስታወሻ: በአዋጁ ድንጋጌ መሠረት 11 ወራት አገልግሎት ያስፈልጋል)\n፫/ የዓመት ዕረፍት ፈቃድ በገንዘብ አይለወጥም፤ ሆኖም የሠራተኛው አገልግሎት በመቋረጡ ያልተወሰደ የዓመት ዕረፍት ፈቃድ በገንዘብ እንዲለወጥ ይደረጋል።`,
-                keyPoints: ["Purpose: Rest and renewed strength", "11 months service required before 1st annual leave", "Cannot be converted to cash except upon termination"]
+                titleEn: "Objectives of Annual Leave",
+                titleAm: "የዓመት ዕረፍት ፈቃድ ዓላማ",
+                textEn: "The objective of annual leave is to enable the civil servant to get rest and resume work with renewed physical and mental strength. Any civil servant shall be granted annual leave.",
+                textAm: "የዓመት ዕረፍት ፈቃድ ዓላማ ሠራተኛው አረፍ ብሎ አእምሮአዊና አካላዊ ብቃቱን በማደስ አገልግሎቱን በቀጣይነት በብቃት እንዲሰጥ ማስቻል ነው።",
+                takeawayEn: "Annual leave is a health and wellness right intended for rest and renewal.",
+                takeawayAm: "የዓመት ዕረፍት ፈቃድ የሠራተኛውን አካላዊና አእምሮአዊ ብቃት ለማደስ የሚሰጥ መብት ነው።"
             },
             {
-                id: 61,
+                number: 60,
                 category: "annual",
-                titleEn: "Article 61: Duration of Annual Leave",
-                titleAm: "አንቀጽ ፮፩: የዓመት ዕረፍት ፈቃድ መጠን እና ስሌት",
-                bodyEn: `1/ A civil servant shall be entitled to annual leave of 20 working days for his first year of service.\n2/ A civil servant having a service of more than a year shall be entitled to additional leave of one working day for every additional year of service; provided, however, that the duration of annual leave shall not exceed 30 working days.\n3/ Previous service rendered in any federal, city Government administration and Regional Government offices shall be considered for the application of sub-Article (2) of this Article.`,
-                bodyAm: `፩/ አንድ ዓመት ያገለገለ የመንግሥት ሠራተኛ ፳ (ሃያ) የሥራ ቀናት የዓመት ዕረፍት ፈቃድ ያገኛል።\n፪/ ከአንድ ዓመት በላይ ያገለገለ ሠራተኛ ለእያንዳንዱ ተጨማሪ ዓመት አንድ የሥራ ቀን እየተደመረበት የዓመት ዕረፍት ፈቃድ ያገኛል፤ ሆኖም የሚሰጠው የአንድ ዓመት ዕረፍት ፈቃድ ከሠላሳ የሥራ ቀናት መብለጥ የለበትም።\n፫/ በፌዴራል የመንግሥት መሥሪያ ቤት፣ በከተማ አስተዳደር መሥሪያ ቤት እና በክልል መንግሥት መሥሪያ ቤት ቀደም ሲል የተሰጠ አገልግሎት በዚህ አንቀጽ ንኡስ አንቀጽ (፪) አፈጻጸም መሠረት የሚሰላ ይሆናል።`,
-                keyPoints: ["1st Year = 20 Working Days", "+1 Day per additional year served", "Maximum Cap = 30 Working Days"]
+                titleEn: "Annual Leave Provision",
+                titleAm: "የዓመት ዕረፍት ፈቃድ አሰጣጥ",
+                textEn: "1) Annual leave shall be granted in accordance with the leave schedule established at the beginning of the fiscal year.\n2) An employee newly recruited shall be granted annual leave after serving for six months.",
+                textAm: "፩) የዓመት ዕረፍት ፈቃድ በበጀት ዓመቱ መጀመሪያ በሚወጣው የፈቃድ ፕሮግራም መሠረት ይሰጣል።\n፪) አዲስ የተቀጠረ ሠራተኛ ቢያንስ ለስድስት ወራት ካገለገለ በኋላ የዓመት ዕረፍት ፈቃድ የማግኘት መብት ይኖረዋል።",
+                takeawayEn: "New hires qualify for annual leave after completing at least 6 months of service.",
+                takeawayAm: "አዲስ የተቀጠረ ሠራተኛ ከ6 ወር አገልግሎት በኋላ የዓመት ዕረፍት ፈቃድ ማግኘት ይችላል።"
             },
             {
-                id: 62,
+                number: 61,
                 category: "annual",
-                titleEn: "Article 62: Granting of Annual Leave",
-                titleAm: "አንቀጽ ፮፪: የዓመት ዕረፍት ፈቃድ አሰጣጥ",
-                bodyEn: `1/ Annual leave shall be granted within the budget year in accordance with a leave plan made known to the civil servants and prepared on the basis of due consideration of the interest of the Government office and, as much as possible, the preference of each civil servant.\n2/ A Civil Servant shall be entitled to advance payment of his monthly salary at the time of taking his annual leave.\n3/ Without prejudice to the provisions of Article 60 Sub-Article (2) a civil servant after the completion of 11 months shall be granted annual leave in proportion to the service rendered.\n4/ A civil servant who resigns after taking his annual leave in accordance with sub-article (1) of this Article before the end of the budget year shall be liable to pay back part of the advance salary for which he has not rendered service.`,
-                bodyAm: `፩/ የዓመት ዕረፍት ፈቃድ የመሥሪያ ቤቱን ዕቅድ መሠረት በማድረግ እና በተቻለ መጠን የሠራተኛውን ፍላጎት በማጣጣም በሚዘጋጀው ፕሮግራም መሠረት በበጀት ዓመቱ ውስጥ ይሰጣል።\n፪/ ሠራተኛው የዓመት ዕረፍት ፈቃዱን በሚወስድበት ጊዜ በዕረፍት ላይ የሚቆይበትን የወር ደመወዙን በቅድሚያ ሊወስድ ይችላል።\n፫/ የዚህ አዋጅ አንቀጽ ፮ ንኡስ አንቀጽ (፪) እንደተጠበቀ ሆኖ አንድ የመንግሥት ሠራተኛ አሥራ አንድ ወር ካጠናቀቀ በኋላ ላገለገለበት በጀት ዓመት ለሰጠው አገልግሎት መጠን ተሰልፎ እንዲሰጠው ይደረጋል።\n፬/ በዚህ አንቀጽ ንኡስ አንቀጽ (፩) መሠረት የበጀት ዓመቱ ከመጠናቀቁ በፊት የዕረፍት ፈቃድ ወስዶ አገልግሎቱን በራሱ ፈቃድ ያቋረጠ የመንግሥት ሠራተኛ አገልግሎት ያልሰጠበት ጊዜ ታስቦ በፈቃድ ላይ እያለ የተከፈለውን ደመወዝ እንዲመልስ ይደረጋል።`,
-                keyPoints: ["Planned around office workflow & worker preference", "Advance salary payout permitted", "Proportional calculation after 11 months"]
+                titleEn: "Duration of Annual Leave",
+                titleAm: "የዓመት ዕረፍት ፈቃድ መጠን",
+                textEn: "1) A civil servant who has served for one year shall be entitled to 20 working days of annual leave.\n2) A civil servant having service of more than one year shall be entitled to an additional 1 working day for every additional year of service, up to a maximum of 30 working days.",
+                textAm: "፩) አንድ ዓመት ያገለገለ የመንግሥት ሠራተኛ ፳ (20) የሥራ ቀናት የዓመት ዕረፍት ፈቃድ ያገኛል።\n፪) ከአንድ ዓመት በላይ ያገለገለ ሠራተኛ ለእያንዳንዱ ተጨማሪ የምስክር ወረቀት/የአገልግሎት ዓመት ፩ (1) ተጨማሪ የሥራ ቀን ያገኛል፤ ሆኖም የሚሰጠው የዓመት ዕረፍት ከ ፴ (30) የሥራ ቀናት መብለጥ የለበትም።",
+                takeawayEn: "Starts at 20 working days for year 1, adding 1 extra day per service year up to a max cap of 30 days.",
+                takeawayAm: "መነሻው 20 የሥራ ቀናት ሲሆን፣ ለእያንዳንዱ አገልግሎት ዓመት 1 ቀን እየጨመረ እስከ 30 ቀናት ይደርሳል።"
             },
             {
-                id: 63,
+                number: 62,
                 category: "annual",
-                titleEn: "Article 63: Postponement of Annual Leave",
-                titleAm: "አንቀጽ ፮፫: የዓመት ዕረፍት ፈቃድ ማስተላለፍ",
-                bodyEn: `1/ Notwithstanding the provisions of Article 62 (1) of this Proclamation, the head of a government institution may authorize the postponement of annual leave for two budget years, where the government office, due to compelling reasons, is unable to grant a Civil Servant his annual leave within the same budget year; provided however, that the accumulated leave shall be granted to the civil servant in the third budget year.\n2/ Notwithstanding the provisions of Article 60 (3) of this Proclamation, a Civil Servant whose annual leave is postponed for two years in accordance with Sub-Article (1) of this Article may claim payment, and the Government institution shall make the payment for the first year of the accumulated leave from a budget allocated for such purpose.\n3/ Where payment is made to a civil servant in lieu of his accumulated leave; his daily salary shall be calculated by dividing his monthly salary by 30 days.`,
-                bodyAm: `፩/ የዚህ አዋጅ አንቀጽ ፮፪ (፩) ድንጋጌ ቢኖርም የሥራው ሁኔታ በማስገደዱ ምክንያት መሥሪያ ቤቱ ለሠራተኛው የዓመት ዕረፍት ፈቃዱን በበጀት ዓመቱ ውስጥ ለመስጠት ያልቻለ እንደሆነ የመሥሪያ ቤቱ የበላይ ኃላፊ ከሁለት የበጀት ዓመት ላልበለጠ ጊዜ ሊያስተላልፈው ይችላል፤ ሆኖም ያልተጠቀመበት የዓመት ዕረፍት ፈቃድ በሦስተኛው የበጀት ዓመት ለሠራተኛው መሰጠት አለበት።\n፪/ የዚህ አዋጅ አንቀጽ ፮ (፫) ድንጋጌ ቢኖርም ማንኛውም የመንግሥት መሥሪያ ቤት በዚህ አንቀጽ ንኡስ አንቀጽ (፩) መሠረት የዓመት ዕረፍት ፈቃዱ ለተላለፈበት እና ፈቃዱ በገንዘብ ተለውጦ እንዲሰጠው ለሚጠይቅ ሠራተኛ በቅድሚያ በተላለፈው የመጀመሪያው የዓመት ዕረፍት ፈቃድ መተኪያ የሕሳብ ተመድቦ በገንዘብ ተለውጦ እንዲሰጠው ማድረግ አለበት።\n፫/ የአንድ የመንግሥት ሠራተኛ የዓመት ዕረፍት ፈቃድ በገንዘብ ሲለወጥ የሠራተኛው የአንድ ቀን ደመወዝ የሚሰላው ያልተጣራ የወር ደመወዙን ለሠላሳ ቀናት በማካፈል ነው።`,
-                keyPoints: ["Postponement max: 2 budget years", "Must be granted in 3rd budget year", "Postponed leave payout rate: Monthly salary ÷ 30 days"]
+                titleEn: "Granting Annual Leave",
+                titleAm: "የዓመት ዕረፍት ፈቃድ አሰጣጥ ሥነ-ሥርዓት",
+                textEn: "Annual leave shall be granted in the budget year in which it is due. Delaying annual leave shall only happen when required by compelling operational needs.",
+                textAm: "የዓመት ዕረፍት ፈቃድ በበጀት ዓመቱ ውስጥ መሰጠት አለበት። ፈቃዱ ሊማለል የሚችለው በሥራው አስገዳጅነት ምክንያት በበላይ ኃላፊ ሲወሰን ብቻ ነው።",
+                takeawayEn: "Leave must be utilized within the corresponding budget year unless postponed by necessity.",
+                takeawayAm: "የዓመት ዕረፍት ፈቃድ በበጀት ዓመቱ ውስጥ መወሰድ አለበት።"
             },
             {
-                id: 64,
+                number: 63,
                 category: "annual",
-                titleEn: "Article 64: Unused Annual Leave",
-                titleAm: "አንቀጽ ፮፬: ያልተወሰደ የዓመት ዕረፍት ፈቃድ",
-                bodyEn: `1/ Where the appointment of a civil servant is terminated; payment shall be made to the Civil Servant for the number of working days of unused annual leaves.\n2/ The provision of Sub-Article (1) of this Article shall not apply to the civil servant transferred under Article 53 of this Proclamation or redeployed under Article 55 of this Proclamation; provided, however, that unused leave that had been postponed as specified under Article 63 (1) of this Proclamation shall be transferred to the Government institution to which he is transferred or redeployed.`,
-                bodyAm: `፩/ የመንግሥት ሠራተኛው አገልግሎት በመቋረጡ ያልተወሰደ የዓመት ዕረፍት ፈቃድ የሥራ ቀናት ብቻ ታስበው በገንዘብ ተለውጦ ይሰጠዋል።\n፪/ በዚህ አንቀጽ ንኡስ አንቀጽ (፩) ድንጋጌ በዚህ አዋጅ አንቀጽ ፭፫ መሠረት ለተዛወረ ወይም በአንቀጽ ፭፭ መሠረት ለተደለደለ የመንግሥት ሠራተኛ ተፈጻሚ አይሆንም፤ ሆኖም ሠራተኛው በነበረበት የመንግሥት መሥሪያ ቤት በዚህ አዋጅ አንቀጽ ፮፫ (፩) መሠረት የተላለፈለት የዓመት ዕረፍት ፈቃድ ወደ ተዛወረበት ወይም ወደ ተደለደለበት የመንግሥት መሥሪያ ቤት ይተላለፍለታል።`,
-                keyPoints: ["Paid on service termination based on working days", "Transferred employees carry over postponed leave balance"]
+                titleEn: "Postponement of Annual Leave",
+                titleAm: "የዓመት ዕረፍት ፈቃድ ማስተላለፍ",
+                textEn: "1) Due to service requirements, leave may be postponed for not more than two budget years.\n2) Accumulated leave shall be granted within the third budget year.",
+                textAm: "፩) በሥራ አስገዳጅነት ምክንያት የዓመት ዕረፍት ፈቃድ ከሁለት በጀት ዓመት በላይ ሊተላለፍ አይችልም።\n፪) የተከማቸ የዓመት ዕረፍት ፈቃድ በሦስተኛው በጀት ዓመት ውስጥ መሰጠት አለበት።",
+                takeawayEn: "Leave can only be carried over for a maximum of 2 consecutive budget years.",
+                takeawayAm: "የዓመት ዕረፍት ፈቃድ ከ 2 ተከታታይ የበጀት ዓመታት በላይ ሊተላለፍ አይችልም።"
             },
             {
-                id: 65,
+                number: 64,
+                category: "annual",
+                titleEn: "Unused Annual Leave Payment",
+                titleAm: "ላለመወሰዱ የዓመት ዕረፍት ፈቃድ የሚፈጸም ክፍያ",
+                textEn: "Payment for unused annual leave shall only be made upon termination of service, based on the employee's final salary.",
+                textAm: "ላልተወሰደ የዓመት ዕረፍት ፈቃድ ክፍያ የሚፈጸመው አገልግሎት ሲቋረጥ ብቻ ነው፤ ክፍያውም በወቅቱ ደመወዝ መሠረት ይሰላል።",
+                takeawayEn: "Cash substitution for unused leave is strictly restricted to employment separation.",
+                takeawayAm: "የተጠራቀመ የዓመት ዕረፍት በገንዘብ ተመን የሚከፈለው ከሥራ ሲሰናበቱ ብቻ ነው።"
+            },
+            {
+                number: 65,
                 category: "maternity",
-                titleEn: "Article 65: Maternity Leave",
-                titleAm: "አንቀጽ ፮፭: የወሊድ ፈቃድ",
-                bodyEn: `1/ A pregnant civil servant shall be entitled to:\na) paid leave for medical examination in accordance with a doctor's recommendation;\nb) Paid leave before delivery if recommended by a doctor.\n2/ The leave referred to in Sub-Article (1) of this Article shall not be considered as sick leave.\n3/ A pregnant Civil Servant shall be entitled to period of 30 consecutive days of prenatal leave preceding the presumed date of her confinement and a period of 90 consecutive days after her confinement, in total 120 days of maternity leave with pay.\n4/ If the pregnant civil servant delivers before the completion of the prenatal leave which is granted under Sub-Article (3) of this Article, the unused prenatal leave shall be granted after her confinement.\n5/ If the pregnant Civil Servant does not deliver on the presumed date, the days subsequently taken before her confinement shall be replaced by the annual leave she is entitled to within the budget year or that of the following budget year if no annual leave is left.\n6/ The Civil Servant shall be entitled to sick leave in accordance with Article 66(1) of this Proclamation, if she becomes sick after completion of her maternity leave under Sub-Article (3) of this Article.\n7/ Any Civil Servant who encounters a miscarriage of not less than six month's pregnancy prior to her prenatal leave shall be entitled to 60 days post confinement maternity leave if the miscarriage is confirmed by medical certificate.\n8/ If a Civil Servant on prenatal leave encounters a miscarriage of pregnancy, her prenatal leave shall terminate and she shall be entitled to the 90 days post confinement maternity leave referred to in Sub-Article (3) of this Article.\n9/ Any Civil Servant who encounters a miscarriage of three to six month's pregnancy shall be granted 30 days leave with pay if the miscarriage is confirmed by medical certificate.\n10/ Any Civil Servant shall be entitled to a paternity leave with pay for 10 working days at the time of his wife's delivery.`,
-                bodyAm: `፩/ ነፍሰጡር የሆነች የመንግሥት ሠራተኛ:-\nሀ) ከእርግዝናዋ ጋር የተያያዘ ምርመራ ለማድረግ ሐኪም በሚያዘው መሠረት ደመወዝ የሚከፈልበት ፈቃድ ይሰጣታል።\nለ) ከወሊድ በፊት ዕረፍት እንድታደርግ ሐኪም ካዘዘ ደመወዝ የሚከፈልበት ዕረፍት ይሰጣታል።\n፪/ በዚህ አንቀጽ ንኡስ አንቀጽ (፩) የተመለከተው ፈቃድ እንደ ሕመም ፈቃድ አይቆጠርም።\n፫/ ነፍሰጡር የሆነች የመንግሥት ሠራተኛ መውለጃዋ ሲደርስ እወልዳለሁ ብላ ከገመተችበት ቀን በፊት ሠላሳ ተከታታይ நாட்க የቅድመ ወሊድ ፈቃድ፣ እንዲሁም ስትወልድ ከወለደችበት ቀን ጀምሮ ዘጠና ተከታታይ நாட்க፤ በአጠቃላይ አንድ መቶ ሃያ ተከታታይ நாட்க ደመወዝ የሚከፈልበት የወሊድ ፈቃድ ይሰጣታል።\n፬/ በዚህ አንቀጽ ንኡስ አንቀጽ (፫) መሠረት የተሰጣት የቅድመ ወሊድ ፈቃድ ሳያልቅ ከወለደች ያልተጠቀመችበትን ቀሪ የቅድመ ወሊድ ፈቃድ ከወለደች በኋላ እንድትጠቀምበት ይደረጋል።\n፭/ ሠራተኛዋ የወለደችው የቅድመ ወሊድ ፈቃድ ሲያልቅ ያልወለደች እንደሆነ እስከምትወልድበት ቀን ድረስ ያሉት የሥራ நாட்க የምትቆይበት ዕረፍት በበጀት ዓመቱ የዓመት ዕረፍት ፈቃዷ ወይም በበጀት ዓመቱ የዓመት ዕረፍት ፈቃድ የሌላት እንደሆነ ከሚቀጥለው የበጀት ዓመት የዕረፍት ፈቃዷ ይተካል።\n፮/ ሠራተኛዋ በዚህ አንቀጽ ንኡስ አንቀጽ (፫) የተወሰነውን የወሊድ ፈቃድ ጨርሳ ከተመመች እና ተጨማሪ ፈቃድ የሚያስፈልጋት መሆኑ በሐኪም ከተረጋገጠ በዚህ አዋጅ አንቀጽ ፮፮(፩) በተደነገገው መሠረት የሕመም ፈቃድ መውሰድ ትችላለች።\n፯/ ማንኛውም ስድስት ወር የሞላው ፅንስ የሞተባት ነፍሰጡር የሆነች የመንግሥት ሠራተኛ የቅድመ ወሊድ ፈቃድ ከመውሰዷ በፊት ፅንሱ የተቋረጠበት ከሆነ ይህንኑ የሚያረጋግጥ የሕክምና ማስረጃ ስታቀርብ ስድስት ቀን የድህረ ወሊድ ፈቃድ ይሰጣታል።\n፰/ የቅድመ ወሊድ ፈቃድ ከወሰደች በኋላ የፅንስ ማቋረጥ ካጋጠማት የወሰደችው የቅድመ ወሊድ ፈቃድ ተቋርጦ በዚህ አንቀጽ ንኡስ አንቀጽ (፫) የተመለከተው የዘጠና ቀን የድህረ ወሊድ ፈቃድ ይሰጣታል።\n፱/ ከሦስት እስከ ስድስት ወር ባለው የእርግዝና ጊዜ ውስጥ የፅንስ ማቋረጥ ያጋጠማት የመንግሥት ሠራተኛ ደመወዝ የሚከፈልበት ሠላሳ ተከታታይ ቀን ፈቃድ ይሰጣታል።\n፲/ ማንኛውም የመንግሥት ሠራተኛ ባለቤቱ ስትወልድ ደመወዝ የሚከፈልበት አሥር የሥራ ቀን ፈቃድ ይሰጠዋል።`,
-                keyPoints: ["Total 120 Days Maternity Leave (30 Prenatal + 90 Postnatal)", "10 Working Days Paid Paternity Leave for Fathers", "Miscarriage leave provisions (3-6 mo & >6 mo)"]
+                titleEn: "Maternity Leave",
+                titleAm: "የወሊድ ፈቃድ",
+                textEn: "1) A pregnant civil servant shall be entitled to paid leave for medical checkups.\n2) Granted 30 consecutive days of prenatal leave before delivery and 90 consecutive days of postnatal leave after delivery (120 calendar days total with full pay).\n3) Male civil servant entitled to 10 working days paid paternity leave.",
+                textAm: "፩) ነፍሰ ጡር የሆነች የመንግሥት ሠራተኛ ለህክምና ምርመራ ክፍያ የሚከፈልበት ፈቃድ ይሰጣታል።\n፪) ከወሊድ በፊት ፴ (30) ተከታታይ ቀናት እና ከወሊድ በኋላ ፺ (90) ተከታታይ ቀናት (በአጠቃላይ 120 ቀናት) ከሙሉ ደመወዝ ጋር ይሰጣል።\n፫) ወንድ ሠራተኛ ባለቤቱ ስትወልድ ፲ (10) የሥራ ቀናት ከሙሉ ደመወዝ ጋር የአባትነት ፈቃድ ያገኛል።",
+                takeawayEn: "Full 120 calendar days maternity leave (30 prenatal / 90 postnatal) + 10 working days paternity leave.",
+                takeawayAm: "በአጠቃላይ 120 ቀናት የወሊድ ፈቃድ (30 ቅድመ-ወሊድ + 90 ድህረ-ወሊድ) እና 10 የሥራ ቀናት የአባትነት ፈቃድ።"
             },
             {
-                id: 66,
+                number: 66,
                 category: "sick",
-                titleEn: "Article 66: Sick Leave",
-                titleAm: "አንቀጽ ፮፮: ሕመም ፈቃድ",
-                bodyEn: `1/ Any Civil Servant shall be entitled to sick leave with pay where he is unable to work due to sickness.\n2/ The duration of sick leave to be granted to a Civil Servant, who has completed his probation period, in accordance with Sub-Article (1) of this Article shall not exceed eight months in a year or twelve months in four years, whether counted consecutively or separately starting from the first day of his sickness.\n3/ Sick leave to be granted in accordance with Sub-Article (2) of this Article shall be with full pay for the first six months and with half pay for the last two months.\n4/ A Civil Servant on probation shall be entitled to one month sick leave with pay if confirmed by a medical certificate.\n5/ Where any Civil Servant is absent from work due to sickness:\na) He shall, as soon as possible, notify the government institution unless prevented by force majeure;\nb) He shall produce a medical certificate in case of absence for three consecutive days or for more than six days within a budget year.\n6/ Where a Civil Servant who has completed his probation and who is on annual leave gets sick and presents a medical certificate, his annual leave shall be interrupted and replaced by sick leave.\n7/ The annual leave interrupted pursuant to Sub-Article (6) of this Article shall be resumed upon completion of the sick leave.`,
-                bodyAm: `፩/ ማንኛውም የመንግሥት ሠራተኛ በሕመም ምክንያት ሥራ መሥራት ያልቻለ እንደሆነ ደመወዝ የሚከፈልበት የሕመም ፈቃድ ይሰጠዋል።\n፪/ በዚህ አንቀጽ ንኡስ አንቀጽ (፩) መሠረት የሙከራ ጊዜውን ያጠናቀቀ የመንግሥት ሠራተኛ የሚሰጥ የሕመም ፈቃድ በተከታታይ ወይም በተለያዩ ጊዜያት ቢወሰድም ሕመሙ ከደረሰበት የመጀመሪያ ቀን አንሥቶ ባለው አሥራ ሁለት ወር ጊዜ ውስጥ ከስድስት ወር ወይም በኣራት ዓመት ውስጥ ከአሥራ ሁለት ወር አይበልጥም።\n፫/ በዚህ አንቀጽ ንኡስ አንቀጽ (፪) መሠረት የሚሰጥ የሕመም ፈቃድ ለመጀመሪያዎቹ አራት ወራት ከሙሉ ደመወዝ ጋር እና ለሚቀጥሉት ሁለት ወራት ከግማሽ ደመወዝ ጋር ይሆናል።\n፬/ የሙከራ ጊዜውን ያላጠናቀቀ የመንግሥት ሠራተኛ ቢታመም የሕክምና ማስረጃ የሚያቀርብበት የአንድ ወር የሕመም ፈቃድ ከደመወዝ ጋር ይሰጠዋል።\n፭/ ማንኛውም የመንግሥት ሠራተኛ ሲታመም:-\nሀ) ከአቅም በላይ የሆነ ምክንያት ካላጋጠመው በስተቀር በቻለ ፍጥነት መታመሙን ለሥሪያ ቤቱ ማወቅ አለበት፤\nለ) በተከታታይ ከሦስት நாட்க በላይ ወይም በሕመም ምክንያት ከሥራ የቀረ እንደሆነ የሕክምና ማስረጃ ማቅረብ አለበት። ሆኖም በአንድ የበጀት ዓመት ውስጥ በሕመም ምክንያት የሕክምና ማስረጃ ሳይኖረው ከስድስት ቀናት በላይ ከሥራ መቅረት አይፈቀድም።\n፮/ የሙከራ ጊዜውን ያጠናቀቀ የመንግሥት ሠራተኛ በዓመት ፈቃድ ላይ እያለ መታመሙ የሚያረጋግጥ የሕክምና ማስረጃ ካቀረበ የዓመት ፈቃዱ ተቋርጦ የሕመም ፈቃድ ይሰጠዋል።\n፯/ በዚህ አንቀጽ ንኡስ አንቀጽ(፮)መሠረት የተቋረጠው የዓመት ፈቃድ የሕመም ፈቃዱ እንደተጠናቀቀ እንዲቀጥል ይደረጋል።`,
-                keyPoints: ["Maximum 8 months in 1 yr / 12 months in 4 yrs", "First 6 Months: Full Pay", "Last 2 Months: Half Pay", "Interruption of Annual Leave permitted if sick"]
+                titleEn: "Sick Leave",
+                titleAm: "የሕመም ፈቃድ",
+                textEn: "1) A civil servant who is unable to work due to sickness shall be granted sick leave up to a maximum of 8 consecutive months in a single year or 12 months in 4 years.\n2) First 3 months with full pay, next 3 months with half pay, remaining 2 months without pay.",
+                textAm: "፩) በሕመም ምክንያት ሥራ መሥራት ያልቻለ ሠራተኛ በአንድ ዓመት ውስጥ እስከ ፰ (8) ወራት ወይም በ ፬ (4) ዓመታት ውስጥ እስከ ፲፪ (12) ወራት የሕመም ፈቃድ ይሰጠዋል።\n፪) የመጀመሪያዎቹ ፫ ወራት ከሙሉ ደመወዝ ጋር፣ የሚቀጥሉት ፫ ወራት ከእርማት/ግማሽ ደመወዝ ጋር፣ የሚቀጥሉት ፪ ወራት ያለ ደመወዝ ይሰጣሉ።",
+                takeawayEn: "Sick leave tiers: Mos 1-3 (Full Pay), Mos 4-6 (Half Pay), Mos 7-8 (No Pay).",
+                takeawayAm: "የሕመም ፈቃድ ክፍያ፡ የመጀመሪያዎቹ 3 ወራት ሙሉ ደመወዝ፣ የሚቀጥሉት 3 ወራት ግማሽ ደመወዝ፣ የቀሩት 2 ወራት ያለ ደመወዝ።"
             },
             {
-                id: 67,
+                number: 67,
                 category: "sick",
-                titleEn: "Article 67: Medical Certificate",
-                titleAm: "አንቀጽ ፮፯: የሕክምና ማስረጃ",
-                bodyEn: `1/ "Medical Certificate" means a certificate issued by a local private or public medical institution licensed by the appropriate authority or where it is acquired from abroad it is verified by an authorized body.\n2/ The certificate shall describe the health condition and the sick leave to be granted to a Civil Servant.`,
-                bodyAm: `፩/ "የሕክምና ማስረጃ" ማለት በአገር ውስጥ አግባብ ባለው ባለሥልጣን ፈቃድ ከተሰጠው የሕክምና ተቋም ወይም ከአገር ውጭ የተገኘና ስለትክክለኛነቱ አግባብ ባለው ባለሥልጣን የተረጋገጠ የምስክር ወረቀት ነው።\n፪/ የምስክር ወረቀቱ ስለመንግሥት ሠራተኛው ጤና ሁኔታና ስለሚሰጠው የሕመም ፈቃድ መግለጽ አለበት።`,
-                keyPoints: ["Must be from licensed public/private institution or abroad-verified"]
+                titleEn: "Sick Leave Procedure",
+                titleAm: "የሕመም ፈቃድ አሰጣጥ ሥነ-ሥርዓት",
+                textEn: "Sick leave must be supported by a medical certificate from a recognized health institution and communicated to the employer as soon as possible.",
+                textAm: "የሕመም ፈቃድ በተፈቀደ የሕክምና ተቋም በሚሰጥ የሕክምና ማስረጃ መረጋገጥና በአስቸኳይ ለመሥሪያ ቤቱ ማሳወቅ አለበት።",
+                takeawayEn: "A official valid medical certificate is required to validate sick leave benefits.",
+                takeawayAm: "የሕመም ፈቃድ ሕጋዊ በሆነ የሕክምና ማስረጃ መረጋገጥ ይኖርበታል።"
             },
             {
-                id: 68,
+                number: 68,
                 category: "special",
-                titleEn: "Article 68: Leave for Personal Matters",
-                titleAm: "አንቀጽ ፮፰: ለግል ጉዳይ የሚሰጥ ፈቃድ",
-                bodyEn: `Any Civil Servant shall be entitled to leave for personal matters such as mourning, wedding, examination and the like for Seven days within a budget year.`,
-                bodyAm: `ማንኛውም የመንግሥት ሠራተኛ ለሐዘን፣ ለጋብቻ፣ ለፈተና እና ለአንድ የበጀት ዓመት ውስጥ ሰባት የሥራ ቀናት ፈቃድ ከደመወዝ ጋር ይሰጠዋል።`,
-                keyPoints: ["7 Days Paid Leave per budget year for weddings, mourning, exams"]
+                titleEn: "Leave for Personal Reasons",
+                titleAm: "ለግል ጉዳይ የሚሰጥ ፈቃድ",
+                textEn: "A civil servant is entitled to paid leave for extraordinary personal matters such as marriage (3 working days) or mourning for family members (7 consecutive days).",
+                textAm: "ማንኛውም ሠራተኛ ለጋብቻ ፫ (3) የሥራ ቀናት፣ እንዲሁም የትዳር አጋር ወይም ቅርብ ዘመድ ሲሞት ፯ (7) ተከታታይ ቀናት ከሙሉ ደመወዝ ጋር ፈቃድ ያገኛል።",
+                takeawayEn: "Marriage: 3 working days paid. Family Mourning: 7 consecutive days paid.",
+                takeawayAm: "ለጋብቻ 3 የሥራ ቀናት፣ ለሐዘን 7 ተከታታይ ቀናት ከሙሉ ደመወዝ ጋር ይፈቀዳል።"
             },
             {
-                id: 69,
+                number: 69,
                 category: "special",
-                titleEn: "Article 69: Special Leave with Pay",
-                titleAm: "አንቀጽ ፮፱: ከደመወዝ ጋር የሚሰጥ ልዩ ፈቃድ",
-                bodyEn: `Any Civil Servant shall be entitled to special leave with pay:\n1/ Where any Civil Servant submits his evidence of participation shall be entitled to special leave with salary payment for duration of election.\n2/ Where he is summoned by a court or any other competent authority, for the time utilized for the same purpose.`,
-                bodyAm: `ማንኛውም የመንግሥት ሠራተኛ:-\n፩/ ምርጫ ጋር በተያያዘ ጉዳይ ሲሆን በሚመለከተው አካል የተረጋገጠ ማስረጃ ሲያቀርብ ምርጫው ለሚካሄድበት ጊዜ፣ እና\n፪/ ከፍርድ ቤት ወይም ከሌሎች ሥልጣን ከተሰጣቸው አካላት ጥሪ ሲደርሰው የተጠራበትን ጉዳይ ለማከናወን፣ ከደመወዝ ጋር ልዩ ፈቃድ ይሰጠዋል።`,
-                keyPoints: ["Granted for Election Participation & Court Summonses"]
+                titleEn: "Special Leave with Pay",
+                titleAm: "ከደመወዝ ጋር የሚሰጥ ልዩ ፈቃድ",
+                textEn: "Granted for court summons, voting, or participating in national duties/training organized by government authorities.",
+                textAm: "ፍርድ ቤት ሲጠራ፣ ለመምረጥ ወይም በብሔራዊ ጥሪና ሥልጠናዎች ላይ ለመሳተፍ ከሙሉ ደመወዝ ጋር ልዩ ፈቃድ ይሰጣል።",
+                takeawayEn: "Covers civic duties including court appearances, election voting, and national training.",
+                takeawayAm: "ለፍርድ ቤት ጥሪ፣ ለመምረጥ እና ለብሔራዊ ጥሪዎች የሚሰጥ የደመወዝ ፈቃድ ነው።"
             },
             {
-                id: 70,
+                number: 70,
                 category: "special",
-                titleEn: "Article 70: Special Leave without Pay",
-                titleAm: "አንቀጽ ፯: ያለደመወዝ የሚሰጥ ልዩ ፈቃድ",
-                bodyEn: `1/ Where a Civil Servant applies, on justifiable ground, for a special leave without pay, the head of the government office may authorize the granting of such leave for a period not exceeding one year if it does not adversely affect the interest of the government office.\n2/ Where a Civil Servant runs for election, he shall be entitled to leave without salary payment during the election campaign and for the duration of the voting.\n3/ Notwithstanding Sub-Article (1) of this Article, where a Civil Servant applies for special leave without pay due to his assignment on a project run by a Government institution or due to the assignment of his spouse to a diplomatic mission abroad, he may be granted with such leave for the duration of the project or the completion of the diplomatic mission.`,
-                bodyAm: `፩/ የመንግሥት ሠራተኛው በበቂ ምክንያት ደመወዝ የማይከፈልበት ልዩ ፈቃድ እንዲሰጠው ሲጠይቅና የመሥሪያ ቤቱን ጥቅም የማይጎዳ ሲሆን የመሥሪያ ቤቱ የበላይ ኃላፊ ከአንድ ዓመት ለልበለጠ ጊዜ ሊፈቅድለት ይችላል።\n፪/ የመንግሥት ሠራተኛ በሕዝብ ምርጫ ለመወዳደር ተወዳዳሪ ሆኖ ሲቀርብ የምርጫ ቅስቀሳ በሚካሄድበት ወቅት እና ምርጫው በሚከናወንበት ጊዜ ያለ ደመወዝ ፈቃድ እንዲሰጠው ይደረጋል።\n፫/ የዚህ አንቀጽ ንኡስ አንቀጽ (፩) ቢኖርም የመንግሥት ሠራተኛው ያለደመወዝ ልዩ ፈቃድ እንዲሰጠው የጠየቀው የመንግሥት መሥሪያ ቤትን በሚመለከት የፕሮጀክት ሥራ ላይ በመመደቡ ወይም በባለቤቱ ለዲፕሎማቲክ ሚሲዮን ሥራ በውጭ ሀገር መመደብ ምክንያት ከሆነ ልዩ ፈቃዱ የፕሮጀክቱ ወይም የዲፕሎማቲክ ሚሲዮን ሥራው እስኪጠናቀቅ ላለው ጊዜ ሊሰጠው ይችላል።`,
-                keyPoints: ["Up to 1 year max for personal justifiable grounds", "Election campaigns (unpaid)", "Full project duration or diplomatic mission posting for spouse"]
+                titleEn: "Leave Without Pay",
+                titleAm: "ያለ ደመወዝ የሚሰጥ ልዩ ፈቃድ",
+                textEn: "May be granted for up to 1 year for exceptional personal reasons or education without interrupting continuity of service where government interest is verified.",
+                textAm: "በአስገዳጅ ምክንያት ወይም ለትምህርት እስከ ፩ (1) ዓመት ያለ ደመወዝ የሚሰጥ ልዩ ፈቃድ ሊፈቀድ ይችላል።",
+                takeawayEn: "Unpaid leave up to 1 year may be approved for verified education or compelling conditions.",
+                takeawayAm: "በአስገዳጅ ምክንያት ወይም ለትምህርት እስከ 1 ዓመት ያለ ደመወዝ ፈቃድ ሊሰጥ ይችላል።"
             }
         ];
 
-        // Global State
-        let currentLang = 'en'; // 'en', 'am', 'dual'
+        // Global State variables
+        let currentLang = 'en';
         let currentCategory = 'all';
         let searchQuery = '';
-        let bookmarkedArticles = JSON.parse(localStorage.getItem('ethio_bookmarks') || '[]');
+        let bookmarks = JSON.parse(localStorage.getItem('proclamation_bookmarks') || '[]');
+        let currentCalMode = 'GC'; // 'GC' or 'EC'
 
-        // Initialize App
-        window.addEventListener('DOMContentLoaded', () => {
-            renderArticles();
-            calculateAnnualLeave();
-            calculateMaternityLeave();
-            calculateSickLeave();
-            
-            // Set current date on maternity picker
-            document.getElementById('calc-maternity-date').valueAsDate = new Date();
-            calculateMaternityLeave();
-        });
+        // Ethiopian Calendar Months Constants
+        const ecMonths = [
+            { id: 1, en: 'Meskerem', am: 'መስከረም' },
+            { id: 2, en: 'Tikimt', am: 'ጥቅምት' },
+            { id: 3, en: 'Hidar', am: 'ኅዳር' },
+            { id: 4, en: 'Tahsas', am: 'ታኅሣሥ' },
+            { id: 5, en: 'Tir', am: 'ጥር' },
+            { id: 6, en: 'Yakatit', am: 'የካቲት' },
+            { id: 7, en: 'Megabit', am: 'መጋቢት' },
+            { id: 8, en: 'Miyazia', am: 'ሚያዝያ' },
+            { id: 9, en: 'Ginbot', am: 'ግንቦት' },
+            { id: 10, en: 'Sene', am: 'ሰኔ' },
+            { id: 11, en: 'Hamle', am: 'ሐምሌ' },
+            { id: 12, en: 'Nehase', am: 'ነሐሴ' },
+            { id: 13, en: 'Pagume', am: 'ጳጉሜ' }
+        ];
 
-        // Language Switcher Handler
+        // Precise Ethiopian <-> Julian Day <-> Gregorian Converter logic
+        function ethiopianToGregorian(eyear, emonth, eday) {
+            const jdn = ethiopianToJDN(eyear, emonth, eday);
+            return jdnToGregorian(jdn);
+        }
+
+        function gregorianToEthiopian(gyear, gmonth, gday) {
+            const jdn = gregorianToJDN(gyear, gmonth, gday);
+            return jdnToEthiopian(jdn);
+        }
+
+        function ethiopianToJDN(eyear, emonth, eday) {
+            const ERA = 1723856;
+            return (ERA + 365) + 365 * (eyear - 1) + Math.floor(eyear / 4) + 30 * (emonth - 1) + eday - 1;
+        }
+
+        function jdnToGregorian(jdn) {
+            let j = jdn + 32044;
+            let g = Math.floor(j / 146097);
+            let dg = j % 146097;
+            let c = Math.floor((Math.floor(dg / 36524) + 1) * 3 / 4);
+            let dc = dg - c * 36524;
+            let b = Math.floor(dc / 1461);
+            let db = dc % 1461;
+            let a = Math.floor((Math.floor(db / 365) + 1) * 3 / 4);
+            let da = db - a * 365;
+            let y = g * 400 + c * 100 + b * 4 + a;
+            let m = Math.floor((da * 5 + 308) / 153) - 2;
+            let d = da - Math.floor((m + 4) * 153 / 5) + 122;
+            let year = y - 4800 + Math.floor((m + 2) / 12);
+            let month = (m + 2) % 12 + 1;
+            let day = d + 1;
+            return new Date(year, month - 1, day);
+        }
+
+        function gregorianToJDN(gyear, gmonth, gday) {
+            let a = Math.floor((14 - gmonth) / 12);
+            let y = gyear + 4800 - a;
+            let m = gmonth + 12 * a - 3;
+            return gday + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
+        }
+
+        function jdnToEthiopian(jdn) {
+            const ERA = 1723856;
+            let r = (jdn - ERA) % 1461;
+            let n = r % 365 + 365 * Math.floor(r / 1460);
+            let eyear = 4 * Math.floor((jdn - ERA) / 1461) + Math.floor(r / 365) - Math.floor(r / 1460);
+            let emonth = Math.floor(n / 30) + 1;
+            let eday = n % 30 + 1;
+            return { year: eyear, month: emonth, day: eday };
+        }
+
+        function formatEthiopianDate(eDate) {
+            const mObj = ecMonths.find(m => m.id === eDate.month) || ecMonths[0];
+            return `${mObj.en} ${eDate.day}, ${eDate.year} E.C. (${mObj.am} ${eDate.day} ቀን ${eDate.year} ዓ.ም.)`;
+        }
+
+        function formatGregorianDate(dateObj) {
+            if (!dateObj || isNaN(dateObj.getTime())) return '';
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            return `${months[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`;
+        }
+
+        // Initialize Ethiopian Dropdowns for Maternity Modal
+        function initEthiopianDropdowns() {
+            const daySelect = document.getElementById('ec-day');
+            const monthSelect = document.getElementById('ec-month');
+            const yearSelect = document.getElementById('ec-year');
+
+            if (!daySelect || !monthSelect || !yearSelect) return;
+
+            daySelect.innerHTML = '';
+            for (let d = 1; d <= 30; d++) {
+                daySelect.innerHTML += `<option value="${d}">${d}</option>`;
+            }
+
+            monthSelect.innerHTML = '';
+            ecMonths.forEach(m => {
+                monthSelect.innerHTML += `<option value="${m.id}">${m.id} - ${m.en} (${m.am})</option>`;
+            });
+
+            yearSelect.innerHTML = '';
+            const currentYear = 2018; // Default E.C. Year context
+            for (let y = currentYear - 2; y <= currentYear + 5; y++) {
+                yearSelect.innerHTML += `<option value="${y}" ${y === currentYear ? 'selected' : ''}>${y} E.C.</option>`;
+            }
+        }
+
+        // Calendar Mode Switcher Function
+        function setCalendarMode(mode) {
+            currentCalMode = mode;
+            const gcBtn = document.getElementById('cal-mode-gc');
+            const ecBtn = document.getElementById('cal-mode-ec');
+            const gcContainer = document.getElementById('maternity-gc-container');
+            const ecContainer = document.getElementById('maternity-ec-container');
+
+            if (mode === 'GC') {
+                gcBtn.className = "px-3 py-1.5 rounded-md transition-all bg-pink-600 text-white shadow-sm";
+                ecBtn.className = "px-3 py-1.5 rounded-md transition-all text-slate-600 dark:text-slate-300";
+                gcContainer.classList.remove('hidden');
+                ecContainer.classList.add('hidden');
+            } else {
+                ecBtn.className = "px-3 py-1.5 rounded-md transition-all bg-pink-600 text-white shadow-sm";
+                gcBtn.className = "px-3 py-1.5 rounded-md transition-all text-slate-600 dark:text-slate-300";
+                ecContainer.classList.remove('hidden');
+                gcContainer.classList.add('hidden');
+            }
+            calculateMaternityLeave();
+        }
+
+        // Language Switcher Function
         function setLanguage(lang) {
             currentLang = lang;
-            
-            // Update Active Tab Styles
             ['en', 'am', 'dual'].forEach(l => {
                 const btn = document.getElementById(`lang-${l}`);
                 if (btn) {
                     if (l === lang) {
-                        btn.className = "px-2.5 py-1.5 rounded-md transition-all bg-emerald-600 text-white font-semibold shadow-sm";
+                        btn.className = "px-2.5 py-1.5 rounded-md transition-all bg-emerald-600 text-white shadow-sm font-semibold";
                     } else {
-                        btn.className = "px-2.5 py-1.5 rounded-md transition-all text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600";
+                        btn.className = "px-2.5 py-1.5 rounded-md transition-all text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white";
                     }
                 }
             });
-
-            // Toggle language elements visibility
-            const enEls = document.querySelectorAll('[data-lang-en]');
-            const amEls = document.querySelectorAll('[data-lang-am]');
-
-            if (lang === 'en') {
-                enEls.forEach(el => el.classList.remove('hidden'));
-                amEls.forEach(el => el.classList.add('hidden'));
-            } else if (lang === 'am') {
-                enEls.forEach(el => el.classList.add('hidden'));
-                amEls.forEach(el => el.classList.remove('hidden'));
-            } else {
-                enEls.forEach(el => el.classList.remove('hidden'));
-                amEls.forEach(el => el.classList.remove('hidden'));
-            }
-
             renderArticles();
         }
 
         // Dark Mode Toggle
         function toggleDarkMode() {
             const html = document.documentElement;
-            const themeIcon = document.getElementById('theme-icon');
+            const icon = document.getElementById('theme-icon');
             if (html.classList.contains('dark')) {
                 html.classList.remove('dark');
-                themeIcon.className = 'fas fa-moon';
+                icon.className = 'fas fa-moon text-base';
+                localStorage.setItem('theme', 'light');
             } else {
                 html.classList.add('dark');
-                themeIcon.className = 'fas fa-sun text-amber-400';
+                icon.className = 'fas fa-sun text-amber-400 text-base';
+                localStorage.setItem('theme', 'dark');
             }
         }
 
-        // Filter Category Handler
+        // Category Filter
         function filterCategory(cat) {
             currentCategory = cat;
             document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.className = "cat-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700";
+                btn.className = "cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100";
             });
             const activeBtn = document.getElementById(`cat-${cat}`);
             if (activeBtn) {
-                activeBtn.className = "cat-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-emerald-600 text-white shadow-sm";
+                activeBtn.className = "cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-emerald-600 text-white shadow-sm";
             }
             renderArticles();
         }
 
-        // Search Input Handler
+        // Search Handlers
         function handleSearch() {
             const input = document.getElementById('search-input');
             const clearBtn = document.getElementById('clear-search');
             searchQuery = input.value.trim().toLowerCase();
-
             if (searchQuery.length > 0) {
                 clearBtn.classList.remove('hidden');
             } else {
@@ -509,63 +660,65 @@
         }
 
         function clearSearch() {
-            document.getElementById('search-input').value = '';
-            document.getElementById('clear-search').classList.add('hidden');
+            const input = document.getElementById('search-input');
+            input.value = '';
             searchQuery = '';
+            document.getElementById('clear-search').classList.add('hidden');
             renderArticles();
         }
 
-        // Bookmark Toggle
-        function toggleBookmark(id) {
-            if (bookmarkedArticles.includes(id)) {
-                bookmarkedArticles = bookmarkedArticles.filter(bId => bId !== id);
+        // Bookmarking system
+        function toggleBookmark(artNum) {
+            const idx = bookmarks.indexOf(artNum);
+            if (idx > -1) {
+                bookmarks.splice(idx, 1);
             } else {
-                bookmarkedArticles.push(id);
+                bookmarks.push(artNum);
             }
-            localStorage.setItem('ethio_bookmarks', JSON.stringify(bookmarkedArticles));
+            localStorage.setItem('proclamation_bookmarks', JSON.stringify(bookmarks));
             renderArticles();
         }
 
-        // Copy Article Text
-        function copyArticle(id) {
-            const art = articlesData.find(a => a.id === id);
+        // Copy Article Text to Clipboard
+        function copyArticle(artNum) {
+            const art = articles.find(a => a.number === artNum);
             if (!art) return;
-
-            const textToCopy = `${art.titleEn} / ${art.titleAm}\n\nENGLISH:\n${art.bodyEn}\n\nአማርኛ:\n${art.bodyAm}`;
+            const textToCopy = `Article ${art.number}: ${art.titleEn} / ${art.titleAm}\n\nEnglish:\n${art.textEn}\n\nአማርኛ:\n${art.textAm}`;
             
-            // Clipboard API fallback for iFrame
             const textarea = document.createElement('textarea');
             textarea.value = textToCopy;
             document.body.appendChild(textarea);
             textarea.select();
-            document.execCommand('copy');
+            try {
+                document.execCommand('copy');
+                const copyBtnIcon = document.getElementById(`copy-icon-${artNum}`);
+                if (copyBtnIcon) {
+                    copyBtnIcon.className = 'fas fa-check text-emerald-500';
+                    setTimeout(() => {
+                        copyBtnIcon.className = 'far fa-copy';
+                    }, 2000);
+                }
+            } catch (err) {
+                console.error('Copy failed', err);
+            }
             document.body.removeChild(textarea);
-
-            alert(`Article ${id} content copied to clipboard!`);
         }
 
-        // Highlight matching search text helper
-        function highlightText(text, query) {
-            if (!query) return text;
-            const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-            return text.replace(regex, '<mark class="highlight">$1</mark>');
-        }
-
-        // Main Render Loop
+        // Main Render Function for Proclamation Articles
         function renderArticles() {
             const container = document.getElementById('articles-container');
             const noResults = document.getElementById('no-results');
             container.innerHTML = '';
 
-            let filtered = articlesData.filter(art => {
-                const matchesCat = (currentCategory === 'all') || (art.category === currentCategory);
-                const matchesQuery = !searchQuery || 
+            let filtered = articles.filter(art => {
+                const matchCategory = (currentCategory === 'all') || (art.category === currentCategory);
+                const matchSearch = searchQuery === '' || 
+                    art.number.toString().includes(searchQuery) ||
                     art.titleEn.toLowerCase().includes(searchQuery) ||
                     art.titleAm.toLowerCase().includes(searchQuery) ||
-                    art.bodyEn.toLowerCase().includes(searchQuery) ||
-                    art.bodyAm.toLowerCase().includes(searchQuery);
-
-                return matchesCat && matchesQuery;
+                    art.textEn.toLowerCase().includes(searchQuery) ||
+                    art.textAm.toLowerCase().includes(searchQuery);
+                return matchCategory && matchSearch;
             });
 
             if (filtered.length === 0) {
@@ -576,87 +729,87 @@
             }
 
             filtered.forEach(art => {
-                const isBookmarked = bookmarkedArticles.includes(art.id);
-                
-                // Format text lines
-                const formattedEn = highlightText(art.bodyEn, searchQuery).replace(/\n/g, '<br>');
-                const formattedAm = highlightText(art.bodyAm, searchQuery).replace(/\n/g, '<br>');
-                const titleEnHighlight = highlightText(art.titleEn, searchQuery);
-                const titleAmHighlight = highlightText(art.titleAm, searchQuery);
+                const isBookmarked = bookmarks.includes(art.number);
+                const card = document.createElement('article');
+                card.className = "article-card bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition-all overflow-hidden p-5 sm:p-6";
 
-                // Build Card Container
-                const card = document.createElement('div');
-                card.className = "article-card bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition overflow-hidden";
-
-                let contentHTML = '';
-
-                if (currentLang === 'dual') {
-                    contentHTML = `
-                        <div class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-100 dark:divide-slate-700">
-                            <div class="p-6">
-                                <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2.5 py-1 rounded-md mb-2 inline-block">English Text</span>
-                                <h3 class="text-base font-bold text-slate-900 dark:text-white mb-3">${titleEnHighlight}</h3>
-                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">${formattedEn}</p>
-                            </div>
-                            <div class="p-6 bg-slate-50/50 dark:bg-slate-800/50">
-                                <span class="text-[10px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/50 px-2.5 py-1 rounded-md mb-2 inline-block">አማርኛ ጽሑፍ</span>
-                                <h3 class="text-base font-bold text-slate-900 dark:text-white mb-3 font-semibold">${titleAmHighlight}</h3>
-                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">${formattedAm}</p>
-                            </div>
-                        </div>
-                    `;
+                let bodyHTML = '';
+                if (currentLang === 'en') {
+                    bodyHTML = `<div class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">${highlightText(art.textEn, searchQuery)}</div>`;
                 } else if (currentLang === 'am') {
-                    contentHTML = `
-                        <div class="p-6">
-                            <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-3">${titleAmHighlight}</h3>
-                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">${formattedAm}</p>
-                        </div>
-                    `;
-                } else {
-                    contentHTML = `
-                        <div class="p-6">
-                            <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-3">${titleEnHighlight}</h3>
-                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">${formattedEn}</p>
+                    bodyHTML = `<div class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line font-sans">${highlightText(art.textAm, searchQuery)}</div>`;
+                } else { // Dual Mode
+                    bodyHTML = `
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-slate-100 dark:border-slate-700/50">
+                            <div class="space-y-1">
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-emerald-600 dark:text-emerald-400">English Text</span>
+                                <div class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">${highlightText(art.textEn, searchQuery)}</div>
+                            </div>
+                            <div class="space-y-1 md:border-l md:border-slate-100 dark:md:border-slate-700/50 md:pl-4">
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-emerald-600 dark:text-emerald-400">የአማርኛ ጽሑፍ</span>
+                                <div class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line font-sans">${highlightText(art.textAm, searchQuery)}</div>
+                            </div>
                         </div>
                     `;
                 }
 
-                // Render Key Takeaway Badges
-                const keyBadges = art.keyPoints.map(kp => `<span class="inline-flex items-center px-2.5 py-1 rounded-lg text-[11px] font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300"><i class="fas fa-check-circle text-emerald-500 mr-1.5 text-[10px]"></i>${kp}</span>`).join(' ');
-
                 card.innerHTML = `
-                    <div class="border-b border-slate-100 dark:border-slate-700/60 px-6 py-3.5 bg-slate-50/80 dark:bg-slate-800/80 flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Proclamation Article ${art.id}</span>
+                    <div class="flex items-start justify-between gap-3 mb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="px-3 py-1 rounded-xl text-xs font-black bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                                Article ${art.number}
+                            </span>
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-snug">
+                                ${currentLang === 'am' ? art.titleAm : art.titleEn} 
+                                ${currentLang === 'dual' ? `<span class="text-xs font-normal text-slate-400 dark:text-slate-500 block sm:inline">(${art.titleAm})</span>` : ''}
+                            </h3>
                         </div>
-                        <div class="flex items-center space-x-2 no-print">
-                            <button onclick="toggleBookmark(${art.id})" class="p-1.5 rounded-lg text-slate-400 hover:text-amber-500 transition" title="Bookmark Article">
-                                <i class="${isBookmarked ? 'fas text-amber-500' : 'far'} fa-bookmark text-sm"></i>
+                        <div class="flex items-center space-x-1 no-print">
+                            <button onclick="copyArticle(${art.number})" class="p-2 text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition" title="Copy Article">
+                                <i id="copy-icon-${art.number}" class="far fa-copy text-sm"></i>
                             </button>
-                            <button onclick="copyArticle(${art.id})" class="p-1.5 rounded-lg text-slate-400 hover:text-emerald-500 transition" title="Copy Article Text">
-                                <i class="far fa-copy text-sm"></i>
+                            <button onclick="toggleBookmark(${art.number})" class="p-2 ${isBookmarked ? 'text-amber-500' : 'text-slate-400 hover:text-amber-500'} transition" title="Bookmark">
+                                <i class="${isBookmarked ? 'fas' : 'far'} fa-bookmark text-sm"></i>
                             </button>
                         </div>
                     </div>
-                    ${contentHTML}
-                    <div class="px-6 py-3 bg-slate-50/40 dark:bg-slate-900/20 border-t border-slate-100 dark:border-slate-700/60 flex flex-wrap gap-1.5">
-                        ${keyBadges}
+
+                    ${bodyHTML}
+
+                    <div class="mt-4 pt-3 bg-slate-50 dark:bg-slate-700/30 -mx-5 -mb-5 sm:-mx-6 sm:-mb-6 p-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center space-x-2.5">
+                        <i class="fas fa-lightbulb text-amber-500 text-xs flex-shrink-0"></i>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 font-medium leading-normal">
+                            <strong>Key Takeaway:</strong> ${currentLang === 'am' ? art.takeawayAm : art.takeawayEn}
+                        </p>
                     </div>
                 `;
-
                 container.appendChild(card);
             });
         }
 
+        // Highlight matching search terms safely
+        function highlightText(text, query) {
+            if (!query) return text;
+            const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(${escaped})`, 'gi');
+            return text.replace(regex, '<mark class="highlight">$1</mark>');
+        }
+
+        // Calculator Modal Handlers
         function openCalculator(type) {
             document.querySelectorAll('.calc-view').forEach(v => v.classList.add('hidden'));
             const modal = document.getElementById('calculator-modal');
-            const targetView = document.getElementById(`calc-view-${type}`);
-            
-            if (targetView) {
-                targetView.classList.remove('hidden');
-                modal.classList.remove('hidden');
+            modal.classList.remove('hidden');
+
+            if (type === 'annual') {
+                document.getElementById('calc-view-annual').classList.remove('hidden');
+                calculateAnnualLeave();
+            } else if (type === 'maternity') {
+                document.getElementById('calc-view-maternity').classList.remove('hidden');
+                calculateMaternityLeave();
+            } else if (type === 'sick') {
+                document.getElementById('calc-view-sick').classList.remove('hidden');
+                calculateSickLeave();
             }
         }
 
@@ -664,74 +817,105 @@
             document.getElementById('calculator-modal').classList.add('hidden');
         }
 
-        // 1. Annual Leave Calculator (Art 61)
+        // Annual Leave Logic
         function calculateAnnualLeave() {
             const years = parseInt(document.getElementById('calc-years').value) || 1;
-            let days = 20; // Base year 1
+            let days = 20;
             if (years > 1) {
-                days += (years - 1);
+                days = Math.min(30, 20 + (years - 1));
             }
-            if (days > 30) days = 30; // Capped at 30 days
-
             document.getElementById('annual-days').innerText = days;
-            
-            let explanation = `Year 1 grants 20 working days. `;
-            if (years > 1 && days < 30) {
-                explanation += `Plus ${years - 1} additional days for ${years - 1} extra year(s) of service. Total: ${days} days.`;
-            } else if (days >= 30) {
-                explanation += `Maximum threshold capped at 30 working days per Article 61(2).`;
-            }
-            document.getElementById('annual-explain').innerText = explanation;
+            document.getElementById('annual-explain').innerText = `For ${years} year(s) of service, you are entitled to ${days} working days of paid annual leave under Article 61.`;
         }
 
-        // 2. Maternity Leave Estimator (Art 65)
+        // Maternity Calculation with G.C. & E.C. Conversion
         function calculateMaternityLeave() {
-            const dateInput = document.getElementById('calc-maternity-date').value;
-            if (!dateInput) return;
+            let dueDate;
 
-            const dueDate = new Date(dateInput);
-            
-            // 30 days prenatal start
+            if (currentCalMode === 'GC') {
+                const inputVal = document.getElementById('calc-maternity-date').value;
+                if (!inputVal) {
+                    dueDate = new Date();
+                } else {
+                    dueDate = new Date(inputVal);
+                }
+            } else { // E.C. Mode
+                const eDay = parseInt(document.getElementById('ec-day').value) || 1;
+                const eMonth = parseInt(document.getElementById('ec-month').value) || 1;
+                const eYear = parseInt(document.getElementById('ec-year').value) || 2018;
+                dueDate = ethiopianToGregorian(eYear, eMonth, eDay);
+            }
+
+            if (isNaN(dueDate.getTime())) return;
+
+            // Prenatal starts 30 days before due date
             const prenatalStart = new Date(dueDate);
-            prenatalStart.setDate(dueDate.getDate() - 30);
+            prenatalStart.setDate(prenatalStart.getDate() - 30);
 
-            // 90 days postnatal end
+            // Postnatal ends 90 days after due date
             const postnatalEnd = new Date(dueDate);
-            postnatalEnd.setDate(dueDate.getDate() + 90);
+            postnatalEnd.setDate(postnatalEnd.getDate() + 90);
 
-            const options = { year: 'numeric', month: 'short', day: 'numeric' };
-            document.getElementById('maternity-prenatal').innerText = prenatalStart.toLocaleDateString('en-US', options);
-            document.getElementById('maternity-postnatal').innerText = postnatalEnd.toLocaleDateString('en-US', options);
+            // Format dates for display
+            const prenatalEC = gregorianToEthiopian(prenatalStart.getFullYear(), prenatalStart.getMonth() + 1, prenatalStart.getDate());
+            const postnatalEC = gregorianToEthiopian(postnatalEnd.getFullYear(), postnatalEnd.getMonth() + 1, postnatalEnd.getDate());
+
+            const prenatalText = `${formatEthiopianDate(prenatalEC)} / ${formatGregorianDate(prenatalStart)}`;
+            const postnatalText = `${formatEthiopianDate(postnatalEC)} / ${formatGregorianDate(postnatalEnd)}`;
+
+            document.getElementById('maternity-prenatal').innerText = prenatalText;
+            document.getElementById('maternity-postnatal').innerText = postnatalText;
         }
 
-        // 3. Sick Leave Breakdown (Art 66)
+        // Sick Leave Breakdown Logic
         function calculateSickLeave() {
-            const totalMonths = parseInt(document.getElementById('calc-sick-months').value) || 1;
-            let fullPayMonths = 0;
-            let halfPayMonths = 0;
+            const months = parseInt(document.getElementById('calc-sick-months').value) || 1;
+            let fullPay = 0;
+            let halfPay = 0;
+            let noPay = 0;
 
-            if (totalMonths <= 6) {
-                fullPayMonths = totalMonths;
-                halfPayMonths = 0;
-            } else if (totalMonths <= 8) {
-                fullPayMonths = 6;
-                halfPayMonths = totalMonths - 6;
+            if (months <= 3) {
+                fullPay = months;
+            } else if (months <= 6) {
+                fullPay = 3;
+                halfPay = months - 3;
             } else {
-                fullPayMonths = 6;
-                halfPayMonths = 2;
+                fullPay = 3;
+                halfPay = 3;
+                noPay = Math.min(2, months - 6);
             }
 
-            document.getElementById('sick-full-pay').innerText = `${fullPayMonths} Month(s)`;
-            document.getElementById('sick-half-pay').innerText = `${halfPayMonths} Month(s)`;
-
-            let noteText = "";
-            if (totalMonths > 8) {
-                noteText = "⚠️ Sick leave limit exceeded! Article 66(2) caps paid sick leave at 8 months maximum per year.";
-            } else {
-                noteText = `Article 66(3): First 6 months carry full monthly salary, remaining ${halfPayMonths} month(s) receive 50% salary.`;
+            document.getElementById('sick-full-pay').innerText = `${fullPay} Month(s)`;
+            document.getElementById('sick-half-pay').innerText = `${halfPay} Month(s)`;
+            
+            let note = `Article 66 Tiers Applied: ${fullPay} month(s) 100% pay, ${halfPay} month(s) 50% pay.`;
+            if (noPay > 0) {
+                note += ` Remaining ${noPay} month(s) without salary.`;
             }
-            document.getElementById('sick-note').innerText = noteText;
+            document.getElementById('sick-note').innerText = note;
         }
+
+        // Initialize App on DOM Load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Restore saved theme
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                const themeIcon = document.getElementById('theme-icon');
+                if (themeIcon) themeIcon.className = 'fas fa-sun text-amber-400 text-base';
+            }
+
+            // Set default date input for maternity calculator (GC)
+            const today = new Date();
+            const todayStr = today.toISOString().split('T')[0];
+            const maternityDateInput = document.getElementById('calc-maternity-date');
+            if (maternityDateInput) maternityDateInput.value = todayStr;
+
+            // Initialize Ethiopian dropdowns
+            initEthiopianDropdowns();
+
+            // Initial render
+            setLanguage('en');
+        });
     </script>
 </body>
 </html>
