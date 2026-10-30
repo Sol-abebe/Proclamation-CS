@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +76,7 @@
     }
 
     .logo-title h1 {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 800;
       background: linear-gradient(135deg, var(--accent-blue), var(--accent-indigo));
       -webkit-background-clip: text;
@@ -94,7 +95,7 @@
     .controls-top {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.75rem;
       flex-wrap: wrap;
     }
 
@@ -123,13 +124,13 @@
     }
 
     .btn {
-      padding: 0.6rem 1.2rem;
+      padding: 0.6rem 1.1rem;
       border-radius: 0.75rem;
       border: 1px solid var(--border-color);
       background: var(--bg-secondary);
       color: var(--text-main);
       font-weight: 600;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -149,23 +150,24 @@
       border: none;
     }
 
-    .btn-primary:hover {
-      opacity: 0.95;
-      transform: translateY(-1px);
+    .btn-lang {
+      background: rgba(99, 102, 241, 0.15);
+      border-color: var(--accent-indigo);
+      color: var(--accent-blue);
+      font-weight: 700;
     }
 
     .main-container {
       max-width: 1400px;
-      margin: 2rem auto;
+      margin: 1.5rem auto;
       padding: 0 1.5rem;
       width: 100%;
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
-    /* Dashboard Metrics */
     .metrics-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -202,7 +204,6 @@
       color: var(--text-muted);
     }
 
-    /* Filter Categories */
     .filter-scroll {
       display: flex;
       gap: 0.6rem;
@@ -229,20 +230,19 @@
       border-color: var(--accent-indigo);
     }
 
-    /* 3D Visualizer Section */
     .visualizer-area {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1.5rem;
-      margin: 1rem 0;
+      margin: 0.5rem 0;
     }
 
     .perspective-container {
       perspective: 1200px;
       width: 100%;
-      max-width: 720px;
-      height: 480px;
+      max-width: 760px;
+      height: 500px;
       position: relative;
     }
 
@@ -290,7 +290,7 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid var(--border-color);
-      padding-bottom: 1rem;
+      padding-bottom: 0.85rem;
     }
 
     .badge {
@@ -309,26 +309,26 @@
     }
 
     .card-body {
-      margin: 1.5rem 0;
+      margin: 1.25rem 0;
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    .card-title-amharic {
-      font-size: 1.35rem;
+    .card-title-primary {
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--accent-blue);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       line-height: 1.4;
     }
 
-    .card-title-english {
-      font-size: 1.1rem;
+    .card-title-secondary {
+      font-size: 1.05rem;
       font-weight: 600;
       color: var(--text-main);
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
     }
 
     .detail-list {
@@ -339,7 +339,7 @@
     }
 
     .detail-list li {
-      font-size: 0.925rem;
+      font-size: 0.9rem;
       line-height: 1.5;
       color: var(--text-main);
       display: flex;
@@ -358,13 +358,13 @@
       justify-content: space-between;
       align-items: center;
       border-top: 1px solid var(--border-color);
-      padding-top: 1rem;
+      padding-top: 0.85rem;
     }
 
     .deck-nav-controls {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
 
     .deck-counter {
@@ -373,7 +373,6 @@
       color: var(--text-muted);
     }
 
-    /* Grid Display Mode */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -397,7 +396,6 @@
       transform: translateY(-3px);
     }
 
-    /* Footer */
     footer {
       background-color: var(--bg-secondary);
       border-top: 1px solid var(--border-color);
@@ -419,7 +417,7 @@
 
     @media (max-width: 768px) {
       .perspective-container {
-        height: 520px;
+        height: 540px;
       }
       .header-container {
         flex-direction: column;
@@ -436,16 +434,17 @@
   <header>
     <div class="header-container">
       <div class="logo-title">
-        <h1><i class="fa-solid fa-scale-balanced"></i> Federal Civil Servants Proclamation No. 1353/2025</h1>
-        <p>የፌደራል መንግሥት ሠራተኞች አዋጅ ቁጥር ፩ሺ፫፻፶፫/፪ሺ፲፯ ዓ.ም Complete Visualizer</p>
+        <h1 id="uiAppTitle"><i class="fa-solid fa-scale-balanced"></i> Federal Civil Servants Proclamation No. 1353/2025</h1>
+        <p id="uiAppSubtitle">የፌደራል መንግሥት ሠራተኞች አዋጅ ቁጥር ፩ሺ፫፻፶፫/፪ሺ፲፯ ዓ.ም Complete Visualizer</p>
       </div>
       <div class="controls-top">
         <div class="search-box">
           <i class="fa-solid fa-magnifying-glass"></i>
           <input type="text" id="searchInput" placeholder="Search keywords, articles, leaves...">
         </div>
-        <button class="btn" id="toggleThemeBtn"><i class="fa-solid fa-moon"></i> Theme</button>
-        <button class="btn btn-primary" id="viewToggleBtn"><i class="fa-solid fa-table-cells"></i> Grid View</button>
+        <button class="btn btn-lang" id="langToggleBtn"><i class="fa-solid fa-language"></i> <span id="langLabel">🌐 አማ / En</span></button>
+        <button class="btn" id="toggleThemeBtn"><i class="fa-solid fa-moon"></i> <span id="uiThemeLabel">Theme</span></button>
+        <button class="btn btn-primary" id="viewToggleBtn"><i class="fa-solid fa-table-cells"></i> <span id="uiViewLabel">Grid View</span></button>
       </div>
     </div>
   </header>
@@ -460,7 +459,7 @@
         </div>
         <div class="metric-info">
           <h3 id="totalCardsCount">0</h3>
-          <p>Total Legal Flashcards</p>
+          <p id="lblTotalCards">Total Legal Flashcards</p>
         </div>
       </div>
       <div class="metric-card">
@@ -469,7 +468,7 @@
         </div>
         <div class="metric-info">
           <h3 id="masteredCount">0</h3>
-          <p>Mastered Clauses</p>
+          <p id="lblMastered">Mastered Clauses</p>
         </div>
       </div>
       <div class="metric-card">
@@ -478,7 +477,7 @@
         </div>
         <div class="metric-info">
           <h3 id="reviewCount">0</h3>
-          <p>Needs Review</p>
+          <p id="lblNeedsReview">Needs Review</p>
         </div>
       </div>
       <div class="metric-card">
@@ -487,26 +486,14 @@
         </div>
         <div class="metric-info">
           <h3 id="progressPercent">0%</h3>
-          <p>Mastery Level</p>
+          <p id="lblMasteryLevel">Mastery Level</p>
         </div>
       </div>
     </section>
 
     <!-- Category Filter Chips -->
     <div class="filter-scroll" id="categoryChips">
-      <div class="chip active" data-cat="ALL">All Sections (1–16)</div>
-      <div class="chip" data-cat="S1">Sec 1: General & Principles</div>
-      <div class="chip" data-cat="S2">Sec 2: HR Planning & Grading</div>
-      <div class="chip" data-cat="S3">Sec 3: Salary & Benefits</div>
-      <div class="chip" data-cat="S5">Sec 5: Recruitment & Probation</div>
-      <div class="chip" data-cat="S6">Sec 6: Digital Service & Charters</div>
-      <div class="chip" data-cat="S8">Sec 8: Working Hours & Leaves</div>
-      <div class="chip" data-cat="S9">Sec 9: Diversity & Inclusivity</div>
-      <div class="chip" data-cat="S10">Sec 10: OSH & Injury Benefits</div>
-      <div class="chip" data-cat="S13">Sec 13: Discipline & Grievances</div>
-      <div class="chip" data-cat="S14">Sec 14: Administrative Court</div>
-      <div class="chip" data-cat="S15">Sec 15: Termination & Pension</div>
-      <div class="chip" data-cat="S16">Sec 16: Audit & Penalties</div>
+      <!-- Generated dynamically by JS -->
     </div>
 
     <!-- 3D Deck View -->
@@ -520,22 +507,22 @@
               <span id="cardArticlesBadge" style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Art. 0</span>
             </div>
             <div class="card-body">
-              <div class="card-title-amharic" id="cardTitleAmharic">---</div>
-              <div class="card-title-english" id="cardTitleEnglish">---</div>
+              <div class="card-title-primary" id="cardTitlePrimary">---</div>
+              <div class="card-title-secondary" id="cardTitleSecondary">---</div>
               <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6;" id="cardFrontPreview">
                 Click card or press Spacebar to flip and reveal full legal details, sub-articles, exceptions, and key enforcement rules.
               </p>
             </div>
             <div class="card-footer-controls">
-              <button class="btn" id="speakBtn"><i class="fa-solid fa-volume-high"></i> Read</button>
-              <span style="font-size: 0.8rem; color: var(--accent-indigo); font-weight: 700;"><i class="fa-solid fa-rotate"></i> Flip for Details</span>
+              <button class="btn" id="speakBtn"><i class="fa-solid fa-volume-high"></i> <span id="lblReadBtn">Read</span></button>
+              <span style="font-size: 0.8rem; color: var(--accent-indigo); font-weight: 700;"><i class="fa-solid fa-rotate"></i> <span id="lblFlipPrompt">Flip for Details</span></span>
             </div>
           </div>
           <!-- Back Side -->
           <div class="card-face card-back">
             <div class="card-header">
               <span class="badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald);" id="cardBackBadge">Key Provisions</span>
-              <button class="btn" id="flipBackBtn" style="padding: 0.2rem 0.6rem; font-size: 0.75rem;"><i class="fa-solid fa-arrow-left"></i> Back</button>
+              <button class="btn" id="flipBackBtn" style="padding: 0.2rem 0.6rem; font-size: 0.75rem;"><i class="fa-solid fa-arrow-left"></i> <span id="lblBackBtn">Back</span></button>
             </div>
             <div class="card-body">
               <ul class="detail-list" id="cardDetailList">
@@ -543,8 +530,8 @@
               </ul>
             </div>
             <div class="card-footer-controls">
-              <button class="btn" id="markReviewBtn" style="color: var(--accent-rose); border-color: rgba(244, 63, 94, 0.3);"><i class="fa-solid fa-xmark"></i> Review</button>
-              <button class="btn btn-primary" id="markMasteredBtn"><i class="fa-solid fa-check"></i> Mastered</button>
+              <button class="btn" id="markReviewBtn" style="color: var(--accent-rose); border-color: rgba(244, 63, 94, 0.3);"><i class="fa-solid fa-xmark"></i> <span id="lblReviewBtn">Review</span></button>
+              <button class="btn btn-primary" id="markMasteredBtn"><i class="fa-solid fa-check"></i> <span id="lblMasteredBtn">Mastered</span></button>
             </div>
           </div>
         </div>
@@ -552,10 +539,10 @@
 
       <!-- Navigation & Controls -->
       <div class="deck-nav-controls">
-        <button class="btn" id="prevCardBtn"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+        <button class="btn" id="prevCardBtn"><i class="fa-solid fa-chevron-left"></i> <span id="lblPrevBtn">Prev</span></button>
         <span class="deck-counter" id="deckCounter">Card 1 of 18</span>
-        <button class="btn" id="nextCardBtn">Next <i class="fa-solid fa-chevron-right"></i></button>
-        <button class="btn" id="shuffleBtn"><i class="fa-solid fa-shuffle"></i></button>
+        <button class="btn" id="nextCardBtn"><span id="lblNextBtn">Next</span> <i class="fa-solid fa-chevron-right"></i></button>
+        <button class="btn" id="shuffleBtn" title="Shuffle Cards"><i class="fa-solid fa-shuffle"></i></button>
       </div>
     </section>
 
@@ -568,288 +555,522 @@
 
   <footer>
     <div class="footer-content">
-      <p>Proclamation No. 1353/2025 Comprehensive Visualizer • Enacted January 9, 2025 (ጥር ፪ ቀን ፪ሺ፲፯ ዓ.ም)</p>
-      <p style="margin-top: 0.4rem;">The App Developed by <span class="footer-credit">Dr. Solomon Abebe (MD, MPH/RH)</span> | Federal Civil Servants Proclamation No. 1353/2025</p>
+      <p id="uiFooterEnacted">Proclamation No. 1353/2025 Comprehensive Visualizer • Enacted January 9, 2025 (ጥር ፪ ቀን ፪ሺ፲፯ ዓ.ም)</p>
+      <p style="margin-top: 0.4rem;">Developed by <span class="footer-credit">Dr. Solomon Abebe (MD, MPH/RH)</span> | Federal Civil Servants Proclamation No. 1353/2025 Visualizer</p>
     </div>
   </footer>
 
   <script>
-    // Complete Legal Flashcard Dataset for Federal Civil Servants Proclamation No. 1353/2025
+    // Bilingual Interface Text Dictionary
+    const uiTranslations = {
+      en: {
+        appTitle: '<i class="fa-solid fa-scale-balanced"></i> Federal Civil Servants Proclamation No. 1353/2025',
+        appSubtitle: 'የፌደራል መንግሥት ሠራተኞች አዋጅ ቁጥር ፩ሺ፫፻፶፫/፪ሺ፲፯ ዓ.ም Complete Visualizer',
+        searchPlaceholder: 'Search keywords, articles, leaves, penalties...',
+        totalCards: 'Total Legal Flashcards',
+        mastered: 'Mastered Clauses',
+        needsReview: 'Needs Review',
+        masteryLevel: 'Mastery Level',
+        gridView: 'Grid View',
+        deckView: '3D Deck View',
+        theme: 'Theme',
+        read: 'Read',
+        flipPrompt: 'Flip for Details',
+        back: 'Back',
+        review: 'Review',
+        masteredBtn: 'Mastered',
+        prev: 'Prev',
+        next: 'Next',
+        keyProvisions: 'Key Provisions',
+        cardCounter: 'Card',
+        of: 'of',
+        noCardsFound: 'No Flashcards Found',
+        noCardsSub: 'Try broadening your search query or changing category filters.',
+        studyCard: 'Study Card',
+        footerEnacted: 'Proclamation No. 1353/2025 Comprehensive Visualizer • Enacted January 9, 2025 (ጥር ፪ ቀን ፪ሺ፲፯ ዓ.ም)',
+        categories: {
+          ALL: 'All Sections (1–16)',
+          S1: 'Sec 1: General & Scope',
+          S2: 'Sec 2: HR & Grading',
+          S3: 'Sec 3: Salary & Benefits',
+          S5: 'Sec 5: Recruitment & Probation',
+          S6: 'Sec 6: Digital Service & Charters',
+          S8: 'Sec 8: Working Hours & Leaves',
+          S9: 'Sec 9: Diversity & Inclusivity',
+          S10: 'Sec 10: OSH & Injury Benefits',
+          S13: 'Sec 13: Discipline & Grievances',
+          S14: 'Sec 14: Administrative Court',
+          S15: 'Sec 15: Termination & Pension',
+          S16: 'Sec 16: Audit & Penalties'
+        }
+      },
+      am: {
+        appTitle: '<i class="fa-solid fa-scale-balanced"></i> የፌደራል መንግሥት ሠራተኞች አዋጅ ቁጥር ፩ሺ፫፻፶፫/፪ሺ፲፯ ዓ.ም',
+        appSubtitle: 'የኢትዮጵያ የፌደራል ሲቪል ሰርቪስ አዋጅ አጠቃላይ ዲጂታል ማብራሪያ',
+        searchPlaceholder: 'ቃላትን፣ አንቀጾችን፣ የዕረፍት ዓይነቶችን ወይም ቅጣቶችን ይፈልጉ...',
+        totalCards: 'ጠቅላላ የህግ ፍላሽ ካርዶች',
+        mastered: 'የተካኑባቸው ድንጋጌዎች',
+        needsReview: 'ክለሳ የሚያስፈልጋቸው',
+        masteryLevel: 'የእውቀት ደረጃ',
+        gridView: 'በሰንጠረዥ እይ',
+        deckView: 'በ3D ካርድ እይ',
+        theme: 'ገጽታ',
+        read: 'አንብብ',
+        flipPrompt: 'ዝርዝር ለማየት ገልብጥ',
+        back: 'ተመለስ',
+        review: 'ከልስ',
+        masteredBtn: 'አውቀዋለሁ',
+        prev: 'ቀደመው',
+        next: 'ቀጣይ',
+        keyProvisions: 'ዋና ዋና ድንጋጌዎች',
+        cardCounter: 'ካርድ',
+        of: 'ከ',
+        noCardsFound: 'ምንም የተገኘ ፍላሽ ካርድ የለም',
+        noCardsSub: 'እባክዎን የፍለጋ ቃልዎን ወይም የመደብ ማጣሪያዎን ያስተካክሉ።',
+        studyCard: 'ካርዱን አጠና',
+        footerEnacted: 'የፌደራል መንግሥት ሠራተኞች አዋጅ ቁጥር 1353/2017 • ጥር 2 ቀን 2017 ዓ.ም የጸደቀ',
+        categories: {
+          ALL: 'ሁሉም ክፍሎች (1–16)',
+          S1: 'ክፍል 1፡ ጠቅላላ ድንጋጌዎች',
+          S2: 'ክፍል 2፡ መዋቅርና ምዘና',
+          S3: 'ክፍል 3፡ ደመወዝና አበል',
+          S5: 'ክፍል 5፡ ቅጥርና የሙከራ ጊዜ',
+          S6: 'ክፍል 6፡ ዲጂታል አገልግሎት',
+          S8: 'ክፍል 8፡ የሥራ ሰዓትና ፈቃድ',
+          S9: 'ክፍል 9፡ አዎንታዊ እርምጃ',
+          S10: 'ክፍል 10፡ ደህንነትና ጉዳት',
+          S13: 'ክፍል 13፡ ዲስፕሊንና ቅሬታ',
+          S14: 'ክፍል 14፡ አስተዳደር ፍርድ ቤት',
+          S15: 'ክፍል 15፡ ስንብትና ጡረታ',
+          S16: 'ክፍል 16፡ ኦዲትና ቅጣት'
+        }
+      }
+    };
+
+    // Full Legal Dataset with Exhaustive Amharic and English Translation
     const cardsData = [
       {
         id: "card-1",
         cat: "S1",
-        section: "Section One: General Provisions",
-        articles: "Articles 1 – 5",
-        titleAm: "ጠቅላላ ድንጋጌዎች፣ ትርጓሜና መሠረታዊ እሴቶች",
-        titleEn: "General Provisions, Scope, Definitions & Values",
-        preview: "Defines civil servants, temporary employees, core values, and exclusions from civil service coverage.",
-        details: [
-          "<strong>Repeals Proclamation No. 1064/2017</strong>; applies to all federal civil servants and offices [Art 1, 3].",
+        sectionEn: "Section One: General Provisions",
+        sectionAm: "ክፍል አንድ፡ ጠቅላላ ድንጋጌዎች",
+        articles: "Articles 1 – 5 / አንቀጽ 1 – 5",
+        titleEn: "General Provisions, Scope, Definitions & Core Values",
+        titleAm: "ጠቅላላ ድንጋጌዎች፣ የተፈጻሚነት ወሰን፣ ትርጓሜና መሠረታዊ እሴቶች",
+        previewEn: "Defines civil servants, temporary employees, core principles, and exclusions from civil service coverage.",
+        previewAm: "የሲቪል ሰርቫንት፣ ጊዜያዊ ሠራተኛ፣ መሠረታዊ እሴቶች እና ከአዋጁ ውጪ የሆኑ አካላትን ይወስናል።",
+        detailsEn: [
+          "<strong>Repeals Proclamation No. 1064/2017</strong>; applies to all federal civil servants and government offices [Art 1, 3].",
           "<strong>Exclusions [Art 2(1)]</strong>: Ministers, State Ministers, Commissioners, Judges, Prosecutors, Military, Police, & Intelligence Officers.",
-          "<strong>Temporary Employees [Art 2(2)]</strong>: Excludes daily laborers, apprentices, independent contractors, and specialized experts.",
-          "<strong>5 Fundamental Values [Art 4(2)]</strong>: Solution-maker/exemplary, Transparency & Accountability, Professionalism & Honesty, Efficiency & Effectiveness, and Diversity & Inclusiveness."
+          "<strong>Temporary Employees [Art 2(2)]</strong>: Excludes daily laborers, apprentices, independent contractors, and specialized project experts.",
+          "<strong>5 Fundamental Core Values [Art 4(2)]</strong>: Solution-maker/exemplary, Transparency & Accountability, Professionalism & Honesty, Efficiency & Effectiveness, and Diversity & Inclusiveness."
+        ],
+        detailsAm: [
+          "<strong>አዋጅ ቁጥር 1064/2010ን ይሽራል</strong>፤ በሁሉም የፌደራል መንግሥት መሥሪያ ቤቶችና ሠራተኞች ላይ ተፈጻሚ ይሆናል [አንቀጽ 1፣ 3]።",
+          "<strong>ከአዋጁ ውጪ የሆኑ [አንቀጽ 2(1)]</strong>፦ ሚኒስትሮች፣ ሚኒስትር ዴኤታዎች፣ ኮሚሽነሮች፣ ዳኞች፣ ዓቃቢያነ ሕግ፣ የመከላከያ፣ ፖሊስና ደህንነት አባላት።",
+          "<strong>ጊዜያዊ ሠራተኞች [አንቀጽ 2(2)]</strong>፦ የዕለት ሠራተኞች፣ ተላማመዶች፣ በውል የሚሠሩ ነፃ ባለሙያዎች እና የፕሮጀክት ባለሙያዎች።",
+          "<strong>5 መሠረታዊ እሴቶች [አንቀጽ 4(2)]</strong>፦ ችግር ፈቺ/አርአያነት፣ ግልጽነትና ተጠያቂነት፣ ሙያዊነትና ታማኝነት፣ ውጤታማነት እና ብዝኃነትና አካታችነት።"
         ]
       },
       {
         id: "card-2",
         cat: "S2",
-        section: "Section Two: Organizational Structure & HR",
-        articles: "Articles 6 – 8",
-        titleAm: "መዋቅራዊ አደረጃጀት፣ የሰው ኃይል ዕቅድ እና የሥራ ምዘና",
+        sectionEn: "Section Two: Organizational Structure & HR",
+        sectionAm: "ክፍል ሁለት፡ መዋቅራዊ አደረጃጀትና የሰው ኃይል",
+        articles: "Articles 6 – 8 / አንቀጽ 6 – 8",
         titleEn: "Organizational Structure, HR Planning & Job Evaluation",
-        preview: "Rules on organizational design, occupational standards, database registration, and HR forecasting.",
-        details: [
+        titleAm: "መዋቅራዊ አደረጃጀት፣ የሰው ኃይል ዕቅድ እና የሥራ ምዘና",
+        previewEn: "Rules on organizational design, occupational standards, database registration, and HR forecasting.",
+        previewAm: "የተቋማት አደረጃጀት፣ የሙያ መስፈርት፣ የመረጃ ምዝገባ እና የሰው ኃይል ትንበያ ደንቦች።",
+        detailsEn: [
           "<strong>Structure Approval [Art 6(1-2)]</strong>: Institutions study structure based on occupational standards and submit to Civil Service Commission.",
           "<strong>National Criteria [Art 6(4)]</strong>: Structure calculated using population size, land coverage, budget, revenue collection, and scope.",
           "<strong>HR Planning Purpose [Art 7(1-3)]</strong>: Long, medium, and short-term forecasting aligned with national development goals; monitored continuously.",
           "<strong>Job Evaluation [Art 8]</strong>: Sustainable point-based evaluation system implemented standardizing base and ceiling pay grades."
+        ],
+        detailsAm: [
+          "<strong>የመዋቅር ማጽደቅ [አንቀጽ 6(1-2)]</strong>፦ መሥሪያ ቤቶች በሙያ መስፈርቶች ላይ ተመስርተው ያዘጋጁትን መዋቅር ለሲቪል ሰርቪስ ኮሚሽን አቅርበው ያጸድቃሉ።",
+          "<strong>ብሔራዊ መስፈርቶች [አንቀጽ 6(4)]</strong>፦ አደረጃጀት በሕዝብ ብዛት፣ በስፋት፣ በበጀት፣ በገቢ ስብሰባና በተቋሙ ተልዕኮ ስፋት ይወሰናል።",
+          "<strong>የሰው ኃይል ዕቅድ [አንቀጽ 7(1-3)]</strong>፦ ከአገራዊ ስትራቴጂ ጋር የተጣጣመ የረጅም፣ የመካከለኛና የአጭር ጊዜ የሰው ኃይል ፍላጎት ማቀድ።",
+          "<strong>የሥራ ምዘና [አንቀጽ 8]</strong>፦ ነጥብ ተኮር የሥራ ምዘና ሥርዓት በመዘርጋት መነሻና መድረሻ የደመወዝ እርከኖችን ደረጃውን የጠበቀ ማድረግ።"
         ]
       },
       {
         id: "card-3",
         cat: "S3",
-        section: "Section Three: Salary & Allowances",
-        articles: "Articles 9 – 12",
-        titleAm: "የደመወዝ ስኬል፣ የደመወዝ አከፋፈል እና የአበል ዓይነቶች",
+        sectionEn: "Section Three: Salary & Allowances",
+        sectionAm: "ክፍል ሦስት፡ ደመወዝና አበል",
+        articles: "Articles 9 – 12 / አንቀጽ 9 – 12",
         titleEn: "Salary Scale, Equal Pay Principle & Allowance Rules",
-        preview: "Salary scale revision every 4 years, daily/climate allowance revisions every 2 years, and salary deduction limits.",
-        details: [
+        titleAm: "የደመወዝ ስኬል፣ እኩል ክፍያ እና የአበል ዓይነቶች",
+        previewEn: "Salary scale revision every 4 years, daily/climate allowance revisions every 2 years, and salary deduction limits.",
+        previewAm: "በየ4 ዓመቱ የሚደረግ የደመወዝ ስኬል ክለሳ፣ በየ2 ዓመቱ የሚደረግ የአበል ማስተካከያ እና ከደመወዝ የመቁረጥ ገደብ።",
+        detailsEn: [
           "<strong>4-Year Salary Scale Study [Art 9(4)]</strong>: Base pay and ceiling salary studied every 4 years based on price inflation and financial capacity.",
           "<strong>Equal Pay Principle [Art 10]</strong>: All positions of equal job weight/value have equal base starting salary.",
           "<strong>Deduction Cap [Art 11(3)]</strong>: Salary deductions via court order or law cannot exceed 1/3 (one-third) of monthly salary.",
           "<strong>2-Year Allowance Revision [Art 12(4-5)]</strong>: Daily, climate, overtime, and transport allowances studied every 4 years and adjusted every 2 years based on official inflation."
+        ],
+        detailsAm: [
+          "<strong>የ4 ዓመት የደመወዝ ጥናት [አንቀጽ 9(4)]</strong>፦ የመነሻና የመድረሻ ደመወዝ ስኬል የዋጋ ንረትንና የአገሪቱን አቅም በማናትነን በየ4 ዓመቱ ይጠናል፤ ይሻሻላል።",
+          "<strong>እኩል ክፍያ [አንቀጽ 10]</strong>፦ እኩል ዋጋ ላላቸው የሥራ መደቦች እኩል መነሻ ደመወዝ ይከፈላል።",
+          "<strong>ከደመወዝ የመቁረጥ ገደብ [አንቀጽ 11(3)]</strong>፦ በፍርድ ቤት ትእዛዝ ወይም በሕግ የሚደረግ ቅነሳ ከወርሃዊ ደመወዝ 1/3ኛ (አንድ ሦስተኛ) መብለጥ የለበትም።",
+          "<strong>የ2 ዓመት የአበል ክለሳ [አንቀጽ 12(4-5)]</strong>፦ የአበል ዓይነቶች (ውሎ አበል፣ የበረሃ አበል) በየ4 ዓመቱ ተጠንተው በየ2 ዓመቱ በዋጋ ንረት መሠረት ይስተካከላሉ።"
         ]
       },
       {
         id: "card-4",
         cat: "S3",
-        section: "Section Three: Increments & Merit Board",
-        articles: "Articles 13 – 19",
-        titleAm: "የደመወዝ ጭማሪ፣ ማትጊያ እና የሜሪት እና የደመወዝ ቦርድ",
+        sectionEn: "Section Three: Increments & Merit Board",
+        sectionAm: "ክፍል ሦስት፡ ጭማሪና የሜሪት ቦርድ",
+        articles: "Articles 13 – 19 / አንቀጽ 13 – 19",
         titleEn: "Salary Increments, Incentives & Merit and Wage Board",
-        preview: "Bi-annual salary step increments, performance incentives, and Prime Minister-led Merit Board establishment.",
-        details: [
+        titleAm: "የደመወዝ ጭማሪ፣ ማትጊያ እና የሜሪትና ደመወዝ ቦርድ",
+        previewEn: "Bi-annual salary step increments, performance incentives, and Prime Minister-led Merit Board establishment.",
+        previewAm: "በየ2 ዓመቱ የሚሰጥ የእርከን ጭማሪ፣ የማበረታቻ ሽልማቶች እና በጠቅላይ ሚኒስትሩ የሚመራው የሜሪት ቦርድ።",
+        detailsEn: [
           "<strong>Bi-annual Salary Increments [Art 14(2)]</strong>: Granted every 2 years based on an average performance evaluation score of average or above.",
           "<strong>Merit and Wage Board [Art 17]</strong>: Chaired by Prime Minister; includes Ministers of Finance, Planning, Director of Statistics, and Civil Service Commissioner.",
           "<strong>Board Powers [Art 18]</strong>: Oversees national salary scale, confirms civil service reform, approves benefit packages, and awards Public Servant Day.",
           "<strong>Performance Incentives [Art 16]</strong>: Outstanding employees receive monetary/in-kind awards, appreciation letters, or fast-track promotions."
+        ],
+        detailsAm: [
+          "<strong>በየ2 ዓመቱ የእርከን ጭማሪ [አንቀጽ 14(2)]</strong>፦ የሥራ አፈጻጸም ምዘና ውጤቱ መካከለኛና ከዚያ በላይ ለሆነ ሠራተኛ በየ2 ዓመቱ የእርከን ጭማሪ ይደረጋል።",
+          "<strong>የሜሪትና ደመወዝ ቦርድ [አንቀጽ 17]</strong>፦ በጠቅላይ ሚኒስትሩ ሰብሳቢነት የተቋቋመ ሆኖ የሚኒስትሮችና የኮሚሽነሩ አባላት ስብስብ ነው።",
+          "<b>የቦርዱ ሥልጣን [አንቀጽ 18]፦</b> አገራዊ የደመወዝ ስኬልን ይቆጣጠራል፣ የሲቪል ሰርቪስ ማሻሻያዎችን ያጸድቃል፣ የመንግሥት ሠራተኞች ቀንን ይወስናል።",
+          "<strong>የሥራ ማበረታቻ [አንቀጽ 16]</strong>፦ ከፍተኛ ውጤት ላስመዘገቡ ሠራተኞች የገንዘብ፣ የዓይነት፣ የምስክር ወረቀት ወይም የፈጣን ደረጃ ዕድገት ማበረታቻ ይሰጣል።"
         ]
       },
       {
         id: "card-5",
         cat: "S5",
-        section: "Section Five: Competency Institute & Training",
-        articles: "Articles 20 – 23",
-        titleAm: "የኢትዮጵያ ብቃትና ሥራ አመራር ኢንስቲትዩት እና ሥልጠና",
+        sectionEn: "Section Five: Competency Institute & Training",
+        sectionAm: "ክፍል አምስት፡ የብቃት ኢንስቲትዩትና ስልጠና",
+        articles: "Articles 20 – 23 / አንቀጽ 20 – 23",
         titleEn: "Competency Institute Establishment & Staff Training",
-        preview: "Establishes Ethiopian Competency & Management Institute (ECMI) for competency assessment and mandatory certification.",
-        details: [
+        titleAm: "የኢትዮጵያ ብቃትና ሥራ አመራር ኢንስቲትዩት እና ስልጠና",
+        previewEn: "Establishes Ethiopian Competency & Management Institute (ECMI) for competency assessment and mandatory certification.",
+        previewAm: "የኢትዮጵያ ብቃትና ሥራ አመራር ኢንስቲትዩት (ECMI) ምስረታ እና የግዴታ የብቃት ማረጋገጫ ሰርተፊኬት ደንብ።",
+        detailsEn: [
           "<strong>ECMI Establishment [Art 20]</strong>: Created for modular technical/behavioral training, research, competency assessment, and certification.",
           "<strong>Mandatory Certification [Art 21(2-3)]</strong>: Hiring, promotion, career structure, transfer, and training selection MUST be based on competency certification.",
           "<strong>Education Leave Rule [Art 22(6)]</strong>: Positions of employees taking education >1 year are registered vacant; employee retains code and full monthly pay.",
           "<strong>Competency Gap Assessment [Art 30]</strong>: Tailored modular short-term training provided to bridge identified skill gaps."
+        ],
+        detailsAm: [
+          "<strong>የኢንስቲትዩቱ ምስረታ [አንቀጽ 20]</strong>፦ ለተግባራዊና ባሕሪያዊ ስልጠናዎች፣ ለምርምር፣ ለብቃት ምዘናና ሰርተፊኬሽን መስጠት የተቋቋመ ኢንስቲትዩት።",
+          "<strong>የግዴታ የብቃት ማረጋገጫ [አንቀጽ 21(2-3)]</strong>፦ ቅጥር፣ ደረጃ ዕድገት፣ የሙያ መዋቅር፣ ዝውውርና ስልጠና በብቃት ማረጋገጫ ሰርተፊኬት ላይ ብቻ የተመሠረተ ይሆናል።",
+          "<strong>የትምህርት ፈቃድ ደንብ [አንቀጽ 22(6)]</strong>፦ ከ1 ዓመት በላይ ለትምህርት የሚሄድ ሠራተኛ የሥራ መደቡ ክፍት ሆኖ ይመዘገባል፤ ሠራተኛው ደመወዙንና ኮዱን ይይዛል።",
+          "<strong>የክህሎት ክፍተት ማሟያ [አንቀጽ 30]</strong>፦ የታዩ የክህሎት ክፍተቶችን ለመሙላት አጫጭር የማብቃት ስልጠናዎች ይሰጣሉ።"
         ]
       },
       {
         id: "card-6",
         cat: "S5",
-        section: "Section Five: Employment & Probation",
-        articles: "Articles 24 – 36",
-        titleAm: "የመንግሥት ሠራተኞች ቅጥር፣ ቃለ መሐላ እና የሙከራ ጊዜ",
+        sectionEn: "Section Five: Employment & Probation",
+        sectionAm: "ክፍል አምስት፡ ቅጥርና የሙከራ ጊዜ",
+        articles: "Articles 24 – 36 / አንቀጽ 24 – 36",
         titleEn: "Eligibility, Oath of Fidelity, Probation & Joint Hiring",
-        preview: "Eligibility criteria (age 18-60), annual oath taking, 6-month probation rules, and joint institution employment.",
-        details: [
+        titleAm: "የቅጥር መስፈርቶች፣ ቃለ መሐላ፣ የሙከራ ጊዜ እና ጥምር ቅጥር",
+        previewEn: "Eligibility criteria (age 18-60), annual oath taking, 6-month probation rules, and joint institution employment.",
+        previewAm: "የቅጥር መስፈርት (ዕድሜ 18-60)፣ የቃለ መሐላ ሥነ-ሥርዓት፣ የ6 ወር የሙከራ ጊዜ እና የጥምር ቅጥር ደንቦች።",
+        detailsEn: [
           "<strong>Eligibility [Art 24]</strong>: Age 18–60; free from corruption/theft/rape convictions for 5 years; holds active competency certificate; willing to take oath.",
           "<strong>Oath of Fidelity [Art 31]</strong>: Administered twice a year on January 1 (ጥር ፩) and July 1 (ሐምሌ ፩).",
           "<strong>Probation Period [Art 33(3)]</strong>: Standard 6 months; extendable by 3 months if performance is below average; dismissed if cumulative result remains below average.",
           "<strong>Probation Absence [Art 33(6)]</strong>: Force majeure absence <1 month evaluated on actual time present; maternity absence >1 month resumes post-leave."
+        ],
+        detailsAm: [
+          "<strong>የቅጥር መስፈርት [አንቀጽ 24]</strong>፦ ዕድሜ 18–60፤ በሙስና/ስርቆት/ደፍሮ መደፈር ላለፉት 5 ዓመታት ያልተቀጣ፤ የብቃት ሰርተፊኬት ያለው፤ ቃለ መሐላ ለመፈጸም ፈቃደኛ።",
+          "<strong>ቃለ መሐላ [አንቀጽ 31]</strong>፦ በዓመት ሁለት ጊዜ በጥር 1 እና በሐምሌ 1 ቀን የሚፈጸም የጽናትና ታማኝነት ቃለ መሐላ።",
+          "<strong>የሙከራ ጊዜ [አንቀጽ 33(3)]</strong>፦ መደበኛ 6 ወር፤ ውጤቱ ከመካከለኛ በታች ከሆነ ለ3 ወራት ሊራዘም ይችላል፤ ድምር ውጤቱ አሁንም ካልተሻሻለ ይሰናበታል።",
+          "<strong>በሙከራ ጊዜ መቅረት [አንቀጽ 33(6)]</strong>፦ ከአቅም በላይ በሆነ ምክንያት ከ1 ወር በታች የቀረ በሰራበት ጊዜ ይገመገማል፤ የወሊድ ፈቃድ ከ1 ወር በላይ ከሆነ ከተመለሰች በኋላ ይቀጥላል።"
         ]
       },
       {
         id: "card-7",
         cat: "S6",
-        section: "Section Six: Digital Service & Charters",
-        articles: "Articles 38 – 45",
-        titleAm: "የአገልግሎት አሰጣጥ፣ ቻርተር ማርክ እና አንድ ማዕከል ዲጂታል አገልግሎት",
+        sectionEn: "Section Six: Digital Service & Charters",
+        sectionAm: "ክፍል ስድስት፡ ዲጂታል አገልግሎትና ቻርተር",
+        articles: "Articles 38 – 45 / አንቀጽ 38 – 45",
         titleEn: "Service Delivery, Charter Mark & One-Stop Digital Service",
-        preview: "Citizen's charter standards, priority access, digital one-stop shop, and customer complaint handling units.",
-        details: [
+        titleAm: "የአገልግሎት አሰጣጥ፣ ቻርተር ማርክ እና አንድ ማዕከል ዲጂታል አገልግሎት",
+        previewEn: "Citizen's charter standards, priority access, digital one-stop shop, and customer complaint handling units.",
+        previewAm: "የዜጎች ቻርተር መስፈርቶች፣ የቅድሚያ አገልግሎት መብት፣ የአንድ ማዕከል ዲጂታል ገጽ እና የቅሬታ አስተናጋጅ ክፍሎች።",
+        detailsEn: [
           "<strong>Citizen's Charter [Art 38(3)]</strong>: Mandatory service standards defining quality, time, quantity, place, cost, and prerequisites.",
           "<strong>Priority Service [Art 38(7)]</strong>: Priority granted to elderly, pregnant women, mothers with infants, disabled persons, and national defense force members.",
           "<strong>Charter Mark Evaluation [Art 40]</strong>: Excellence certification awarded by the Commission to institutions achieving high customer satisfaction.",
           "<strong>One-Stop Shop Digital Public Service [Art 44, 45]</strong>: Web-network integrated digital portal managed by a specialized project office within the Commission."
+        ],
+        detailsAm: [
+          "<strong>የዜጎች ቻርተር [አንቀጽ 38(3)]</strong>፦ የአገልግሎት ጥራት፣ ጊዜ፣ ቦታ፣ ዋጋና ቅድመ-ሁኔታዎችን በግልጽ የሚያሳይ ግዴታ ያለበት ቻርተር።",
+          "<strong>የቅድሚያ አገልግሎት [አንቀጽ 38(7)]</strong>፦ ለአረጋውያን፣ ለነፍሰ ጡሮች፣ ሕፃናት ለያዙ እናቶች፣ ለአካል ጉዳተኞችና የመከላከያ አባላት ቅድሚያ መስጠት ግዴታ ነው።",
+          "<strong>የቻርተር ማርክ ዕውቅና [አንቀጽ 40]</strong>፦ ከፍተኛ የደንበኞች እርካታ ላስመዘገቡ መሥሪያ ቤቶች በኮሚሽኑ የሚሰጥ የላቀ አገልግሎት ሰርተፊኬት።",
+          "<strong>አንድ ማዕከል ዲጂታል አገልግሎት [አንቀጽ 44፣ 45]</strong>፦ በኮሚሽኑ ሥር በሚገኝ የፕሮጀክት ጽሕፈት ቤት የሚመራ የተቀናጀ የኦንላይን አገልግሎት ገጽ።"
         ]
       },
       {
         id: "card-8",
         cat: "S6 & S7",
-        section: "Section Six & Seven: Performance & Transfer",
-        articles: "Articles 46 – 55",
-        titleAm: "የሥራ አፈጻጸም ምዘና፣ የደረጃ ዕድገት፣ ዝውውር እና ድልድል",
+        sectionEn: "Section Six & Seven: Performance & Mobility",
+        sectionAm: "ክፍል ስድስትና ሰባት፡ አፈጻጸምና ዝውውር",
+        articles: "Articles 46 – 55 / አንቀጽ 46 – 55",
         titleEn: "Performance Appraisal, Promotion, Transfers & Secondment",
-        preview: "Semi-annual performance reviews, internal/external transfers, disaster emergency reassignments, and 1-year secondments.",
-        details: [
+        titleAm: "የሥራ አፈጻጸም ምዘና፣ ደረጃ ዕድገት፣ ዝውውር እና ትውስት",
+        previewEn: "Semi-annual performance reviews, internal/external transfers, disaster emergency reassignments, and 1-year secondments.",
+        previewAm: "የስድስት ወር አፈጻጸም ምዘና፣ የውስጥና የውጭ ዝውውር፣ የአደጋ ጊዜ መደብ ለውጥ እና የ1 ዓመት የትውስት ዝውውር።",
+        detailsEn: [
           "<strong>Semi-Annual Appraisal [Art 47(5)]</strong>: Performance evaluations filled twice a year (every 6 months) and sent to the Commission.",
           "<strong>Internal Transfer [Art 51]</strong>: Reassignment to equal position/salary; 1-year temporary transfer permitted during natural/man-made disasters without salary reduction.",
           "<strong>Acting Assignment [Art 52]</strong>: Acting roles granted up to 1 year max with acting allowance; extended for study leave <1 year.",
           "<strong>Secondment (ትውስት) [Art 54]</strong>: Temporary transfer to other government offices, regional states, state enterprises, or NGOs for up to 1 year max."
+        ],
+        detailsAm: [
+          "<strong>የስድስት ወር ምዘና [አንቀጽ 47(5)]</strong>፦ የሥራ አፈጻጸም ምዘና በዓመት ሁለት ጊዜ (በየ6 ወሩ) ተሞልቶ ወደ ኮሚሽኑ ይላካል።",
+          "<strong>የውስጥ ዝውውር [አንቀጽ 51]</strong>፦ እኩል ደረጃና ደመወዝ ወዳለው መደብ ማዛወር፤ በተፈጥሮ/ሰው ሰራሽ አደጋ ጊዜ ደመወዝ ሳይቀነስ እስከ 1 ዓመት ጊዜያዊ ዝውውር ይቻላል።",
+          "<strong>የጊዜያዊ ውክሌና አበል [አንቀጽ 52]</strong>፦ የውክሌና አበል የሚከፈልበት ሆኖ ከ1 ዓመት በላይ ሊቆይ አይችልም።",
+          "<strong>ትውስት ዝውውር [አንቀጽ 54]</strong>፦ ወደ ሌላ የመንግሥት መሥሪያ ቤት፣ ክልል፣ የመንግሥት ልማት ድርጅት ወይም NGO እስከ 1 ዓመት ጊዜያዊ ዝውውር።"
         ]
       },
       {
         id: "card-9",
         cat: "S8",
-        section: "Section Eight: Hours, Overtime & Annual Leave",
-        articles: "Articles 56 – 64",
-        titleAm: "መደበኛ የሥራ ሰዓት፣ የትርፍ ሰዓት እና የዓመት ዕረፍት ፈቃድ",
+        sectionEn: "Section Eight: Working Hours & Annual Leave",
+        sectionAm: "ክፍል ስምንት፡ የሥራ ሰዓትና የዓመት ዕረፍት",
+        articles: "Articles 56 – 64 / አንቀጽ 56 – 64",
         titleEn: "Working Hours, Overtime, Weekly Rest & Annual Leave",
-        preview: "39–48 hours weekly work schedule, overtime choice, 20–30 days annual leave, and leave postponement limits.",
-        details: [
+        titleAm: "የሥራ ሰዓት፣ የትርፍ ሰዓት፣ የሳምንት ዕረፍት እና የዓመት ዕረፍት",
+        previewEn: "39–48 hours weekly work schedule, overtime choice, 20–30 days annual leave, and leave postponement limits.",
+        previewAm: "በሳምንት 39–48 የሥራ ሰዓታት፣ የትርፍ ሰዓት ምርጫ፣ ከ20 እስከ 30 የሥራ ቀናት የዓመት ዕረፍት እና የፈቃድ ማዛወሪያ ደንብ።",
+        detailsEn: [
           "<strong>Regular Working Hours [Art 56]</strong>: 39 to 48 hours per week as determined by Council of Ministers.",
           "<strong>Overtime Compensation [Art 58, 59]</strong>: Employee option for overtime pay or compensatory leave; work on weekly rest day requires compensatory leave the following week.",
           "<strong>Annual Leave Scale [Art 61]</strong>: 20 working days for Year 1; +1 working day for each additional year up to a maximum of 30 working days.",
           "<strong>Leave Postponement [Art 63]</strong>: Head of office may postpone leave for up to 2 budget years; must be taken in 3rd year or 1st year converted to cash upon request."
+        ],
+        detailsAm: [
+          "<strong>መደበኛ የሥራ ሰዓት [አንቀጽ 56]</strong>፦ በሳምንት ከ39 እስከ 48 የሥራ ሰዓታት ሆኖ በሚኒስትሮች ምክር ቤት ይወሰናል።",
+          "<strong>ትርፍ ሰዓትና ዕረፍት [አንቀጽ 58፣ 59]</strong>፦ በሠራተኛው ምርጫ በገንዘብ ወይም በማካካሻ ዕረፍት ይተካሉ፤ በሳምንት ዕረፍት ቀን ከተሠራ በሚቀጥለው ሳምንት ማካካሻ ዕረፍት ይሰጣል።",
+          "<strong>የዓመት ዕረፍት መጠን [አንቀጽ 61]</strong>፦ ለመጀመሪያው ዓመት 20 የሥራ ቀናት፤ ለአገልግሎት ዘመን በየዓመቱ 1 የሥራ ቀን እየተጨመረ እስከ 30 የሥራ ቀናት ይደርሳል።",
+          "<strong>ፈቃድ ማዛወር [አንቀጽ 63]</strong>፦ የመሥሪያ ቤቱ ኃላፊ የዓመት ፈቃድን እስከ 2 የሥራ ዓመት ሊያዛውረው ይችላል፤ በ3ኛው ዓመት መሰጠት አለበት ወይም የ1ኛው ዓመት ወደ ገንዘብ ይለወጣል።"
         ]
       },
       {
         id: "card-10",
         cat: "S8",
-        section: "Section Eight: Maternity & Miscarriage Leaves",
-        articles: "Article 65",
-        titleAm: "የወሊድ ፈቃድ፣ የጽንስ መቋረጥ (የፅንስ ማቋረጥ) እና የአባትነት ፈቃድ",
+        sectionEn: "Section Eight: Maternity & Miscarriage Leaves",
+        sectionAm: "ክፍል ስምንት፡ የወሊድና የፅንስ ማቋረጥ ፈቃድ",
+        articles: "Article 65 / አንቀጽ 65",
         titleEn: "Exhaustive Maternity, Miscarriage & Paternity Leave Rules",
-        preview: "Detailed Breakdown of Maternity (120 days), Miscarriage (30, 60, or 90 days), and Paternity (10 days) paid leaves.",
-        details: [
+        titleAm: "የወሊድ፣ የፅንስ ማቋረጥ (ፅንስ ማቋረጥ) እና የአባትነት ፈቃድ ድንጋጌዎች",
+        previewEn: "Detailed Breakdown of Maternity (120 days), Miscarriage (30, 60, or 90 days), and Paternity (10 days) paid leaves.",
+        previewAm: "የወሊድ ፈቃድ (120 ቀናት)፣ የፅንስ ማቋረጥ (30፣ 60 ወይም 90 ቀናት) እና የአባትነት ፈቃድ (10 ቀናት) አጠቃላይ ማብራሪያ።",
+        detailsEn: [
           "<strong>Full Maternity Leave [Art 65(3)]</strong>: 120 consecutive days total with full pay (30 days prenatal + 90 days postnatal).",
-          "<strong>Miscarriage (3 to 6 Months Pregnancy) [Art 65(9)]</strong>: Granted 30 consecutive days of paid leave upon medical confirmation.",
+          "<strong>Miscarriage (3 to 6 Months Pregnancy) [Art 65(9)]</strong>: Granted 30 consecutive days of paid leave upon official medical confirmation.",
           "<strong>Miscarriage (≥ 6 Months, Before Prenatal Leave) [Art 65(7)]</strong>: Granted 60 days postnatal maternity leave upon medical confirmation.",
           "<strong>Miscarriage While on Prenatal Leave [Art 65(8)]</strong>: Prenatal leave immediately terminates and full 90 days postnatal maternity leave commences.",
-          "<strong>Paternity Leave [Art 65(10)]</strong>: 10 working days of paid leave for male civil servants upon delivery by spouse."
+          "<strong>Paternity Leave [Art 65(10)]</strong>: 10 working days of paid leave for male civil servants upon delivery by legal spouse."
+        ],
+        detailsAm: [
+          "<strong>ሙሉ የወሊድ ፈቃድ [አንቀጽ 65(3)]</strong>፦ 120 ተከታታይ ቀናት ከሙሉ ደመወዝ ጋር (30 ቀን ከወሊድ በፊት + 90 ቀን ከወሊድ በኋላ)።",
+          "<strong>የፅንስ ማቋረጥ (ከ3 እስከ 6 ወር) [አንቀጽ 65(9)]</strong>፦ ከ3 ወር እስከ 6 ወር ባለው ጊዜ ውስጥ ፅንስ ከተቋረጠ በሕክምና ማስረጃ 30 ተከታታይ ቀናት ከደመወዝ ጋር ፈቃድ ይሰጣል።",
+          "<strong>የፅንስ ማቋረጥ (ከ6 ወር በላይ፣ ከወሊድ በፊት ፈቃድ በፊት) [አንቀጽ 65(7)]</strong>፦ ከ6 ወር በላይ ሆኖ የወሊድ ፈቃድ ከመውሰዷ በፊት ፅንስ ከተቋረጠ 60 ቀናት ከደመወዝ ጋር ፈቃድ ይሰጣል።",
+          "<strong>ከወሊድ በፊት ፈቃድ ላይ እያለች ፅንስ ከተቋረጠ [አንቀጽ 65(8)]</strong>፦ ከወሊድ በፊት የተወሰደው ፈቃድ አብቅቶ ወዲያውኑ የ90 ቀናት ከወሊድ በኋላ ፈቃድ ይጀምራል።",
+          "<strong>የአባትነት ፈቃድ [አንቀጽ 65(10)]</strong>፦ ባለቤቱ ስትወልድ ለወንድ ሠራተኛ 10 የሥራ ቀናት ከደመወዝ ጋር ፈቃድ ይሰጣል።"
         ]
       },
       {
         id: "card-11",
         cat: "S8",
-        section: "Section Eight: Sick & Special Leaves",
-        articles: "Articles 66 – 70",
-        titleAm: "የሕመም ፈቃድ፣ የግል ጉዳይ ፈቃድ እና ያለደመወዝ ልዩ ፈቃድ",
+        sectionEn: "Section Eight: Sick & Special Leaves",
+        sectionAm: "ክፍል ስምንት፡ የሕመምና ልዩ ፈቃድ",
+        articles: "Articles 66 – 70 / አንቀጽ 66 – 70",
         titleEn: "Sick Leave Scale, Personal Leave & Unpaid Special Leave",
-        preview: "Up to 8 months sick leave in a year, 7 days personal leave, election leave, and diplomatic spouse unpaid leave.",
-        details: [
+        titleAm: "የሕመም ፈቃድ፣ የግል ጉዳይ ፈቃድ እና ያለደመወዝ ልዩ ፈቃድ",
+        previewEn: "Up to 8 months sick leave in a year, 7 days personal leave, election leave, and diplomatic spouse unpaid leave.",
+        previewAm: "በዓመት እስከ 8 ወር የሕመም ፈቃድ፣ የ7 ቀን የግል ጉዳይ ፈቃድ፣ የምርጫ ፈቃድ እና የዲፕሎማት ባለቤት ልዩ ፈቃድ።",
+        detailsEn: [
           "<strong>Sick Leave Duration [Art 66(2-3)]</strong>: Max 8 months in 1 year or 12 months in 4 years (First 6 months full pay, last 2 months half pay). Probationers get 1 month.",
           "<strong>Medical Certificate Rule [Art 66(5)]</strong>: Certificate required for absences >3 consecutive days or >6 days cumulative in a budget year.",
           "<strong>Personal Leave [Art 68]</strong>: 7 working days paid leave per budget year for mourning, marriage, or examinations.",
           "<strong>Special Unpaid Leave [Art 70]</strong>: Granted up to 1 year for justifiable grounds; extended for project work or spouse diplomatic mission abroad."
+        ],
+        detailsAm: [
+          "<strong>የሕመም ፈቃድ ጊዜ [አንቀጽ 66(2-3)]</strong>፦ በ1 ዓመት ውስጥ እስከ 8 ወር ወይም በ4 ዓመት ውስጥ እስከ 12 ወር (የመጀመሪያዎቹ 6 ወራት ከሙሉ ደመወዝ፣ የመጨረሻዎቹ 2 ወራት ከግማሽ ደመወዝ ጋር)። በሙከራ ላይ ያለ 1 ወር።",
+          "<strong>የሕክምና ማስረጃ ደንብ [አንቀጽ 66(5)]</strong>፦ ተከታታይ ከ3 ቀናት በላይ ወይም በበጀት ዓመቱ በድምሩ ከ6 ቀናት በላይ ሲበልጥ የሕክምና ማስረጃ ማቅረብ ግዴታ ነው።",
+          "<strong>የግል ጉዳይ ፈቃድ [አንቀጽ 68]</strong>፦ ለሐዘን፣ ለጋብቻ ወይም ለፈተና በበጀት ዓመቱ 7 የሥራ ቀናት ከደመወዝ ጋር ፈቃድ ይሰጣል።",
+          "<strong>ያለደመወዝ ልዩ ፈቃድ [አንቀጽ 70]</strong>፦ ከአቅም በላይ በሆኑ አሳማኝ ምክንያቶች እስከ 1 ዓመት፤ ለፕሮጀክት ሥራ ወይም ለዲፕሎማት ባለቤት የሥራ ዘመን ይራዘማል።"
         ]
       },
       {
         id: "card-12",
         cat: "S9",
-        section: "Section Nine: Inclusivity & Gender Rules",
-        articles: "Articles 71 – 76",
-        titleAm: "ሁሉ አቀፍ ብዝኃነት፣ አካታችነት፣ ተጨማሪ የድጋፍ እርምጃ እና በጎ ፈቃድ",
+        sectionEn: "Section Nine: Inclusivity & Gender Rules",
+        sectionAm: "ክፍል ዘጠኝ፡ አካታችነትና አዎንታዊ እርምጃ",
+        articles: "Articles 71 – 76 / አንቀጽ 71 – 76",
         titleEn: "Diversity, Affirmative Action, Workplace Nurseries & Volunteerism",
-        preview: "Affirmative action for women, PWDs, minority groups, mandatory workplace nurseries, and retired volunteerism.",
-        details: [
+        titleAm: "ብዝኃነት፣ አዎንታዊ እርምጃ፣ የሕፃናት ማቆያ እና የበጎ ፈቃድ አገልግሎት",
+        previewEn: "Affirmative action for women, PWDs, minority groups, mandatory workplace nurseries, and retired volunteerism.",
+        previewAm: "ለሴቶች፣ ለአካል ጉዳተኞችና ለታዳጊ ክልሎች የሚሰጥ አዎንታዊ እርምጃ፣ የተቋማት ሕፃናት ማቆያ እና የበጎ ፈቃድ አገልግሎት።",
+        detailsEn: [
           "<strong>Affirmative Action [Art 72, 73, 74]</strong>: Women, PWDs, and minority nationalities receive priority in hiring, promotion, transfer, redeployment, and training.",
           "<strong>Pregnancy Protection [Art 72(4)]</strong>: Retrenchment/termination prohibited during pregnancy and within 4 months after delivery.",
           "<strong>Workplace Nurseries [Art 72(6)]</strong>: Every government office MUST establish a nursery facility for female staff to breastfeed and care for infants.",
           "<strong>Infant Care Leave [Art 72(5)]</strong>: Paid leave granted to female employees to attend medical care for infants under 1 year of age."
+        ],
+        detailsAm: [
+          "<strong>አዎንታዊ እርምጃ [አንቀጽ 72፣ 73፣ 74]</strong>፦ በቅጥር፣ በደረጃ ዕድገት፣ በዝውውርና በስልጠና ለሴቶች፣ ለአካል ጉዳተኞችና ለብሔረሰቦች ቅድሚያ መስጠት ግዴታ ነው።",
+          "<strong>የነፍሰ ጡር ጥበቃ [አንቀጽ 72(4)]</strong>፦ ነፍሰ ጡር የሆነች ወይም ከወለደች 4 ወር ያልሞላት ሴት ሠራተኛን በቅነሳም ሆነ በስንብት ማሰናበት የተከለከለ ነው።",
+          "<strong>የሕፃናት ማቆያ [አንቀጽ 72(6)]</strong>፦ እያንዳንዱ የመንግሥት መሥሪያ ቤት ሴት ሠራተኞች ሕፃናትን የሚያ ጡቡበትና የሚንከባከቡበት የማቆያ ክፍል የማዘጋጀት ግዴታ አለበት።",
+          "<strong>የሕፃናት ሕክምና ፈቃድ [አንቀጽ 72(5)]</strong>፦ ዕድሜያቸው ከ1 ዓመት በታች የሆኑ ሕፃናት የሕክምና ክትትል ሲያስፈልጋቸው ለእናቶች ከደመወዝ ጋር ፈቃድ ይሰጣል።"
         ]
       },
       {
         id: "card-13",
         cat: "S10",
-        section: "Section Ten: OSH & Injury Benefits",
-        articles: "Articles 77 – 87",
-        titleAm: "የሥራ አካባቢ ደህንነትና ጤንነት፣ የሥራ ጉዳት እና የጉዳት ጡረታ",
+        sectionEn: "Section Ten: OSH & Injury Benefits",
+        sectionAm: "ክፍል አስር፡ ደህንነትና የሥራ ጉዳት",
+        articles: "Articles 77 – 87 / አንቀጽ 77 – 87",
         titleEn: "Occupational Safety, Injury Leaves & 1-Year Death Rehabilitation",
-        preview: "Coverage of full medical treatment, full-pay injury leave, tax exemptions, and 1-year salary death rehabilitation pay.",
-        details: [
+        titleAm: "የሥራ አካባቢ ደህንነት፣ የሕክምና ወጪ እና የ1 ዓመት የጉዳት ካሳ",
+        previewEn: "Coverage of full medical treatment, full-pay injury leave, tax exemptions, and 1-year salary death rehabilitation pay.",
+        previewAm: "100% የሕክምና ወጪ ሽፋን፣ ከደመወዝ ጋር የሚሰጥ የጉዳት ፈቃድ፣ ከታክስ ነፃ መሆን እና የ1 ዓመት የሞት ካሳ።",
+        detailsEn: [
           "<strong>Occupational Injury [Art 78]</strong>: Includes workplace accidents, travel on agency transport, emergency actions, and work-related diseases.",
           "<strong>Medical Coverage [Art 84]</strong>: Agency covers full local medical, hospital, surgical, pharmaceutical, and prosthetic expenses.",
           "<strong>Injury Leave [Art 84(3)]</strong>: Full pay injury leave granted until full recovery or medical certification of permanent disability.",
           "<strong>Death Rehabilitation Payment [Art 85(5)]</strong>: In case of workplace death, survivors receive 1 year full salary lump sum payment exempt from tax."
+        ],
+        detailsAm: [
+          "<strong>የሥራ ላይ አደጋ [አንቀጽ 78]</strong>፦ በሥራ ቦታ፣ በመሥሪያ ቤቱ ትራንስፖርት፣ በአደጋ ጊዜ እርዳታ ሲደረግ ወይም ከሥራ ሁኔታ የመጣ በሽታን ያጠቃልላል።",
+          "<strong>የሕክምና ወጪ ሽፋን [አንቀጽ 84]</strong>፦ የመሥሪያ ቤቱ የሀገር ውስጥ የሕክምና፣ የሆስፒታል፣ የኦፕሬሽን፣ የመድኃኒትና የሰው ሰራሽ አካላት ወጪን 100% ይሸፍናል።",
+          "<strong>የጉዳት ፈቃድ [አንቀጽ 84(3)]</strong>፦ ሠራተኛው አግግሞ እስከሚመለስ ወይም ዘላቂ ጉዳት መሆኑ በሕክምና እስከሚረጋገጥ ድረስ ከሙሉ ደመወዝ ጋር ፈቃድ ይሰጣል።",
+          "<strong>የሞት ካሳ ክፍያ [አንቀጽ 85(5)]</strong>፦ በሥራ አደጋ ምክንያት ሕይወቱ ካለፈ ወራሾቹ የ1 ዓመት ሙሉ ደመወዝ ከታክስ ነፃ በነጠላ ክፍያ ይከፈላቸዋል።"
         ]
       },
       {
         id: "card-14",
         cat: "S13",
-        section: "Section Thirteen: Disciplinary Measures",
-        articles: "Articles 96 – 102",
-        titleAm: "የዲስፕሊን ቅጣት ዓይነቶች፣ ከባድ ጥፋቶች እና የይርጋ ጊዜ",
+        sectionEn: "Section Thirteen: Disciplinary Measures",
+        sectionAm: "ክፍል አስራ ሦስት፡ የዲስፕሊን እርምጃዎች",
+        articles: "Articles 96 – 102 / አንቀጽ 96 – 102",
         titleEn: "Disciplinary Penalties, Severe Offences & Limitation Periods",
-        preview: "Classifies simple vs rigorous penalties, 14 severe offences, suspension rules, and 6-month limitation period.",
-        details: [
+        titleAm: "የዲስፕሊን ቅጣቶች፣ ከባድ ጥፋቶች እና የይርጋ ጊዜ",
+        previewEn: "Classifies simple vs rigorous penalties, 14 severe offences, suspension rules, and 6-month limitation period.",
+        previewAm: "ቀላልና ከባድ ቅጣቶች፣ 14 ከባድ የዲስፕሊን ጥፋቶች፣ የእገዳ ደንቦች እና የ6 ወር የይርጋ ጊዜ።",
+        detailsEn: [
           "<strong>Penalties [Art 97]</strong>: Simple (oral, written, fine up to 15 days pay); Rigorous (fine up to 3 months pay, down-grading up to 2 years, dismissal).",
           "<strong>Severe Offences [Art 98]</strong>: Includes fraud, theft, bribery, physical violence, sexual harassment, unexcused absence >= 3 days, and intoxication.",
           "<strong>Limitation Period [Art 102]</strong>: Simple disciplinary actions bar after 6 months of awareness; rigorous offences follow Criminal Code statutory periods.",
           "<strong>Suspension [Art 101]</strong>: Max 3 months suspension with salary withheld; reinstated with full back-pay unless dismissed."
+        ],
+        detailsAm: [
+          "<strong>የቅጣት ዓይነቶች [አንቀጽ 97]</strong>፦ ቀላል (የቃል፣ የጽሑፍ፣ እስከ 15 ቀን ደመወዝ መቀጮ)፤ ከባድ (እስከ 3 ወር ደመወዝ፣ እስከ 2 ዓመት ዝቅ ማድረግ፣ ስንብት)።",
+          "<strong>ከባድ ጥፋቶች [አንቀጽ 98]</strong>፦ ማታለል፣ ስርቆት፣ ጉቦ፣ አካላዊ ጥቃት፣ ጾታዊ ትንኮሳ፣ ተከታታይ ከ3 ቀን በላይ ያለፈቃድ መቅረት እና ስካር።",
+          "<strong>የይርጋ ጊዜ [አንቀጽ 102]</strong>፦ ቀላል ጥፋት ከተደረሰበት ቀን ጀምሮ በ6 ወር ጊዜ ውስጥ እርምጃ ካልተወሰደ በይርጋ ይታገዳል፤ ከባድ ጥፋት በወንጀል ሕግ ይገዛል።",
+          "<strong>ጊዜያዊ እገዳ [አንቀጽ 101]</strong>፦ ደመወዝ ተይዞ እስከ 3 ወር ጊዜያዊ እገዳ ማድረግ ይቻላል፤ ከሥራ ካልተሰናበተ የተያዘው ደመወዝ ሙሉ በሙሉ ይከፈለዋል።"
         ]
       },
       {
         id: "card-15",
         cat: "S13",
-        section: "Section Thirteen: Grievance Handling",
-        articles: "Articles 103 – 106",
-        titleAm: "የሠራተኞች ቅሬታ አቀራረብ፣ የቅሬታ አጣሪ ኮሚቴ እና አስተዳደራዊ ውሳኔ",
+        sectionEn: "Section Thirteen: Grievance Handling",
+        sectionAm: "ክፍል አስራ ሦስት፡ የቅሬታ አቀራረብ",
+        articles: "Articles 103 – 106 / አንቀጽ 103 – 106",
         titleEn: "Grievance Handling Committee & Administrative Decisions",
-        preview: "Establishment of grievance committees, scope of complaints, and requirements for formal written administrative decisions.",
-        details: [
+        titleAm: "የቅሬታ አጣሪ ኮሚቴ እና አስተዳደራዊ ውሳኔዎች",
+        previewEn: "Establishment of grievance committees, scope of complaints, and requirements for formal written administrative decisions.",
+        previewAm: "የቅሬታ አጣሪ ኮሚቴ ምስረታ፣ የቅሬታዎች ስፋት እና በጽሑፍ የሚሰጡ አስተዳደራዊ ውሳኔዎች ግዴታ።",
+        detailsEn: [
           "<strong>Grievance Committee Establishment [Art 104]</strong>: Mandatory internal committee in every government office to investigate staff grievances.",
           "<strong>Scope of Inquiries [Art 105]</strong>: Law interpretation, rights protection, OSH, job grading, performance reviews, supervisor coercion, and simple penalties.",
           "<strong>Administrative Decision [Art 106]</strong>: Written decision issued by head of office; verbal decisions confirmed by affidavit qualify as formal decisions.",
           "<strong>Court Intervention [Art 106(3)]</strong>: Administrative Court can order an office to issue written decision within 5 working days upon petition."
+        ],
+        detailsAm: [
+          "<strong>የቅሬታ ኮሚቴ ምስረታ [አንቀጽ 104]</strong>፦ የሠራተኞችን ቅሬታ መርምሮ ውሳኔ የሚያቀርብ የውስጥ ቅሬታ አጣሪ ኮሚቴ በማንኛውም መሥሪያ ቤት ማቋቋም ግዴታ ነው።",
+          "<strong>የቅሬታዎች ስፋት [አንቀጽ 105]</strong>፦ የሕግ ትርጉም፣ የመብት ጥበቃ፣ የደህንነት ሁኔታ፣ የሥራ ምዘና፣ የአፈጻጸም ውጤትና ቀላል ቅጣቶችን ያጠቃልላል።",
+          "<strong>አስተዳደራዊ ውሳኔ [አንቀጽ 106]</strong>፦ በመሥሪያ ቤቱ ኃላፊ በጽሑፍ የሚሰጥ ውሳኔ፤ በቃል የተሰጠ ውሳኔ በመሐላ ከተረጋገጠ እንደ መደበኛ ውሳኔ ይቆጠራል።",
+          "<strong>የፍርድ ቤት ጣልቃ ገብነት [አንቀጽ 106(3)]</strong>፦ ፍርድ ቤቱ መሥሪያ ቤቱ በ5 የሥራ ቀናት ውስጥ በጽሑፍ ውሳኔ እንዲሰጥ ለማዘዝ ሥልጣን አለው።"
         ]
       },
       {
         id: "card-16",
         cat: "S14",
-        section: "Section Fourteen: Administrative Court",
-        articles: "Articles 107 – 134",
-        titleAm: "የአስተዳደር ፍርድ ቤት፣ የዳኞች አስተዳደር ጉባዔ እና የይግባኝ ሥርዓት",
+        sectionEn: "Section Fourteen: Administrative Court",
+        sectionAm: "ክፍል አስራ አራት፡ አስተዳደር ፍርድ ቤት",
+        articles: "Articles 107 – 134 / አንቀጽ 107 – 134",
         titleEn: "Administrative Court, Judicial Council & Appeals Procedure",
-        preview: "Establishment of Administrative Court, Judicial Council, 60-day Supreme Court appeal window, and court-annexed mediation.",
-        details: [
+        titleAm: "የአስተዳደር ፍርድ ቤት፣ የዳኞች አስተዳደር ጉባኤ እና የይግባኝ ሥርዓት",
+        previewEn: "Establishment of Administrative Court, Judicial Council, 60-day Supreme Court appeal window, and court-annexed mediation.",
+        previewAm: "የአስተዳደር ፍርድ ቤት ሥልጣን፣ የዳኞች ጉባኤ፣ የ60 ቀን የጠቅላይ ፍርድ ቤት ይግባኝ እና የፍርድ ቤት እርቅ።",
+        detailsEn: [
           "<strong>Court Jurisdiction [Art 130]</strong>: Hears appeals on unlawful suspension/termination, severe penalties, salary deductions, and injury claims.",
           "<strong>Appeal Timelines [Art 130(6)]</strong>: Final on questions of fact; appeal on basic error of law to Federal Supreme Court within 60 days.",
           "<strong>Execution Timeline [Art 131]</strong>: Office MUST execute court decision within 10 working days; beneficiary can seek First Instance Court enforcement after 30 days.",
           "<strong>Judicial Council [Art 108]</strong>: Governs judge appointments, code of ethics, discipline, performance evaluation, and judicial allowances."
+        ],
+        detailsAm: [
+          "<strong>የፍርድ ቤቱ ሥልጣን [አንቀጽ 130]</strong>፦ ከሕገ-ወጥ እገዳ/ስንብት፣ ከከባድ ቅጣት፣ ከደመወዝ ቅነሳና ከጉዳት ካሳ ጋር የተያያዙ ይግባኞችን የማየት ልዩ ሥልጣን።",
+          "<strong>የይግባኝ ጊዜ ገደብ [አንቀጽ 130(6)]</strong>፦ በፍሬ ነገር ላይ የተሰጠ ውሳኔ የመጨረሻ ነው፤ መሠረታዊ የሕግ ስህተት ካለ በ60 ቀናት ውስጥ ለፌደራል ጠቅላይ ፍርድ ቤት ይግባኝ ይባላል።",
+          "<strong>የውሳኔ አፈጻጸም [አንቀጽ 131]</strong>፦ መሥሪያ ቤቱ የፍርድ ቤቱን ውሳኔ በ10 የሥራ ቀናት ውስጥ ማስፈጸም አለበት፤ ካልፈጸመ ከ30 ቀናት በኋላ በፌደራል የመጀመሪያ ደረጃ ፍርድ ቤት ይፈጸማል።",
+          "<strong>የዳኞች አስተዳደር ጉባኤ [አንቀጽ 108]</strong>፦ የዳኞችን ሹመት፣ ስነ-ምግባር፣ ዲስፕሊን፣ የአፈጻጸም ምዘናና አበል የሚያስተዳድር አካል ነው።"
         ]
       },
       {
         id: "card-17",
         cat: "S15",
-        section: "Section Fifteen: Termination & Pension",
-        articles: "Articles 135 – 146",
-        titleAm: "የሥራ ውል ማቋረጥ፣ አገልግሎት ማራዘም እና የጡረታ መብት ማስጠበቅ",
+        sectionEn: "Section Fifteen: Termination & Pension",
+        sectionAm: "ክፍል አስራ አምስት፡ ስንብትና ጡረታ",
+        articles: "Articles 135 – 146 / አንቀጽ 135 – 146",
         titleEn: "Resignation Notice, Retrenchment, Pension Rights & Extensions",
-        preview: "2-month resignation notice, severance pay, service extensions up to 4 years max, and 2-year net salary termination pay.",
-        details: [
+        titleAm: "የገዛ ፈቃድ ስንብት፣ የሠራተኛ ቅነሳ፣ የጡረታ መብት እና የአገልግሎት ማራዘሚያ",
+        previewEn: "2-month resignation notice, severance pay, service extensions up to 4 years max, and 2-year net salary termination pay.",
+        previewAm: "የ2 ወር የገዛ ፈቃድ ማስጠንቀቂያ፣ የስንብት ክፍያ፣ እስከ 4 ዓመት የአገልግሎት ማራዘሚያ እና የ2 ዓመት የተጣራ ደመወዝ ክፍያ።",
+        detailsEn: [
           "<strong>Resignation Notice [Art 135]</strong>: Employee must give 2 months prior written notice (extendable up to 4 months if unreplaceable).",
           "<strong>Service Extension [Art 145]</strong>: Service beyond retirement age extended up to 2 years at a time (max 4 years total) with Commissioner approval.",
           "<strong>Termination Lump-Sum Pay [Art 146(1)]</strong>: Unassigned staff below retirement age receive 2 years net salary lump-sum payment.",
           "<strong>Early Pension Rights [Art 146(2-3)]</strong>: Staff with >=25 years service within 5 years of retirement age can elect early pension; agency pays remaining contributions."
+        ],
+        detailsAm: [
+          "<strong>የገዛ ፈቃድ መልቀቂያ [አንቀጽ 135]</strong>፦ ሠራተኛው የ2 ወር ቅድመ ማስጠንቀቂያ በጽሑፍ መስጠት አለበት (ተካይ ካልተገኘ እስከ 4 ወር ሊራዘም ይችላል)።",
+          "<strong>የአገልግሎት ማራዘሚያ [አንቀጽ 145]</strong>፦ በጡረታ ዕድሜ ላይ ያለ ሠራተኛ አገልግሎት በኮሚሽነሩ ፈቃድ በአንድ ጊዜ እስከ 2 ዓመት (በድምሩ ቢበዛ እስከ 4 ዓመት) ሊራዘም ይችላል።",
+          "<strong>የስንብት ነጠላ ክፍያ [አንቀጽ 146(1)]</strong>፦ በድልድል ሳይመደብ የቀረና ለጡረታ ያልደረሰ ሠራተኛ የ2 ዓመት የተጣራ ደመወዝ በነጠላ ክፍያ ይሰጠዋል።",
+          "<strong>የቅድመ ጡረታ መብት [አንቀጽ 146(2-3)]</strong>፦ 25 ዓመትና ከዚያ በላይ ያገለገለና ለጡረታ 5 ዓመት የቀረው ሠራተኛ ወደ ቅድመ ጡረታ መውጣት ይችላል።"
         ]
       },
       {
         id: "card-18",
         cat: "S16",
-        section: "Section Sixteen: Compliance & Audit Penalties",
-        articles: "Articles 147 – 149",
-        titleAm: "የኦዲት እና ኢንስፔክሽን ምርመራ ሥራ እና የገንዘብ መቀጮ ቅጣቶች",
+        sectionEn: "Section Sixteen: Compliance & Audit Penalties",
+        sectionAm: "ክፍል አስራ ስድስት፡ ኦዲትና ቅጣቶች",
+        articles: "Articles 147 – 149 / አንቀጽ 147 – 149",
         titleEn: "Compliance Audits, Inspection Categories & Financial Fines",
-        preview: "Annual compliance audits, 4 performance classification categories, and fines up to 10,000 ETB for non-compliance.",
-        details: [
+        titleAm: "የሲቪል ሰርቪስ ኦዲት፣ የምርመራ ደረጃዎች እና የገንዘብ መቀጮዎች",
+        previewEn: "Annual compliance audits, 4 performance classification categories, and fines up to 10,000 ETB for non-compliance.",
+        previewAm: "የዓመታዊ ኦዲት ምርመራ፣ 4 አገራዊ የመደብ ምደባዎች እና እስከ 10,000 ብር የሚደርስ የገንዘብ መቀጮ።",
+        detailsEn: [
           "<strong>4 Inspection Categories [Art 147(3)]</strong>: (a) Excellent performance, (b) Minor gaps, (c) High performance gaps, (d) Non-compliant/difficult to investigate.",
           "<strong>Corrective Action Timeline [Art 149(1)]</strong>: Offices must submit corrective action schedule within 15 days; implementation finalized within 3 months max.",
           "<strong>Non-Compliance Penalty [Art 149(1)(b)]</strong>: Heads of office or officials failing to act on audit findings fined 2,000 ETB to 10,000 ETB.",
           "<strong>False Medical Certificate Fine [Art 149(2)]</strong>: Medical officers issuing fraudulent sick leave certificates fined 2,000 ETB to 10,000 ETB."
+        ],
+        detailsAm: [
+          "<strong>4 የመደብ ምደባዎች [አንቀጽ 147(3)]</strong>፦ (ሀ) በጣም ጥሩ አፈጻጸም፣ (ለ) አነስተኛ ክፍተት ያለው፣ (ሐ) ከፍተኛ ክፍተት ያለው፣ (መ) ሕገ-ወጥ/ለኦዲት አስቸጋሪ።",
+          "<strong>የማስተካከያ ጊዜ ገደብ [አንቀጽ 149(1)]</strong>፦ መሥሪያ ቤቶች የማስተካከያ ፕሮግራም በ15 ቀናት ውስጥ ማቅረብና በ3 ወራት ውስጥ ሙሉ በሙሉ ፈጽመው ማጠናቀቅ አለባቸው።",
+          "<strong>የኦዲት ጥሰት መቀጮ [አንቀጽ 149(1)(ለ)]</strong>፦ በኦዲት ግኝት ላይ የተሰጠውን ማስተካከያ ያልፈጸመ ተቋም ኃላፊ ከ2,000 ብር እስከ 10,000 ብር በግል ደመወዙ የተቀጣል።",
+          "<strong>የሐሰት ሕክምና ማስረጃ መቀጮ [አንቀጽ 149(2)]</strong>፦ የሐሰት ሕክምና ማስረጃ የሰጠ የሕክምና ባለሙያ ከ2,000 ብር እስከ 10,000 ብር የተቀጣል።"
         ]
       }
     ];
 
-    // State Management
+    // State Management Variables
+    let currentLang = 'en'; // 'en' or 'am'
+    let selectedCategory = 'ALL';
+    let searchQuery = '';
     let currentCards = [...cardsData];
     let currentIndex = 0;
     let isGridView = false;
@@ -860,8 +1081,8 @@
     const mainCard3D = document.getElementById('mainCard3D');
     const cardSectionBadge = document.getElementById('cardSectionBadge');
     const cardArticlesBadge = document.getElementById('cardArticlesBadge');
-    const cardTitleAmharic = document.getElementById('cardTitleAmharic');
-    const cardTitleEnglish = document.getElementById('cardTitleEnglish');
+    const cardTitlePrimary = document.getElementById('cardTitlePrimary');
+    const cardTitleSecondary = document.getElementById('cardTitleSecondary');
     const cardFrontPreview = document.getElementById('cardFrontPreview');
     const cardDetailList = document.getElementById('cardDetailList');
     const deckCounter = document.getElementById('deckCounter');
@@ -881,54 +1102,137 @@
 
     const searchInput = document.getElementById('searchInput');
     const categoryChips = document.getElementById('categoryChips');
+    const langToggleBtn = document.getElementById('langToggleBtn');
     const toggleThemeBtn = document.getElementById('toggleThemeBtn');
     const viewToggleBtn = document.getElementById('viewToggleBtn');
     const deckViewArea = document.getElementById('deckViewArea');
     const gridViewArea = document.getElementById('gridViewArea');
 
-    // Initialize App
+    // Initialize Application
     function init() {
-      updateMetrics();
-      renderCard(currentIndex);
+      renderCategoryChips();
+      updateLanguageUI();
+      applyFilters();
       setupEventListeners();
     }
 
-    // Render 3D Card
+    // Language Switcher Functionality
+    function updateLanguageUI() {
+      const dict = uiTranslations[currentLang];
+      
+      document.getElementById('uiAppTitle').innerHTML = dict.appTitle;
+      document.getElementById('uiAppSubtitle').textContent = dict.appSubtitle;
+      searchInput.placeholder = dict.searchPlaceholder;
+      document.getElementById('lblTotalCards').textContent = dict.totalCards;
+      document.getElementById('lblMastered').textContent = dict.mastered;
+      document.getElementById('lblNeedsReview').textContent = dict.needsReview;
+      document.getElementById('lblMasteryLevel').textContent = dict.masteryLevel;
+      document.getElementById('uiViewLabel').textContent = isGridView ? dict.deckView : dict.gridView;
+      document.getElementById('uiThemeLabel').textContent = dict.theme;
+      document.getElementById('lblReadBtn').textContent = dict.read;
+      document.getElementById('lblFlipPrompt').textContent = dict.flipPrompt;
+      document.getElementById('lblBackBtn').textContent = dict.back;
+      document.getElementById('lblReviewBtn').textContent = dict.review;
+      document.getElementById('lblMasteredBtn').textContent = dict.masteredBtn;
+      document.getElementById('lblPrevBtn').textContent = dict.prev;
+      document.getElementById('lblNextBtn').textContent = dict.next;
+      document.getElementById('cardBackBadge').textContent = dict.keyProvisions;
+      document.getElementById('uiFooterEnacted').textContent = dict.footerEnacted;
+
+      renderCategoryChips();
+      renderCard(currentIndex);
+      if (isGridView) renderGrid();
+    }
+
+    // Render Category Filter Chips
+    function renderCategoryChips() {
+      const dict = uiTranslations[currentLang].categories;
+      const categories = ['ALL', 'S1', 'S2', 'S3', 'S5', 'S6', 'S8', 'S9', 'S10', 'S13', 'S14', 'S15', 'S16'];
+      
+      categoryChips.innerHTML = categories.map(cat => `
+        <div class="chip ${selectedCategory === cat ? 'active' : ''}" data-cat="${cat}">
+          ${dict[cat] || cat}
+        </div>
+      `).join('');
+    }
+
+    // Real-Time Search & Filtering Logic (FIXED & FULLY INTEGRATED)
+    function applyFilters() {
+      const q = searchQuery.toLowerCase().trim();
+
+      currentCards = cardsData.filter(card => {
+        // Category Filter
+        const matchCategory = (selectedCategory === 'ALL') || (card.cat === selectedCategory);
+        
+        // Search Filter Across Amharic and English Details
+        const detailsTextEn = card.detailsEn.join(' ').toLowerCase();
+        const detailsTextAm = card.detailsAm.join(' ').toLowerCase();
+
+        const matchSearch = !q || 
+          card.titleEn.toLowerCase().includes(q) ||
+          card.titleAm.toLowerCase().includes(q) ||
+          card.sectionEn.toLowerCase().includes(q) ||
+          card.sectionAm.toLowerCase().includes(q) ||
+          card.articles.toLowerCase().includes(q) ||
+          card.previewEn.toLowerCase().includes(q) ||
+          card.previewAm.toLowerCase().includes(q) ||
+          detailsTextEn.includes(q) ||
+          detailsTextAm.includes(q);
+
+        return matchCategory && matchSearch;
+      });
+
+      currentIndex = 0;
+      updateMetrics();
+      
+      if (isGridView) {
+        renderGrid();
+      } else {
+        renderCard(currentIndex);
+      }
+    }
+
+    // Render 3D Card Content
     function renderCard(index) {
+      const dict = uiTranslations[currentLang];
+
       if (currentCards.length === 0) {
-        cardTitleAmharic.textContent = "ምንም መረጃ አልተገኘም";
-        cardTitleEnglish.textContent = "No Flashcards Found";
-        cardFrontPreview.textContent = "Try broadening your search query or selecting 'All Sections'.";
-        cardDetailList.innerHTML = "<li><i class='fa-solid fa-circle-exclamation'></i> No matching legal provisions.</li>";
-        deckCounter.textContent = "0 of 0";
+        cardSectionBadge.textContent = "0";
+        cardArticlesBadge.textContent = "";
+        cardTitlePrimary.textContent = dict.noCardsFound;
+        cardTitleSecondary.textContent = "";
+        cardFrontPreview.textContent = dict.noCardsSub;
+        cardDetailList.innerHTML = `<li><i class="fa-solid fa-circle-exclamation"></i> <span>${dict.noCardsSub}</span></li>`;
+        deckCounter.textContent = `0 ${dict.of} 0`;
         return;
       }
 
       const card = currentCards[index];
-      cardSectionBadge.textContent = card.section;
-      cardArticlesBadge.textContent = card.articles;
-      cardTitleAmharic.textContent = card.titleAm;
-      cardTitleEnglish.textContent = card.titleEn;
-      cardFrontPreview.textContent = card.preview;
+      const isAm = currentLang === 'am';
 
-      // Populate Back Details
-      cardDetailList.innerHTML = card.details.map(item => `
+      cardSectionBadge.textContent = isAm ? card.sectionAm : card.sectionEn;
+      cardArticlesBadge.textContent = card.articles;
+      cardTitlePrimary.textContent = isAm ? card.titleAm : card.titleEn;
+      cardTitleSecondary.textContent = isAm ? card.titleEn : card.titleAm;
+      cardFrontPreview.textContent = isAm ? card.previewAm : card.previewEn;
+
+      const details = isAm ? card.detailsAm : card.detailsEn;
+      cardDetailList.innerHTML = details.map(item => `
         <li>
           <i class="fa-solid fa-square-check"></i>
           <span>${item}</span>
         </li>
       `).join('');
 
-      deckCounter.textContent = `Card ${index + 1} of ${currentCards.length}`;
+      deckCounter.textContent = `${dict.cardCounter} ${index + 1} ${dict.of} ${currentCards.length}`;
 
-      // Reset Flip State
       if (isFlipped) {
         mainCard3D.classList.remove('flipped');
         isFlipped = false;
       }
     }
 
-    // Update Metrics
+    // Update Top Metric Dashboard Numbers
     function updateMetrics() {
       const total = cardsData.length;
       let mastered = 0;
@@ -948,9 +1252,9 @@
 
     // Event Listeners
     function setupEventListeners() {
-      // Flip Card
+      // 3D Card Flip
       mainCard3D.addEventListener('click', (e) => {
-        if (e.target.closest('button')) return; // Ignore button clicks
+        if (e.target.closest('button')) return;
         isFlipped = !isFlipped;
         mainCard3D.classList.toggle('flipped', isFlipped);
       });
@@ -960,7 +1264,13 @@
         mainCard3D.classList.remove('flipped');
       });
 
-      // Navigation
+      // Language Switcher Toggle
+      langToggleBtn.addEventListener('click', () => {
+        currentLang = currentLang === 'en' ? 'am' : 'en';
+        updateLanguageUI();
+      });
+
+      // Next / Prev Deck Controls
       prevCardBtn.addEventListener('click', () => {
         if (currentCards.length === 0) return;
         currentIndex = (currentIndex - 1 + currentCards.length) % currentCards.length;
@@ -980,20 +1290,25 @@
         renderCard(currentIndex);
       });
 
-      // Speech Synthesis
+      // Text-To-Speech Synthesis Reader
       speakBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         if ('speechSynthesis' in window) {
           const card = currentCards[currentIndex];
-          const text = `${card.titleEn}. ${card.preview}`;
+          const isAm = currentLang === 'am';
+          const text = isAm 
+            ? `${card.titleAm}. ${card.previewAm}` 
+            : `${card.titleEn}. ${card.previewEn}`;
+          
           const utterance = new SpeechSynthesisUtterance(text);
-          utterance.rate = 0.95;
+          utterance.lang = isAm ? 'am-ET' : 'en-US';
+          utterance.rate = 0.9;
           window.speechSynthesis.cancel();
           window.speechSynthesis.speak(utterance);
         }
       });
 
-      // Mastery Controls
+      // Mastery Level Toggles
       markMasteredBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         const card = currentCards[currentIndex];
@@ -1012,55 +1327,43 @@
         nextCardBtn.click();
       });
 
-      // Search Filter
+      // Real-Time Search Input Event Listener
       searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        currentCards = cardsData.filter(c => 
-          c.titleAm.toLowerCase().includes(query) ||
-          c.titleEn.toLowerCase().includes(query) ||
-          c.section.toLowerCase().includes(query) ||
-          c.articles.toLowerCase().includes(query) ||
-          c.details.some(d => d.toLowerCase().includes(query))
-        );
-        currentIndex = 0;
-        renderCard(currentIndex);
-        if (isGridView) renderGrid();
+        searchQuery = e.target.value;
+        applyFilters();
       });
 
-      // Category Chips
+      // Category Chip Filter Event
       categoryChips.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('chip')) return;
+        const chip = e.target.closest('.chip');
+        if (!chip) return;
+        
+        selectedCategory = chip.dataset.cat;
         document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-        e.target.classList.add('active');
+        chip.classList.add('active');
 
-        const cat = e.target.dataset.cat;
-        if (cat === 'ALL') {
-          currentCards = [...cardsData];
-        } else {
-          currentCards = cardsData.filter(c => c.cat === cat);
-        }
-        currentIndex = 0;
-        renderCard(currentIndex);
-        if (isGridView) renderGrid();
+        applyFilters();
       });
 
-      // Theme Toggle
+      // Dark / Light Theme
       toggleThemeBtn.addEventListener('click', () => {
         document.body.classList.toggle('light-theme');
       });
 
-      // View Toggle (Deck vs Grid)
+      // View Switcher (3D Deck vs. Grid View)
       viewToggleBtn.addEventListener('click', () => {
         isGridView = !isGridView;
+        const dict = uiTranslations[currentLang];
+        
         if (isGridView) {
           deckViewArea.style.display = 'none';
           gridViewArea.style.display = 'grid';
-          viewToggleBtn.innerHTML = '<i class="fa-solid fa-layer-group"></i> 3D Deck View';
+          document.getElementById('uiViewLabel').textContent = dict.deckView;
           renderGrid();
         } else {
           deckViewArea.style.display = 'flex';
           gridViewArea.style.display = 'none';
-          viewToggleBtn.innerHTML = '<i class="fa-solid fa-table-cells"></i> Grid View';
+          document.getElementById('uiViewLabel').textContent = dict.gridView;
           renderCard(currentIndex);
         }
       });
@@ -1081,19 +1384,27 @@
 
     // Render Grid View
     function renderGrid() {
+      const dict = uiTranslations[currentLang];
+      const isAm = currentLang === 'am';
+
+      if (currentCards.length === 0) {
+        gridViewArea.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted);">${dict.noCardsFound}</div>`;
+        return;
+      }
+
       gridViewArea.innerHTML = currentCards.map((card, idx) => `
         <div class="grid-card" onclick="selectCardFromGrid(${idx})">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-              <span class="badge badge-section">${card.section.split(':')[0]}</span>
+              <span class="badge badge-section">${isAm ? card.sectionAm.split('፡')[0] : card.sectionEn.split(':')[0]}</span>
               <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">${card.articles}</span>
             </div>
-            <h4 style="font-size: 1.1rem; color: var(--accent-blue); font-weight: 700; margin-bottom: 0.4rem;">${card.titleAm}</h4>
-            <h5 style="font-size: 0.95rem; color: var(--text-main); font-weight: 600; margin-bottom: 0.75rem;">${card.titleEn}</h5>
-            <p style="font-size: 0.825rem; color: var(--text-muted); line-height: 1.5;">${card.preview}</p>
+            <h4 style="font-size: 1.1rem; color: var(--accent-blue); font-weight: 700; margin-bottom: 0.4rem;">${isAm ? card.titleAm : card.titleEn}</h4>
+            <h5 style="font-size: 0.9rem; color: var(--text-main); font-weight: 600; margin-bottom: 0.75rem;">${isAm ? card.titleEn : card.titleAm}</h5>
+            <p style="font-size: 0.825rem; color: var(--text-muted); line-height: 1.5;">${isAm ? card.previewAm : card.previewEn}</p>
           </div>
           <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 0.75rem;">
-            <span style="font-size: 0.75rem; color: var(--accent-indigo); font-weight: 700;"><i class="fa-solid fa-eye"></i> Study Card</span>
+            <span style="font-size: 0.75rem; color: var(--accent-indigo); font-weight: 700;"><i class="fa-solid fa-eye"></i> ${dict.studyCard}</span>
             ${userProgress[card.id] === 'mastered' ? '<i class="fa-solid fa-circle-check" style="color: var(--accent-emerald);"></i>' : ''}
           </div>
         </div>
@@ -1105,11 +1416,11 @@
       isGridView = false;
       deckViewArea.style.display = 'flex';
       gridViewArea.style.display = 'none';
-      viewToggleBtn.innerHTML = '<i class="fa-solid fa-table-cells"></i> Grid View';
+      document.getElementById('uiViewLabel').textContent = uiTranslations[currentLang].gridView;
       renderCard(currentIndex);
     };
 
-    // Initialize on load
+    // DOM Ready Initialization
     document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
