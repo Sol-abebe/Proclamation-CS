@@ -1,921 +1,1116 @@
-
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Section 8: Working Hours & Leaves | የሥራ ሰዓት እና ፈቃድ</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        ethiopia: {
-                            green: '#009A44',
-                            yellow: '#FED100',
-                            red: '#E4002B',
-                            blue: '#002B7F'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'Noto Sans Ethiopic', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .highlight {
-            background-color: rgba(254, 209, 0, 0.4);
-            padding: 2px 4px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-        .dark .highlight {
-            background-color: rgba(254, 209, 0, 0.25);
-            color: #FED100;
-        }
-        .scrollbar-none::-webkit-scrollbar { display: none; }
-        .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
-        @media print {
-            .no-print { display: none !important; }
-            .print-only { display: block !important; }
-            body { background: white !important; color: black !important; }
-            .article-card { break-inside: avoid; page-break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proclamation No. 1353/2025 - Interactive 3D Flashcards</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-card: #111827;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-indigo: #6366f1;
+      --accent-emerald: #10b981;
+      --accent-rose: #f43f5e;
+      --accent-amber: #f59e0b;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .light-theme {
+      --bg-primary: #f1f5f9;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --accent-blue: #0284c7;
+      --accent-indigo: #4f46e5;
+      --accent-emerald: #059669;
+      --accent-rose: #e11d48;
+      --accent-amber: #d97706;
+      --border-color: rgba(0, 0, 0, 0.1);
+      --card-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', sans-serif;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.25rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .header-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .logo-title h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-indigo));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-title p {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .controls-top {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      position: relative;
+      width: 280px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.6rem 1rem 0.6rem 2.5rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-main);
+      font-size: 0.875rem;
+      outline: none;
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    .btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 0.75rem;
+      border: 1px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn:hover {
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-indigo));
+      color: #ffffff !important;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .main-container {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Dashboard Metrics */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .metric-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .metric-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .metric-info h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .metric-info p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Filter Categories */
+    .filter-scroll {
+      display: flex;
+      gap: 0.6rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      scrollbar-width: thin;
+    }
+
+    .chip {
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.825rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .chip.active {
+      background: var(--accent-indigo);
+      color: #fff;
+      border-color: var(--accent-indigo);
+    }
+
+    /* 3D Visualizer Section */
+    .visualizer-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .perspective-container {
+      perspective: 1200px;
+      width: 100%;
+      max-width: 720px;
+      height: 480px;
+      position: relative;
+    }
+
+    .card-3d {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+    }
+
+    .card-3d.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 1.5rem;
+      padding: 2.25rem;
+      background: var(--bg-secondary);
+      border: 2px solid var(--border-color);
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-y: auto;
+    }
+
+    .card-front {
+      background: linear-gradient(145deg, var(--bg-secondary), var(--bg-card));
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(145deg, var(--bg-card), var(--bg-secondary));
+      border-color: var(--accent-indigo);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+    }
+
+    .badge {
+      padding: 0.3rem 0.8rem;
+      border-radius: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-section {
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--accent-indigo);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .card-body {
+      margin: 1.5rem 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card-title-amharic {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .card-title-english {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+    }
+
+    .detail-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .detail-list li {
+      font-size: 0.925rem;
+      line-height: 1.5;
+      color: var(--text-main);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .detail-list li i {
+      color: var(--accent-emerald);
+      margin-top: 0.25rem;
+      font-size: 0.85rem;
+    }
+
+    .card-footer-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1rem;
+    }
+
+    .deck-nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .deck-counter {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    /* Grid Display Mode */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+    }
+
+    .grid-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .footer-content p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .footer-credit {
+      color: var(--accent-blue);
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .perspective-container {
+        height: 520px;
+      }
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .search-box {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
-<body id="top" class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-200 min-h-screen flex flex-col">
+<body>
 
-    <!-- Header Section -->
-    <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 shadow-sm no-print">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row items-center justify-between py-3 gap-3 sm:gap-0">
-                <!-- Brand Title -->
-                <div class="flex items-center space-x-3 w-full sm:w-auto">
-                    <div class="flex h-10 w-2.5 rounded overflow-hidden flex-col shadow-sm flex-shrink-0">
-                        <div class="h-1/3 bg-ethiopia-green"></div>
-                        <div class="h-1/3 bg-ethiopia-yellow"></div>
-                        <div class="h-1/3 bg-ethiopia-red"></div>
-                    </div>
-                    <div class="min-w-0 flex-1">
-                        <h1 class="text-base sm:text-lg font-bold tracking-tight text-slate-900 dark:text-white leading-tight truncate">
-                            Civil Servants Proclamation
-                        </h1>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium truncate">
-                            Section Eight: Working Hours & Leaves | የሥራ ሰዓት እና ፈቃድ
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Controls: Language Switch, View Mode, Dark Mode -->
-                <div class="flex items-center justify-between sm:justify-end w-full sm:w-auto space-x-2 sm:space-x-3">
-                    <div class="inline-flex rounded-lg p-1 bg-slate-100 dark:bg-slate-700/60 border border-slate-200 dark:border-slate-600 text-xs font-medium">
-                        <button id="lang-en" onclick="setLanguage('en')" class="px-2.5 py-1.5 rounded-md transition-all">English</button>
-                        <button id="lang-am" onclick="setLanguage('am')" class="px-2.5 py-1.5 rounded-md transition-all">አማርኛ</button>
-                        <button id="lang-dual" onclick="setLanguage('dual')" class="px-2.5 py-1.5 rounded-md transition-all">Dual / ጎን ለጎን</button>
-                    </div>
-
-                    <button onclick="toggleDarkMode()" class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-700 transition" title="Toggle Theme">
-                        <i id="theme-icon" class="fas fa-moon text-base"></i>
-                    </button>
-                </div>
-            </div>
+  <header>
+    <div class="header-container">
+      <div class="logo-title">
+        <h1><i class="fa-solid fa-scale-balanced"></i> Federal Civil Servants Proclamation No. 1353/2025</h1>
+        <p>የፌደራል መንግሥት ሠራተኞች አዋጅ ቁጥር ፩ሺ፫፻፶፫/፪ሺ፲፯ ዓ.ም Complete Visualizer</p>
+      </div>
+      <div class="controls-top">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Search keywords, articles, leaves...">
         </div>
-    </header>
+        <button class="btn" id="toggleThemeBtn"><i class="fa-solid fa-moon"></i> Theme</button>
+        <button class="btn btn-primary" id="viewToggleBtn"><i class="fa-solid fa-table-cells"></i> Grid View</button>
+      </div>
+    </div>
+  </header>
 
-    <!-- Banner Hero Section -->
-    <section class="bg-gradient-to-r from-emerald-800 via-teal-800 to-slate-900 text-white py-8 sm:py-10 px-4 sm:px-6 lg:px-8 shadow-inner no-print">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-                <div class="max-w-2xl">
-                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-3">
-                        Federal Negarit Gazette • Ethiopian Civil Servants Proclamation: Articles 56 - 70
-                    </span>
-                    <h2 class="text-xl sm:text-3xl font-extrabold tracking-tight leading-snug">
-                        <span data-lang-en>Section Eight: Working Hours and Leaves</span>
-                        <span data-lang-am class="font-semibold hidden">ክፍል ስምንት: የሥራ ሰዓት እና ፈቃድ</span>
-                    </h2>
-                    <p class="mt-2 text-xs sm:text-sm text-emerald-100/80 leading-relaxed">
-                        Interactive legal portal for Ethiopia's Civil Service legislation. Search, filter, and compute official entitlements for leave days, maternity schedules, and sick leave compensation.
-                    </p>
-                </div>
+  <main class="main-container">
 
-                <!-- Action Button Cards -->
-                <div class="flex flex-wrap gap-2 sm:gap-3">
-                    <button onclick="openCalculator('annual')" class="flex-1 sm:flex-none items-center space-x-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium backdrop-blur-sm transition flex justify-center">
-                        <i class="fas fa-calculator text-emerald-400"></i>
-                        <span>Annual Leave Calc</span>
-                    </button>
-                    <button onclick="openCalculator('maternity')" class="flex-1 sm:flex-none items-center space-x-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium backdrop-blur-sm transition flex justify-center">
-                        <i class="fas fa-baby text-rose-300"></i>
-                        <span>Maternity Estimator</span>
-                    </button>
-                    <button onclick="openCalculator('sick')" class="flex-1 sm:flex-none items-center space-x-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium backdrop-blur-sm transition flex justify-center">
-                        <i class="fas fa-notes-medical text-amber-300"></i>
-                        <span>Sick Pay Breakdown</span>
-                    </button>
-                </div>
-            </div>
+    <!-- Metrics Dashboard -->
+    <section class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-icon" style="background: rgba(56, 189, 248, 0.15); color: var(--accent-blue);">
+          <i class="fa-solid fa-book-bookmark"></i>
         </div>
+        <div class="metric-info">
+          <h3 id="totalCardsCount">0</h3>
+          <p>Total Legal Flashcards</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald);">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div class="metric-info">
+          <h3 id="masteredCount">0</h3>
+          <p>Mastered Clauses</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon" style="background: rgba(244, 63, 94, 0.15); color: var(--accent-rose);">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+        </div>
+        <div class="metric-info">
+          <h3 id="reviewCount">0</h3>
+          <p>Needs Review</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--accent-amber);">
+          <i class="fa-solid fa-chart-pie"></i>
+        </div>
+        <div class="metric-info">
+          <h3 id="progressPercent">0%</h3>
+          <p>Mastery Level</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Main Content Body -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-grow w-full">
-        <div class="no-print space-y-4 mb-8">
-            <!-- Search Box -->
-            <div class="relative max-w-3xl mx-auto">
-                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                    <i class="fas fa-search text-sm"></i>
-                </div>
-                <input type="text" id="search-input" onkeyup="handleSearch()" placeholder="Search articles in English or Amharic (e.g. 'maternity', 'ወሊድ', 'overtime', '39 hours')..." 
-                       class="w-full pl-10 pr-10 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs sm:text-sm shadow-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 dark:text-white transition">
-                <button id="clear-search" onclick="clearSearch()" class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
-                    <i class="fas fa-times-circle text-base"></i>
-                </button>
-            </div>
+    <!-- Category Filter Chips -->
+    <div class="filter-scroll" id="categoryChips">
+      <div class="chip active" data-cat="ALL">All Sections (1–16)</div>
+      <div class="chip" data-cat="S1">Sec 1: General & Principles</div>
+      <div class="chip" data-cat="S2">Sec 2: HR Planning & Grading</div>
+      <div class="chip" data-cat="S3">Sec 3: Salary & Benefits</div>
+      <div class="chip" data-cat="S5">Sec 5: Recruitment & Probation</div>
+      <div class="chip" data-cat="S6">Sec 6: Digital Service & Charters</div>
+      <div class="chip" data-cat="S8">Sec 8: Working Hours & Leaves</div>
+      <div class="chip" data-cat="S9">Sec 9: Diversity & Inclusivity</div>
+      <div class="chip" data-cat="S10">Sec 10: OSH & Injury Benefits</div>
+      <div class="chip" data-cat="S13">Sec 13: Discipline & Grievances</div>
+      <div class="chip" data-cat="S14">Sec 14: Administrative Court</div>
+      <div class="chip" data-cat="S15">Sec 15: Termination & Pension</div>
+      <div class="chip" data-cat="S16">Sec 16: Audit & Penalties</div>
+    </div>
 
-            <!-- Filter Tabs -->
-            <div class="flex items-center justify-start md:justify-center overflow-x-auto py-2 px-1 gap-2 scrollbar-none">
-                <button onclick="filterCategory('all')" id="cat-all" class="cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-emerald-600 text-white shadow-sm">
-                    <i class="fas fa-th-list mr-1.5"></i> All Articles (56-70)
-                </button>
-                <button onclick="filterCategory('hours')" id="cat-hours" class="cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100">
-                    <i class="fas fa-clock mr-1.5 text-blue-500"></i> Hours & Overtime
-                </button>
-                <button onclick="filterCategory('annual')" id="cat-annual" class="cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100">
-                    <i class="fas fa-calendar-alt mr-1.5 text-emerald-500"></i> Annual Leave
-                </button>
-                <button onclick="filterCategory('maternity')" id="cat-maternity" class="cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100">
-                    <i class="fas fa-baby-carriage mr-1.5 text-pink-500"></i> Maternity & Paternity
-                </button>
-                <button onclick="filterCategory('sick')" id="cat-sick" class="cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100">
-                    <i class="fas fa-heartbeat mr-1.5 text-red-500"></i> Sick Leave
-                </button>
-                <button onclick="filterCategory('special')" id="cat-special" class="cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100">
-                    <i class="fas fa-user-clock mr-1.5 text-amber-500"></i> Personal & Special
-                </button>
+    <!-- 3D Deck View -->
+    <section class="visualizer-area" id="deckViewArea">
+      <div class="perspective-container">
+        <div class="card-3d" id="mainCard3D">
+          <!-- Front Side -->
+          <div class="card-face card-front">
+            <div class="card-header">
+              <span class="badge badge-section" id="cardSectionBadge">Section</span>
+              <span id="cardArticlesBadge" style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Art. 0</span>
             </div>
+            <div class="card-body">
+              <div class="card-title-amharic" id="cardTitleAmharic">---</div>
+              <div class="card-title-english" id="cardTitleEnglish">---</div>
+              <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6;" id="cardFrontPreview">
+                Click card or press Spacebar to flip and reveal full legal details, sub-articles, exceptions, and key enforcement rules.
+              </p>
+            </div>
+            <div class="card-footer-controls">
+              <button class="btn" id="speakBtn"><i class="fa-solid fa-volume-high"></i> Read</button>
+              <span style="font-size: 0.8rem; color: var(--accent-indigo); font-weight: 700;"><i class="fa-solid fa-rotate"></i> Flip for Details</span>
+            </div>
+          </div>
+          <!-- Back Side -->
+          <div class="card-face card-back">
+            <div class="card-header">
+              <span class="badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald);" id="cardBackBadge">Key Provisions</span>
+              <button class="btn" id="flipBackBtn" style="padding: 0.2rem 0.6rem; font-size: 0.75rem;"><i class="fa-solid fa-arrow-left"></i> Back</button>
+            </div>
+            <div class="card-body">
+              <ul class="detail-list" id="cardDetailList">
+                <!-- Injected via JavaScript -->
+              </ul>
+            </div>
+            <div class="card-footer-controls">
+              <button class="btn" id="markReviewBtn" style="color: var(--accent-rose); border-color: rgba(244, 63, 94, 0.3);"><i class="fa-solid fa-xmark"></i> Review</button>
+              <button class="btn btn-primary" id="markMasteredBtn"><i class="fa-solid fa-check"></i> Mastered</button>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <!-- Calculators Modal -->
-        <div id="calculator-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden no-print">
-            <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-700 relative">
-                <button onclick="closeCalculator()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg">
-                    <i class="fas fa-times"></i>
-                </button>
+      <!-- Navigation & Controls -->
+      <div class="deck-nav-controls">
+        <button class="btn" id="prevCardBtn"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+        <span class="deck-counter" id="deckCounter">Card 1 of 18</span>
+        <button class="btn" id="nextCardBtn">Next <i class="fa-solid fa-chevron-right"></i></button>
+        <button class="btn" id="shuffleBtn"><i class="fa-solid fa-shuffle"></i></button>
+      </div>
+    </section>
 
-                <!-- Annual Leave Calculator View -->
-                <div id="calc-view-annual" class="calc-view hidden space-y-4">
-                    <div class="flex items-center space-x-3 text-emerald-600 dark:text-emerald-400">
-                        <i class="fas fa-calculator text-2xl"></i>
-                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Annual Leave Calculator</h3>
-                    </div>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Based on Article 61: 20 days base for year 1, plus 1 additional working day per year, capped at 30 days.</p>
-                    
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1">Years of Service (የአገልግሎት ዘመን)</label>
-                        <input type="number" id="calc-years" min="1" max="50" value="1" oninput="calculateAnnualLeave()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none">
-                    </div>
+    <!-- Grid View -->
+    <section id="gridViewArea" class="cards-grid" style="display: none;">
+      <!-- Grid items dynamically rendered -->
+    </section>
 
-                    <div id="annual-result" class="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/50 space-y-2">
-                        <div class="text-xs text-emerald-700 dark:text-emerald-300 font-semibold uppercase">Calculation Result</div>
-                        <div class="text-2xl font-black text-emerald-600 dark:text-emerald-400"><span id="annual-days">20</span> Working Days</div>
-                        <p id="annual-explain" class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed"></p>
-                    </div>
-                </div>
+  </main>
 
-                <!-- Maternity Estimator View (With Ethiopian Calendar Toggle) -->
-                <div id="calc-view-maternity" class="calc-view hidden space-y-4">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-3 text-pink-600 dark:text-pink-400">
-                            <i class="fas fa-baby text-2xl"></i>
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Maternity Leave Estimator</h3>
-                        </div>
-                    </div>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Based on Article 65: 30 consecutive days prenatal + 90 consecutive days postnatal (Total 120 days paid).</p>
-                    
-                    <!-- Calendar Selector Toggle -->
-                    <div class="flex items-center justify-between bg-slate-100 dark:bg-slate-700/60 p-1.5 rounded-xl border border-slate-200 dark:border-slate-600">
-                        <span class="text-xs font-medium text-slate-600 dark:text-slate-300 px-2">Calendar System:</span>
-                        <div class="inline-flex rounded-lg text-xs font-semibold">
-                            <button id="cal-mode-gc" onclick="setCalendarMode('GC')" class="px-3 py-1.5 rounded-md transition-all bg-pink-600 text-white shadow-sm">Gregorian (G.C.)</button>
-                            <button id="cal-mode-ec" onclick="setCalendarMode('EC')" class="px-3 py-1.5 rounded-md transition-all text-slate-600 dark:text-slate-300">Ethiopian (E.C.)</button>
-                        </div>
-                    </div>
+  <footer>
+    <div class="footer-content">
+      <p>Proclamation No. 1353/2025 Comprehensive Visualizer • Enacted January 9, 2025 (ጥር ፪ ቀን ፪ሺ፲፯ ዓ.ም)</p>
+      <p style="margin-top: 0.4rem;">The App Developed by <span class="footer-credit">Dr. Solomon Abebe (MD, MPH/RH)</span> | Federal Civil Servants Proclamation No. 1353/2025</p>
+    </div>
+  </footer>
 
-                    <!-- Gregorian Date Input -->
-                    <div id="maternity-gc-container">
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1">Expected Due Date (G.C.)</label>
-                        <input type="date" id="calc-maternity-date" onchange="calculateMaternityLeave()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-pink-500 outline-none">
-                    </div>
+  <script>
+    // Complete Legal Flashcard Dataset for Federal Civil Servants Proclamation No. 1353/2025
+    const cardsData = [
+      {
+        id: "card-1",
+        cat: "S1",
+        section: "Section One: General Provisions",
+        articles: "Articles 1 – 5",
+        titleAm: "ጠቅላላ ድንጋጌዎች፣ ትርጓሜና መሠረታዊ እሴቶች",
+        titleEn: "General Provisions, Scope, Definitions & Values",
+        preview: "Defines civil servants, temporary employees, core values, and exclusions from civil service coverage.",
+        details: [
+          "<strong>Repeals Proclamation No. 1064/2017</strong>; applies to all federal civil servants and offices [Art 1, 3].",
+          "<strong>Exclusions [Art 2(1)]</strong>: Ministers, State Ministers, Commissioners, Judges, Prosecutors, Military, Police, & Intelligence Officers.",
+          "<strong>Temporary Employees [Art 2(2)]</strong>: Excludes daily laborers, apprentices, independent contractors, and specialized experts.",
+          "<strong>5 Fundamental Values [Art 4(2)]</strong>: Solution-maker/exemplary, Transparency & Accountability, Professionalism & Honesty, Efficiency & Effectiveness, and Diversity & Inclusiveness."
+        ]
+      },
+      {
+        id: "card-2",
+        cat: "S2",
+        section: "Section Two: Organizational Structure & HR",
+        articles: "Articles 6 – 8",
+        titleAm: "መዋቅራዊ አደረጃጀት፣ የሰው ኃይል ዕቅድ እና የሥራ ምዘና",
+        titleEn: "Organizational Structure, HR Planning & Job Evaluation",
+        preview: "Rules on organizational design, occupational standards, database registration, and HR forecasting.",
+        details: [
+          "<strong>Structure Approval [Art 6(1-2)]</strong>: Institutions study structure based on occupational standards and submit to Civil Service Commission.",
+          "<strong>National Criteria [Art 6(4)]</strong>: Structure calculated using population size, land coverage, budget, revenue collection, and scope.",
+          "<strong>HR Planning Purpose [Art 7(1-3)]</strong>: Long, medium, and short-term forecasting aligned with national development goals; monitored continuously.",
+          "<strong>Job Evaluation [Art 8]</strong>: Sustainable point-based evaluation system implemented standardizing base and ceiling pay grades."
+        ]
+      },
+      {
+        id: "card-3",
+        cat: "S3",
+        section: "Section Three: Salary & Allowances",
+        articles: "Articles 9 – 12",
+        titleAm: "የደመወዝ ስኬል፣ የደመወዝ አከፋፈል እና የአበል ዓይነቶች",
+        titleEn: "Salary Scale, Equal Pay Principle & Allowance Rules",
+        preview: "Salary scale revision every 4 years, daily/climate allowance revisions every 2 years, and salary deduction limits.",
+        details: [
+          "<strong>4-Year Salary Scale Study [Art 9(4)]</strong>: Base pay and ceiling salary studied every 4 years based on price inflation and financial capacity.",
+          "<strong>Equal Pay Principle [Art 10]</strong>: All positions of equal job weight/value have equal base starting salary.",
+          "<strong>Deduction Cap [Art 11(3)]</strong>: Salary deductions via court order or law cannot exceed 1/3 (one-third) of monthly salary.",
+          "<strong>2-Year Allowance Revision [Art 12(4-5)]</strong>: Daily, climate, overtime, and transport allowances studied every 4 years and adjusted every 2 years based on official inflation."
+        ]
+      },
+      {
+        id: "card-4",
+        cat: "S3",
+        section: "Section Three: Increments & Merit Board",
+        articles: "Articles 13 – 19",
+        titleAm: "የደመወዝ ጭማሪ፣ ማትጊያ እና የሜሪት እና የደመወዝ ቦርድ",
+        titleEn: "Salary Increments, Incentives & Merit and Wage Board",
+        preview: "Bi-annual salary step increments, performance incentives, and Prime Minister-led Merit Board establishment.",
+        details: [
+          "<strong>Bi-annual Salary Increments [Art 14(2)]</strong>: Granted every 2 years based on an average performance evaluation score of average or above.",
+          "<strong>Merit and Wage Board [Art 17]</strong>: Chaired by Prime Minister; includes Ministers of Finance, Planning, Director of Statistics, and Civil Service Commissioner.",
+          "<strong>Board Powers [Art 18]</strong>: Oversees national salary scale, confirms civil service reform, approves benefit packages, and awards Public Servant Day.",
+          "<strong>Performance Incentives [Art 16]</strong>: Outstanding employees receive monetary/in-kind awards, appreciation letters, or fast-track promotions."
+        ]
+      },
+      {
+        id: "card-5",
+        cat: "S5",
+        section: "Section Five: Competency Institute & Training",
+        articles: "Articles 20 – 23",
+        titleAm: "የኢትዮጵያ ብቃትና ሥራ አመራር ኢንስቲትዩት እና ሥልጠና",
+        titleEn: "Competency Institute Establishment & Staff Training",
+        preview: "Establishes Ethiopian Competency & Management Institute (ECMI) for competency assessment and mandatory certification.",
+        details: [
+          "<strong>ECMI Establishment [Art 20]</strong>: Created for modular technical/behavioral training, research, competency assessment, and certification.",
+          "<strong>Mandatory Certification [Art 21(2-3)]</strong>: Hiring, promotion, career structure, transfer, and training selection MUST be based on competency certification.",
+          "<strong>Education Leave Rule [Art 22(6)]</strong>: Positions of employees taking education >1 year are registered vacant; employee retains code and full monthly pay.",
+          "<strong>Competency Gap Assessment [Art 30]</strong>: Tailored modular short-term training provided to bridge identified skill gaps."
+        ]
+      },
+      {
+        id: "card-6",
+        cat: "S5",
+        section: "Section Five: Employment & Probation",
+        articles: "Articles 24 – 36",
+        titleAm: "የመንግሥት ሠራተኞች ቅጥር፣ ቃለ መሐላ እና የሙከራ ጊዜ",
+        titleEn: "Eligibility, Oath of Fidelity, Probation & Joint Hiring",
+        preview: "Eligibility criteria (age 18-60), annual oath taking, 6-month probation rules, and joint institution employment.",
+        details: [
+          "<strong>Eligibility [Art 24]</strong>: Age 18–60; free from corruption/theft/rape convictions for 5 years; holds active competency certificate; willing to take oath.",
+          "<strong>Oath of Fidelity [Art 31]</strong>: Administered twice a year on January 1 (ጥር ፩) and July 1 (ሐምሌ ፩).",
+          "<strong>Probation Period [Art 33(3)]</strong>: Standard 6 months; extendable by 3 months if performance is below average; dismissed if cumulative result remains below average.",
+          "<strong>Probation Absence [Art 33(6)]</strong>: Force majeure absence <1 month evaluated on actual time present; maternity absence >1 month resumes post-leave."
+        ]
+      },
+      {
+        id: "card-7",
+        cat: "S6",
+        section: "Section Six: Digital Service & Charters",
+        articles: "Articles 38 – 45",
+        titleAm: "የአገልግሎት አሰጣጥ፣ ቻርተር ማርክ እና አንድ ማዕከል ዲጂታል አገልግሎት",
+        titleEn: "Service Delivery, Charter Mark & One-Stop Digital Service",
+        preview: "Citizen's charter standards, priority access, digital one-stop shop, and customer complaint handling units.",
+        details: [
+          "<strong>Citizen's Charter [Art 38(3)]</strong>: Mandatory service standards defining quality, time, quantity, place, cost, and prerequisites.",
+          "<strong>Priority Service [Art 38(7)]</strong>: Priority granted to elderly, pregnant women, mothers with infants, disabled persons, and national defense force members.",
+          "<strong>Charter Mark Evaluation [Art 40]</strong>: Excellence certification awarded by the Commission to institutions achieving high customer satisfaction.",
+          "<strong>One-Stop Shop Digital Public Service [Art 44, 45]</strong>: Web-network integrated digital portal managed by a specialized project office within the Commission."
+        ]
+      },
+      {
+        id: "card-8",
+        cat: "S6 & S7",
+        section: "Section Six & Seven: Performance & Transfer",
+        articles: "Articles 46 – 55",
+        titleAm: "የሥራ አፈጻጸም ምዘና፣ የደረጃ ዕድገት፣ ዝውውር እና ድልድል",
+        titleEn: "Performance Appraisal, Promotion, Transfers & Secondment",
+        preview: "Semi-annual performance reviews, internal/external transfers, disaster emergency reassignments, and 1-year secondments.",
+        details: [
+          "<strong>Semi-Annual Appraisal [Art 47(5)]</strong>: Performance evaluations filled twice a year (every 6 months) and sent to the Commission.",
+          "<strong>Internal Transfer [Art 51]</strong>: Reassignment to equal position/salary; 1-year temporary transfer permitted during natural/man-made disasters without salary reduction.",
+          "<strong>Acting Assignment [Art 52]</strong>: Acting roles granted up to 1 year max with acting allowance; extended for study leave <1 year.",
+          "<strong>Secondment (ትውስት) [Art 54]</strong>: Temporary transfer to other government offices, regional states, state enterprises, or NGOs for up to 1 year max."
+        ]
+      },
+      {
+        id: "card-9",
+        cat: "S8",
+        section: "Section Eight: Hours, Overtime & Annual Leave",
+        articles: "Articles 56 – 64",
+        titleAm: "መደበኛ የሥራ ሰዓት፣ የትርፍ ሰዓት እና የዓመት ዕረፍት ፈቃድ",
+        titleEn: "Working Hours, Overtime, Weekly Rest & Annual Leave",
+        preview: "39–48 hours weekly work schedule, overtime choice, 20–30 days annual leave, and leave postponement limits.",
+        details: [
+          "<strong>Regular Working Hours [Art 56]</strong>: 39 to 48 hours per week as determined by Council of Ministers.",
+          "<strong>Overtime Compensation [Art 58, 59]</strong>: Employee option for overtime pay or compensatory leave; work on weekly rest day requires compensatory leave the following week.",
+          "<strong>Annual Leave Scale [Art 61]</strong>: 20 working days for Year 1; +1 working day for each additional year up to a maximum of 30 working days.",
+          "<strong>Leave Postponement [Art 63]</strong>: Head of office may postpone leave for up to 2 budget years; must be taken in 3rd year or 1st year converted to cash upon request."
+        ]
+      },
+      {
+        id: "card-10",
+        cat: "S8",
+        section: "Section Eight: Maternity & Miscarriage Leaves",
+        articles: "Article 65",
+        titleAm: "የወሊድ ፈቃድ፣ የጽንስ መቋረጥ (የፅንስ ማቋረጥ) እና የአባትነት ፈቃድ",
+        titleEn: "Exhaustive Maternity, Miscarriage & Paternity Leave Rules",
+        preview: "Detailed Breakdown of Maternity (120 days), Miscarriage (30, 60, or 90 days), and Paternity (10 days) paid leaves.",
+        details: [
+          "<strong>Full Maternity Leave [Art 65(3)]</strong>: 120 consecutive days total with full pay (30 days prenatal + 90 days postnatal).",
+          "<strong>Miscarriage (3 to 6 Months Pregnancy) [Art 65(9)]</strong>: Granted 30 consecutive days of paid leave upon medical confirmation.",
+          "<strong>Miscarriage (≥ 6 Months, Before Prenatal Leave) [Art 65(7)]</strong>: Granted 60 days postnatal maternity leave upon medical confirmation.",
+          "<strong>Miscarriage While on Prenatal Leave [Art 65(8)]</strong>: Prenatal leave immediately terminates and full 90 days postnatal maternity leave commences.",
+          "<strong>Paternity Leave [Art 65(10)]</strong>: 10 working days of paid leave for male civil servants upon delivery by spouse."
+        ]
+      },
+      {
+        id: "card-11",
+        cat: "S8",
+        section: "Section Eight: Sick & Special Leaves",
+        articles: "Articles 66 – 70",
+        titleAm: "የሕመም ፈቃድ፣ የግል ጉዳይ ፈቃድ እና ያለደመወዝ ልዩ ፈቃድ",
+        titleEn: "Sick Leave Scale, Personal Leave & Unpaid Special Leave",
+        preview: "Up to 8 months sick leave in a year, 7 days personal leave, election leave, and diplomatic spouse unpaid leave.",
+        details: [
+          "<strong>Sick Leave Duration [Art 66(2-3)]</strong>: Max 8 months in 1 year or 12 months in 4 years (First 6 months full pay, last 2 months half pay). Probationers get 1 month.",
+          "<strong>Medical Certificate Rule [Art 66(5)]</strong>: Certificate required for absences >3 consecutive days or >6 days cumulative in a budget year.",
+          "<strong>Personal Leave [Art 68]</strong>: 7 working days paid leave per budget year for mourning, marriage, or examinations.",
+          "<strong>Special Unpaid Leave [Art 70]</strong>: Granted up to 1 year for justifiable grounds; extended for project work or spouse diplomatic mission abroad."
+        ]
+      },
+      {
+        id: "card-12",
+        cat: "S9",
+        section: "Section Nine: Inclusivity & Gender Rules",
+        articles: "Articles 71 – 76",
+        titleAm: "ሁሉ አቀፍ ብዝኃነት፣ አካታችነት፣ ተጨማሪ የድጋፍ እርምጃ እና በጎ ፈቃድ",
+        titleEn: "Diversity, Affirmative Action, Workplace Nurseries & Volunteerism",
+        preview: "Affirmative action for women, PWDs, minority groups, mandatory workplace nurseries, and retired volunteerism.",
+        details: [
+          "<strong>Affirmative Action [Art 72, 73, 74]</strong>: Women, PWDs, and minority nationalities receive priority in hiring, promotion, transfer, redeployment, and training.",
+          "<strong>Pregnancy Protection [Art 72(4)]</strong>: Retrenchment/termination prohibited during pregnancy and within 4 months after delivery.",
+          "<strong>Workplace Nurseries [Art 72(6)]</strong>: Every government office MUST establish a nursery facility for female staff to breastfeed and care for infants.",
+          "<strong>Infant Care Leave [Art 72(5)]</strong>: Paid leave granted to female employees to attend medical care for infants under 1 year of age."
+        ]
+      },
+      {
+        id: "card-13",
+        cat: "S10",
+        section: "Section Ten: OSH & Injury Benefits",
+        articles: "Articles 77 – 87",
+        titleAm: "የሥራ አካባቢ ደህንነትና ጤንነት፣ የሥራ ጉዳት እና የጉዳት ጡረታ",
+        titleEn: "Occupational Safety, Injury Leaves & 1-Year Death Rehabilitation",
+        preview: "Coverage of full medical treatment, full-pay injury leave, tax exemptions, and 1-year salary death rehabilitation pay.",
+        details: [
+          "<strong>Occupational Injury [Art 78]</strong>: Includes workplace accidents, travel on agency transport, emergency actions, and work-related diseases.",
+          "<strong>Medical Coverage [Art 84]</strong>: Agency covers full local medical, hospital, surgical, pharmaceutical, and prosthetic expenses.",
+          "<strong>Injury Leave [Art 84(3)]</strong>: Full pay injury leave granted until full recovery or medical certification of permanent disability.",
+          "<strong>Death Rehabilitation Payment [Art 85(5)]</strong>: In case of workplace death, survivors receive 1 year full salary lump sum payment exempt from tax."
+        ]
+      },
+      {
+        id: "card-14",
+        cat: "S13",
+        section: "Section Thirteen: Disciplinary Measures",
+        articles: "Articles 96 – 102",
+        titleAm: "የዲስፕሊን ቅጣት ዓይነቶች፣ ከባድ ጥፋቶች እና የይርጋ ጊዜ",
+        titleEn: "Disciplinary Penalties, Severe Offences & Limitation Periods",
+        preview: "Classifies simple vs rigorous penalties, 14 severe offences, suspension rules, and 6-month limitation period.",
+        details: [
+          "<strong>Penalties [Art 97]</strong>: Simple (oral, written, fine up to 15 days pay); Rigorous (fine up to 3 months pay, down-grading up to 2 years, dismissal).",
+          "<strong>Severe Offences [Art 98]</strong>: Includes fraud, theft, bribery, physical violence, sexual harassment, unexcused absence >= 3 days, and intoxication.",
+          "<strong>Limitation Period [Art 102]</strong>: Simple disciplinary actions bar after 6 months of awareness; rigorous offences follow Criminal Code statutory periods.",
+          "<strong>Suspension [Art 101]</strong>: Max 3 months suspension with salary withheld; reinstated with full back-pay unless dismissed."
+        ]
+      },
+      {
+        id: "card-15",
+        cat: "S13",
+        section: "Section Thirteen: Grievance Handling",
+        articles: "Articles 103 – 106",
+        titleAm: "የሠራተኞች ቅሬታ አቀራረብ፣ የቅሬታ አጣሪ ኮሚቴ እና አስተዳደራዊ ውሳኔ",
+        titleEn: "Grievance Handling Committee & Administrative Decisions",
+        preview: "Establishment of grievance committees, scope of complaints, and requirements for formal written administrative decisions.",
+        details: [
+          "<strong>Grievance Committee Establishment [Art 104]</strong>: Mandatory internal committee in every government office to investigate staff grievances.",
+          "<strong>Scope of Inquiries [Art 105]</strong>: Law interpretation, rights protection, OSH, job grading, performance reviews, supervisor coercion, and simple penalties.",
+          "<strong>Administrative Decision [Art 106]</strong>: Written decision issued by head of office; verbal decisions confirmed by affidavit qualify as formal decisions.",
+          "<strong>Court Intervention [Art 106(3)]</strong>: Administrative Court can order an office to issue written decision within 5 working days upon petition."
+        ]
+      },
+      {
+        id: "card-16",
+        cat: "S14",
+        section: "Section Fourteen: Administrative Court",
+        articles: "Articles 107 – 134",
+        titleAm: "የአስተዳደር ፍርድ ቤት፣ የዳኞች አስተዳደር ጉባዔ እና የይግባኝ ሥርዓት",
+        titleEn: "Administrative Court, Judicial Council & Appeals Procedure",
+        preview: "Establishment of Administrative Court, Judicial Council, 60-day Supreme Court appeal window, and court-annexed mediation.",
+        details: [
+          "<strong>Court Jurisdiction [Art 130]</strong>: Hears appeals on unlawful suspension/termination, severe penalties, salary deductions, and injury claims.",
+          "<strong>Appeal Timelines [Art 130(6)]</strong>: Final on questions of fact; appeal on basic error of law to Federal Supreme Court within 60 days.",
+          "<strong>Execution Timeline [Art 131]</strong>: Office MUST execute court decision within 10 working days; beneficiary can seek First Instance Court enforcement after 30 days.",
+          "<strong>Judicial Council [Art 108]</strong>: Governs judge appointments, code of ethics, discipline, performance evaluation, and judicial allowances."
+        ]
+      },
+      {
+        id: "card-17",
+        cat: "S15",
+        section: "Section Fifteen: Termination & Pension",
+        articles: "Articles 135 – 146",
+        titleAm: "የሥራ ውል ማቋረጥ፣ አገልግሎት ማራዘም እና የጡረታ መብት ማስጠበቅ",
+        titleEn: "Resignation Notice, Retrenchment, Pension Rights & Extensions",
+        preview: "2-month resignation notice, severance pay, service extensions up to 4 years max, and 2-year net salary termination pay.",
+        details: [
+          "<strong>Resignation Notice [Art 135]</strong>: Employee must give 2 months prior written notice (extendable up to 4 months if unreplaceable).",
+          "<strong>Service Extension [Art 145]</strong>: Service beyond retirement age extended up to 2 years at a time (max 4 years total) with Commissioner approval.",
+          "<strong>Termination Lump-Sum Pay [Art 146(1)]</strong>: Unassigned staff below retirement age receive 2 years net salary lump-sum payment.",
+          "<strong>Early Pension Rights [Art 146(2-3)]</strong>: Staff with >=25 years service within 5 years of retirement age can elect early pension; agency pays remaining contributions."
+        ]
+      },
+      {
+        id: "card-18",
+        cat: "S16",
+        section: "Section Sixteen: Compliance & Audit Penalties",
+        articles: "Articles 147 – 149",
+        titleAm: "የኦዲት እና ኢንስፔክሽን ምርመራ ሥራ እና የገንዘብ መቀጮ ቅጣቶች",
+        titleEn: "Compliance Audits, Inspection Categories & Financial Fines",
+        preview: "Annual compliance audits, 4 performance classification categories, and fines up to 10,000 ETB for non-compliance.",
+        details: [
+          "<strong>4 Inspection Categories [Art 147(3)]</strong>: (a) Excellent performance, (b) Minor gaps, (c) High performance gaps, (d) Non-compliant/difficult to investigate.",
+          "<strong>Corrective Action Timeline [Art 149(1)]</strong>: Offices must submit corrective action schedule within 15 days; implementation finalized within 3 months max.",
+          "<strong>Non-Compliance Penalty [Art 149(1)(b)]</strong>: Heads of office or officials failing to act on audit findings fined 2,000 ETB to 10,000 ETB.",
+          "<strong>False Medical Certificate Fine [Art 149(2)]</strong>: Medical officers issuing fraudulent sick leave certificates fined 2,000 ETB to 10,000 ETB."
+        ]
+      }
+    ];
 
-                    <!-- Ethiopian Date Input -->
-                    <div id="maternity-ec-container" class="hidden space-y-2">
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300">Expected Due Date (E.C. / የኢትዮጵያ ዘመን አቆጣጠር)</label>
-                        <div class="grid grid-cols-3 gap-2">
-                            <div>
-                                <label class="text-[10px] text-slate-500 dark:text-slate-400 block mb-1">Day (ቀን)</label>
-                                <select id="ec-day" onchange="calculateMaternityLeave()" class="w-full px-2 py-2 text-xs rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-pink-500 outline-none"></select>
-                            </div>
-                            <div>
-                                <label class="text-[10px] text-slate-500 dark:text-slate-400 block mb-1">Month (ወር)</label>
-                                <select id="ec-month" onchange="calculateMaternityLeave()" class="w-full px-2 py-2 text-xs rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-pink-500 outline-none"></select>
-                            </div>
-                            <div>
-                                <label class="text-[10px] text-slate-500 dark:text-slate-400 block mb-1">Year (ዓ.ም.)</label>
-                                <select id="ec-year" onchange="calculateMaternityLeave()" class="w-full px-2 py-2 text-xs rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-pink-500 outline-none"></select>
-                            </div>
-                        </div>
-                    </div>
+    // State Management
+    let currentCards = [...cardsData];
+    let currentIndex = 0;
+    let isGridView = false;
+    let isFlipped = false;
+    let userProgress = JSON.parse(localStorage.getItem('p1353_progress')) || {};
 
-                    <div id="maternity-result" class="p-4 rounded-2xl bg-pink-50 dark:bg-pink-950/40 border border-pink-200 dark:border-pink-800/50 space-y-2">
-                        <div class="text-xs text-pink-700 dark:text-pink-300 font-semibold uppercase">Schedule Breakdown</div>
-                        <div class="grid grid-cols-2 gap-2 text-xs">
-                            <div class="bg-white dark:bg-slate-800 p-2.5 rounded-xl border border-pink-100 dark:border-pink-900/40">
-                                <span class="text-slate-400 block">Prenatal Leave (30 days)</span>
-                                <strong id="maternity-prenatal" class="text-slate-800 dark:text-slate-100 font-semibold leading-tight block">Select date</strong>
-                            </div>
-                            <div class="bg-white dark:bg-slate-800 p-2.5 rounded-xl border border-pink-100 dark:border-pink-900/40">
-                                <span class="text-slate-400 block">Postnatal End (90 days)</span>
-                                <strong id="maternity-postnatal" class="text-slate-800 dark:text-slate-100 font-semibold leading-tight block">Select date</strong>
-                            </div>
-                        </div>
-                        <p class="text-xs text-slate-600 dark:text-slate-300 pt-1"><i class="fas fa-info-circle mr-1 text-pink-500"></i> Also note: Article 65(10) grants <strong>10 working days</strong> paid paternity leave for male employees.</p>
-                    </div>
-                </div>
+    // DOM Elements
+    const mainCard3D = document.getElementById('mainCard3D');
+    const cardSectionBadge = document.getElementById('cardSectionBadge');
+    const cardArticlesBadge = document.getElementById('cardArticlesBadge');
+    const cardTitleAmharic = document.getElementById('cardTitleAmharic');
+    const cardTitleEnglish = document.getElementById('cardTitleEnglish');
+    const cardFrontPreview = document.getElementById('cardFrontPreview');
+    const cardDetailList = document.getElementById('cardDetailList');
+    const deckCounter = document.getElementById('deckCounter');
 
-                <!-- Sick Leave Breakdown View -->
-                <div id="calc-view-sick" class="calc-view hidden space-y-4">
-                    <div class="flex items-center space-x-3 text-amber-600 dark:text-amber-400">
-                        <i class="fas fa-notes-medical text-2xl"></i>
-                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Sick Leave Breakdown</h3>
-                    </div>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Based on Article 66: Max 8 months in 1 year or 12 months in 4 years. First 6 months full pay, next 2 months half pay.</p>
-                    
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1">Total Sick Leave Requested (Months)</label>
-                        <input type="number" id="calc-sick-months" min="1" max="12" value="4" oninput="calculateSickLeave()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-amber-500 outline-none">
-                    </div>
+    const prevCardBtn = document.getElementById('prevCardBtn');
+    const nextCardBtn = document.getElementById('nextCardBtn');
+    const shuffleBtn = document.getElementById('shuffleBtn');
+    const flipBackBtn = document.getElementById('flipBackBtn');
+    const speakBtn = document.getElementById('speakBtn');
+    const markMasteredBtn = document.getElementById('markMasteredBtn');
+    const markReviewBtn = document.getElementById('markReviewBtn');
 
-                    <div id="sick-result" class="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/50 space-y-2">
-                        <div class="text-xs text-amber-700 dark:text-amber-300 font-semibold uppercase">Pay Allotment Details</div>
-                        <div class="grid grid-cols-2 gap-2 text-xs">
-                            <div class="bg-white dark:bg-slate-800 p-2.5 rounded-xl border border-amber-100 dark:border-amber-900/40">
-                                <span class="text-slate-400 block">Full Salary Payment</span>
-                                <strong id="sick-full-pay" class="text-emerald-600 dark:text-emerald-400 text-sm">4 Months</strong>
-                            </div>
-                            <div class="bg-white dark:bg-slate-800 p-2.5 rounded-xl border border-amber-100 dark:border-amber-900/40">
-                                <span class="text-slate-400 block">Half Salary Payment</span>
-                                <strong id="sick-half-pay" class="text-amber-600 dark:text-amber-400 text-sm">0 Months</strong>
-                            </div>
-                        </div>
-                        <p id="sick-note" class="text-xs text-slate-600 dark:text-slate-300 pt-1"></p>
-                    </div>
-                </div>
+    const totalCardsCount = document.getElementById('totalCardsCount');
+    const masteredCount = document.getElementById('masteredCount');
+    const reviewCount = document.getElementById('reviewCount');
+    const progressPercent = document.getElementById('progressPercent');
+
+    const searchInput = document.getElementById('searchInput');
+    const categoryChips = document.getElementById('categoryChips');
+    const toggleThemeBtn = document.getElementById('toggleThemeBtn');
+    const viewToggleBtn = document.getElementById('viewToggleBtn');
+    const deckViewArea = document.getElementById('deckViewArea');
+    const gridViewArea = document.getElementById('gridViewArea');
+
+    // Initialize App
+    function init() {
+      updateMetrics();
+      renderCard(currentIndex);
+      setupEventListeners();
+    }
+
+    // Render 3D Card
+    function renderCard(index) {
+      if (currentCards.length === 0) {
+        cardTitleAmharic.textContent = "ምንም መረጃ አልተገኘም";
+        cardTitleEnglish.textContent = "No Flashcards Found";
+        cardFrontPreview.textContent = "Try broadening your search query or selecting 'All Sections'.";
+        cardDetailList.innerHTML = "<li><i class='fa-solid fa-circle-exclamation'></i> No matching legal provisions.</li>";
+        deckCounter.textContent = "0 of 0";
+        return;
+      }
+
+      const card = currentCards[index];
+      cardSectionBadge.textContent = card.section;
+      cardArticlesBadge.textContent = card.articles;
+      cardTitleAmharic.textContent = card.titleAm;
+      cardTitleEnglish.textContent = card.titleEn;
+      cardFrontPreview.textContent = card.preview;
+
+      // Populate Back Details
+      cardDetailList.innerHTML = card.details.map(item => `
+        <li>
+          <i class="fa-solid fa-square-check"></i>
+          <span>${item}</span>
+        </li>
+      `).join('');
+
+      deckCounter.textContent = `Card ${index + 1} of ${currentCards.length}`;
+
+      // Reset Flip State
+      if (isFlipped) {
+        mainCard3D.classList.remove('flipped');
+        isFlipped = false;
+      }
+    }
+
+    // Update Metrics
+    function updateMetrics() {
+      const total = cardsData.length;
+      let mastered = 0;
+      let review = 0;
+
+      cardsData.forEach(card => {
+        if (userProgress[card.id] === 'mastered') mastered++;
+        else if (userProgress[card.id] === 'review') review++;
+      });
+
+      totalCardsCount.textContent = total;
+      masteredCount.textContent = mastered;
+      reviewCount.textContent = review;
+      const pct = Math.round((mastered / total) * 100);
+      progressPercent.textContent = `${pct}%`;
+    }
+
+    // Event Listeners
+    function setupEventListeners() {
+      // Flip Card
+      mainCard3D.addEventListener('click', (e) => {
+        if (e.target.closest('button')) return; // Ignore button clicks
+        isFlipped = !isFlipped;
+        mainCard3D.classList.toggle('flipped', isFlipped);
+      });
+
+      flipBackBtn.addEventListener('click', () => {
+        isFlipped = false;
+        mainCard3D.classList.remove('flipped');
+      });
+
+      // Navigation
+      prevCardBtn.addEventListener('click', () => {
+        if (currentCards.length === 0) return;
+        currentIndex = (currentIndex - 1 + currentCards.length) % currentCards.length;
+        renderCard(currentIndex);
+      });
+
+      nextCardBtn.addEventListener('click', () => {
+        if (currentCards.length === 0) return;
+        currentIndex = (currentIndex + 1) % currentCards.length;
+        renderCard(currentIndex);
+      });
+
+      // Shuffle
+      shuffleBtn.addEventListener('click', () => {
+        currentCards.sort(() => Math.random() - 0.5);
+        currentIndex = 0;
+        renderCard(currentIndex);
+      });
+
+      // Speech Synthesis
+      speakBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if ('speechSynthesis' in window) {
+          const card = currentCards[currentIndex];
+          const text = `${card.titleEn}. ${card.preview}`;
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.rate = 0.95;
+          window.speechSynthesis.cancel();
+          window.speechSynthesis.speak(utterance);
+        }
+      });
+
+      // Mastery Controls
+      markMasteredBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = currentCards[currentIndex];
+        userProgress[card.id] = 'mastered';
+        localStorage.setItem('p1353_progress', JSON.stringify(userProgress));
+        updateMetrics();
+        nextCardBtn.click();
+      });
+
+      markReviewBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = currentCards[currentIndex];
+        userProgress[card.id] = 'review';
+        localStorage.setItem('p1353_progress', JSON.stringify(userProgress));
+        updateMetrics();
+        nextCardBtn.click();
+      });
+
+      // Search Filter
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        currentCards = cardsData.filter(c => 
+          c.titleAm.toLowerCase().includes(query) ||
+          c.titleEn.toLowerCase().includes(query) ||
+          c.section.toLowerCase().includes(query) ||
+          c.articles.toLowerCase().includes(query) ||
+          c.details.some(d => d.toLowerCase().includes(query))
+        );
+        currentIndex = 0;
+        renderCard(currentIndex);
+        if (isGridView) renderGrid();
+      });
+
+      // Category Chips
+      categoryChips.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('chip')) return;
+        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        e.target.classList.add('active');
+
+        const cat = e.target.dataset.cat;
+        if (cat === 'ALL') {
+          currentCards = [...cardsData];
+        } else {
+          currentCards = cardsData.filter(c => c.cat === cat);
+        }
+        currentIndex = 0;
+        renderCard(currentIndex);
+        if (isGridView) renderGrid();
+      });
+
+      // Theme Toggle
+      toggleThemeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-theme');
+      });
+
+      // View Toggle (Deck vs Grid)
+      viewToggleBtn.addEventListener('click', () => {
+        isGridView = !isGridView;
+        if (isGridView) {
+          deckViewArea.style.display = 'none';
+          gridViewArea.style.display = 'grid';
+          viewToggleBtn.innerHTML = '<i class="fa-solid fa-layer-group"></i> 3D Deck View';
+          renderGrid();
+        } else {
+          deckViewArea.style.display = 'flex';
+          gridViewArea.style.display = 'none';
+          viewToggleBtn.innerHTML = '<i class="fa-solid fa-table-cells"></i> Grid View';
+          renderCard(currentIndex);
+        }
+      });
+
+      // Keyboard Controls
+      document.addEventListener('keydown', (e) => {
+        if (document.activeElement === searchInput) return;
+        if (e.code === 'Space') {
+          e.preventDefault();
+          mainCard3D.click();
+        } else if (e.code === 'ArrowRight') {
+          nextCardBtn.click();
+        } else if (e.code === 'ArrowLeft') {
+          prevCardBtn.click();
+        }
+      });
+    }
+
+    // Render Grid View
+    function renderGrid() {
+      gridViewArea.innerHTML = currentCards.map((card, idx) => `
+        <div class="grid-card" onclick="selectCardFromGrid(${idx})">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="badge badge-section">${card.section.split(':')[0]}</span>
+              <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">${card.articles}</span>
             </div>
+            <h4 style="font-size: 1.1rem; color: var(--accent-blue); font-weight: 700; margin-bottom: 0.4rem;">${card.titleAm}</h4>
+            <h5 style="font-size: 0.95rem; color: var(--text-main); font-weight: 600; margin-bottom: 0.75rem;">${card.titleEn}</h5>
+            <p style="font-size: 0.825rem; color: var(--text-muted); line-height: 1.5;">${card.preview}</p>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 0.75rem;">
+            <span style="font-size: 0.75rem; color: var(--accent-indigo); font-weight: 700;"><i class="fa-solid fa-eye"></i> Study Card</span>
+            ${userProgress[card.id] === 'mastered' ? '<i class="fa-solid fa-circle-check" style="color: var(--accent-emerald);"></i>' : ''}
+          </div>
         </div>
+      `).join('');
+    }
 
-        <!-- Articles Container -->
-        <div id="articles-container" class="space-y-6"></div>
+    window.selectCardFromGrid = function(idx) {
+      currentIndex = idx;
+      isGridView = false;
+      deckViewArea.style.display = 'flex';
+      gridViewArea.style.display = 'none';
+      viewToggleBtn.innerHTML = '<i class="fa-solid fa-table-cells"></i> Grid View';
+      renderCard(currentIndex);
+    };
 
-        <!-- Empty Results -->
-        <div id="no-results" class="hidden text-center py-16 bg-white dark:bg-slate-800 rounded-3xl border border-dashed border-slate-300 dark:border-slate-700">
-            <i class="fas fa-search text-4xl text-slate-300 dark:text-slate-600 mb-3"></i>
-            <h3 class="text-lg font-bold text-slate-700 dark:text-slate-200">No matching articles found</h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Try searching for keywords like "maternity", "61", "salary", or "ዕረፍት".</p>
-            <button onclick="clearSearch()" class="mt-4 px-4 py-2 bg-emerald-600 text-white rounded-xl text-xs font-semibold hover:bg-emerald-700 transition">Clear Search Filter</button>
-        </div>
-    </main>
-
-    <!-- Footer Section -->
-    <footer class="bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 py-6 px-4 text-center text-xs text-slate-500 dark:text-slate-400 no-print mt-auto">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-2 text-left">
-                <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 flex-shrink-0"></span>
-                <span>Federal Negarit Gazette • Prepared by <strong>Dr. Solomon Abebe (MD, MPH/RH)</strong></span>
-            </div>
-            <div class="flex items-center space-x-4">
-                <button onclick="window.print()" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition flex items-center gap-1">
-                    <i class="fas fa-print"></i> Print Document
-                </button>
-                <span>|</span>
-                <a href="#top" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition flex items-center gap-1">
-                    <i class="fas fa-arrow-up"></i> Back to Top
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Article Data Source (Articles 56 through 70)
-        const articles = [
-            {
-                number: 56,
-                category: "hours",
-                titleEn: "Normal Working Hours",
-                titleAm: "መደበኛ የሥራ ሰዓት",
-                textEn: "1) Normal working hours of civil servants shall be determined on the basis of the condition of work and shall not exceed 39 hours a week.\n2) The working hours shall be determined by the Council of Ministers.",
-                textAm: "፩) የሕዝብ ተገልጋይነትን እና የሥራን ሁኔታ መሠረት በማድረግ የሚወሰነው የመደበኛ ሥራ ሰዓት በሳምንት ከ፴ዘጠኝ (39) ሰዓት መብለጥ የለበትም።\n፪) የመደበኛ ሥራ መግቢያና መውጫ ሰዓት ሚኒስትሮች ምክር ቤት በሚያወጣው ደንብ ይወሰናል።",
-                takeawayEn: "Maximum standard work hours are capped at 39 hours per week across civil service institutions.",
-                takeawayAm: "የመደበኛ ሥራ ሰዓት በሳምንት ከ 39 ሰዓታት መብለጥ የለበትም።"
-            },
-            {
-                number: 57,
-                category: "hours",
-                titleEn: "Overtime Work",
-                titleAm: "የትርፍ ሰዓት ሥራ",
-                textEn: "1) Any civil servant who works overtime shall be entitled to compensatory leave or overtime payment.\n2) Overtime shall be executed only where it is necessary and ordered by an authorized official.",
-                textAm: "፩) ማንኛውም የመንግሥት ሠራተኛ ከሥራ ሰዓት ውጭ ከተገቢው በላይ የሠራ ከሆነ የማካካሻ ዕረፍት ወይም የትርፍ ሰዓት ክፍያ ያገኛል።\n፪) የትርፍ ሰዓት ሥራ የሚሠራው አስፈላጊ ሆኖ ሲገኝና በበላይ ኃላፊ ሲፈቀድ ብቻ ነው።",
-                takeawayEn: "Overtime requires official pre-authorization and is compensated by extra pay or time off.",
-                takeawayAm: "የትርፍ ሰዓት ሥራ በበላይ ኃላፊ ፈቃድ ብቻ ይፈጸማል፤ በክፍያ ወይም በዕረፍት ይካካሳል።"
-            },
-            {
-                number: 58,
-                category: "hours",
-                titleEn: "Public Holidays and Weekly Rest Day",
-                titleAm: "የሕዝብ በዓላት እና የሳምንት ዕረፍት",
-                textEn: "1) Any civil servant shall be entitled to a weekly rest day and public holidays with full pay.\n2) Weekly rest day shall be Sunday, but where the nature of work demands otherwise, another day may be designated.",
-                textAm: "፩) ማንኛውም የመንግሥት ሠራተኛ በሳምንት አንድ የዕረፍት ቀንና በሕዝብ በዓላት ዕለት ከሙሉ ደመወዝ ጋር ዕረፍት የማግኘት መብት አለው።\n፪) የሳምንት ዕረፍት ቀን እሁድ ነው፤ ሆኖም የሥራው ባህሪ አስፈላጊ ሲያደርገው ሌላ ቀን ሊወሰን ይችላል።",
-                takeawayEn: "Full salary is maintained during public holidays and weekly rest days.",
-                takeawayAm: "በሳምንት ዕረፍትና በሕዝብ በዓላት ወቅት ሙሉ ደመወዝ ይከፈላል።"
-            },
-            {
-                number: 59,
-                category: "annual",
-                titleEn: "Objectives of Annual Leave",
-                titleAm: "የዓመት ዕረፍት ፈቃድ ዓላማ",
-                textEn: "The objective of annual leave is to enable the civil servant to get rest and resume work with renewed physical and mental strength. Any civil servant shall be granted annual leave.",
-                textAm: "የዓመት ዕረፍት ፈቃድ ዓላማ ሠራተኛው አረፍ ብሎ አእምሮአዊና አካላዊ ብቃቱን በማደስ አገልግሎቱን በቀጣይነት በብቃት እንዲሰጥ ማስቻል ነው።",
-                takeawayEn: "Annual leave is a health and wellness right intended for rest and renewal.",
-                takeawayAm: "የዓመት ዕረፍት ፈቃድ የሠራተኛውን አካላዊና አእምሮአዊ ብቃት ለማደስ የሚሰጥ መብት ነው።"
-            },
-            {
-                number: 60,
-                category: "annual",
-                titleEn: "Annual Leave Provision",
-                titleAm: "የዓመት ዕረፍት ፈቃድ አሰጣጥ",
-                textEn: "1) Annual leave shall be granted in accordance with the leave schedule established at the beginning of the fiscal year.\n2) An employee newly recruited shall be granted annual leave after serving for six months.",
-                textAm: "፩) የዓመት ዕረፍት ፈቃድ በበጀት ዓመቱ መጀመሪያ በሚወጣው የፈቃድ ፕሮግራም መሠረት ይሰጣል።\n፪) አዲስ የተቀጠረ ሠራተኛ ቢያንስ ለስድስት ወራት ካገለገለ በኋላ የዓመት ዕረፍት ፈቃድ የማግኘት መብት ይኖረዋል።",
-                takeawayEn: "New hires qualify for annual leave after completing at least 6 months of service.",
-                takeawayAm: "አዲስ የተቀጠረ ሠራተኛ ከ6 ወር አገልግሎት በኋላ የዓመት ዕረፍት ፈቃድ ማግኘት ይችላል።"
-            },
-            {
-                number: 61,
-                category: "annual",
-                titleEn: "Duration of Annual Leave",
-                titleAm: "የዓመት ዕረፍት ፈቃድ መጠን",
-                textEn: "1) A civil servant who has served for one year shall be entitled to 20 working days of annual leave.\n2) A civil servant having service of more than one year shall be entitled to an additional 1 working day for every additional year of service, up to a maximum of 30 working days.",
-                textAm: "፩) አንድ ዓመት ያገለገለ የመንግሥት ሠራተኛ ፳ (20) የሥራ ቀናት የዓመት ዕረፍት ፈቃድ ያገኛል።\n፪) ከአንድ ዓመት በላይ ያገለገለ ሠራተኛ ለእያንዳንዱ ተጨማሪ የምስክር ወረቀት/የአገልግሎት ዓመት ፩ (1) ተጨማሪ የሥራ ቀን ያገኛል፤ ሆኖም የሚሰጠው የዓመት ዕረፍት ከ ፴ (30) የሥራ ቀናት መብለጥ የለበትም።",
-                takeawayEn: "Starts at 20 working days for year 1, adding 1 extra day per service year up to a max cap of 30 days.",
-                takeawayAm: "መነሻው 20 የሥራ ቀናት ሲሆን፣ ለእያንዳንዱ አገልግሎት ዓመት 1 ቀን እየጨመረ እስከ 30 ቀናት ይደርሳል።"
-            },
-            {
-                number: 62,
-                category: "annual",
-                titleEn: "Granting Annual Leave",
-                titleAm: "የዓመት ዕረፍት ፈቃድ አሰጣጥ ሥነ-ሥርዓት",
-                textEn: "Annual leave shall be granted in the budget year in which it is due. Delaying annual leave shall only happen when required by compelling operational needs.",
-                textAm: "የዓመት ዕረፍት ፈቃድ በበጀት ዓመቱ ውስጥ መሰጠት አለበት። ፈቃዱ ሊማለል የሚችለው በሥራው አስገዳጅነት ምክንያት በበላይ ኃላፊ ሲወሰን ብቻ ነው።",
-                takeawayEn: "Leave must be utilized within the corresponding budget year unless postponed by necessity.",
-                takeawayAm: "የዓመት ዕረፍት ፈቃድ በበጀት ዓመቱ ውስጥ መወሰድ አለበት።"
-            },
-            {
-                number: 63,
-                category: "annual",
-                titleEn: "Postponement of Annual Leave",
-                titleAm: "የዓመት ዕረፍት ፈቃድ ማስተላለፍ",
-                textEn: "1) Due to service requirements, leave may be postponed for not more than two budget years.\n2) Accumulated leave shall be granted within the third budget year.",
-                textAm: "፩) በሥራ አስገዳጅነት ምክንያት የዓመት ዕረፍት ፈቃድ ከሁለት በጀት ዓመት በላይ ሊተላለፍ አይችልም።\n፪) የተከማቸ የዓመት ዕረፍት ፈቃድ በሦስተኛው በጀት ዓመት ውስጥ መሰጠት አለበት።",
-                takeawayEn: "Leave can only be carried over for a maximum of 2 consecutive budget years.",
-                takeawayAm: "የዓመት ዕረፍት ፈቃድ ከ 2 ተከታታይ የበጀት ዓመታት በላይ ሊተላለፍ አይችልም።"
-            },
-            {
-                number: 64,
-                category: "annual",
-                titleEn: "Unused Annual Leave Payment",
-                titleAm: "ላለመወሰዱ የዓመት ዕረፍት ፈቃድ የሚፈጸም ክፍያ",
-                textEn: "Payment for unused annual leave shall only be made upon termination of service, based on the employee's final salary.",
-                textAm: "ላልተወሰደ የዓመት ዕረፍት ፈቃድ ክፍያ የሚፈጸመው አገልግሎት ሲቋረጥ ብቻ ነው፤ ክፍያውም በወቅቱ ደመወዝ መሠረት ይሰላል።",
-                takeawayEn: "Cash substitution for unused leave is strictly restricted to employment separation.",
-                takeawayAm: "የተጠራቀመ የዓመት ዕረፍት በገንዘብ ተመን የሚከፈለው ከሥራ ሲሰናበቱ ብቻ ነው።"
-            },
-            {
-                number: 65,
-                category: "maternity",
-                titleEn: "Maternity Leave",
-                titleAm: "የወሊድ ፈቃድ",
-                textEn: "1) A pregnant civil servant shall be entitled to paid leave for medical checkups.\n2) Granted 30 consecutive days of prenatal leave before delivery and 90 consecutive days of postnatal leave after delivery (120 calendar days total with full pay).\n3) Male civil servant entitled to 10 working days paid paternity leave.",
-                textAm: "፩) ነፍሰ ጡር የሆነች የመንግሥት ሠራተኛ ለህክምና ምርመራ ክፍያ የሚከፈልበት ፈቃድ ይሰጣታል።\n፪) ከወሊድ በፊት ፴ (30) ተከታታይ ቀናት እና ከወሊድ በኋላ ፺ (90) ተከታታይ ቀናት (በአጠቃላይ 120 ቀናት) ከሙሉ ደመወዝ ጋር ይሰጣል።\n፫) ወንድ ሠራተኛ ባለቤቱ ስትወልድ ፲ (10) የሥራ ቀናት ከሙሉ ደመወዝ ጋር የአባትነት ፈቃድ ያገኛል።",
-                takeawayEn: "Full 120 calendar days maternity leave (30 prenatal / 90 postnatal) + 10 working days paternity leave.",
-                takeawayAm: "በአጠቃላይ 120 ቀናት የወሊድ ፈቃድ (30 ቅድመ-ወሊድ + 90 ድህረ-ወሊድ) እና 10 የሥራ ቀናት የአባትነት ፈቃድ።"
-            },
-            {
-                number: 66,
-                category: "sick",
-                titleEn: "Sick Leave",
-                titleAm: "የሕመም ፈቃድ",
-                textEn: "1) A civil servant who is unable to work due to sickness shall be granted sick leave up to a maximum of 8 consecutive months in a single year or 12 months in 4 years.\n2) First 3 months with full pay, next 3 months with half pay, remaining 2 months without pay.",
-                textAm: "፩) በሕመም ምክንያት ሥራ መሥራት ያልቻለ ሠራተኛ በአንድ ዓመት ውስጥ እስከ ፰ (8) ወራት ወይም በ ፬ (4) ዓመታት ውስጥ እስከ ፲፪ (12) ወራት የሕመም ፈቃድ ይሰጠዋል።\n፪) የመጀመሪያዎቹ ፫ ወራት ከሙሉ ደመወዝ ጋር፣ የሚቀጥሉት ፫ ወራት ከእርማት/ግማሽ ደመወዝ ጋር፣ የሚቀጥሉት ፪ ወራት ያለ ደመወዝ ይሰጣሉ።",
-                takeawayEn: "Sick leave tiers: Mos 1-3 (Full Pay), Mos 4-6 (Half Pay), Mos 7-8 (No Pay).",
-                takeawayAm: "የሕመም ፈቃድ ክፍያ፡ የመጀመሪያዎቹ 3 ወራት ሙሉ ደመወዝ፣ የሚቀጥሉት 3 ወራት ግማሽ ደመወዝ፣ የቀሩት 2 ወራት ያለ ደመወዝ።"
-            },
-            {
-                number: 67,
-                category: "sick",
-                titleEn: "Sick Leave Procedure",
-                titleAm: "የሕመም ፈቃድ አሰጣጥ ሥነ-ሥርዓት",
-                textEn: "Sick leave must be supported by a medical certificate from a recognized health institution and communicated to the employer as soon as possible.",
-                textAm: "የሕመም ፈቃድ በተፈቀደ የሕክምና ተቋም በሚሰጥ የሕክምና ማስረጃ መረጋገጥና በአስቸኳይ ለመሥሪያ ቤቱ ማሳወቅ አለበት።",
-                takeawayEn: "A official valid medical certificate is required to validate sick leave benefits.",
-                takeawayAm: "የሕመም ፈቃድ ሕጋዊ በሆነ የሕክምና ማስረጃ መረጋገጥ ይኖርበታል።"
-            },
-            {
-                number: 68,
-                category: "special",
-                titleEn: "Leave for Personal Reasons",
-                titleAm: "ለግል ጉዳይ የሚሰጥ ፈቃድ",
-                textEn: "A civil servant is entitled to paid leave for extraordinary personal matters such as marriage (3 working days) or mourning for family members (7 consecutive days).",
-                textAm: "ማንኛውም ሠራተኛ ለጋብቻ ፫ (3) የሥራ ቀናት፣ እንዲሁም የትዳር አጋር ወይም ቅርብ ዘመድ ሲሞት ፯ (7) ተከታታይ ቀናት ከሙሉ ደመወዝ ጋር ፈቃድ ያገኛል።",
-                takeawayEn: "Marriage: 3 working days paid. Family Mourning: 7 consecutive days paid.",
-                takeawayAm: "ለጋብቻ 3 የሥራ ቀናት፣ ለሐዘን 7 ተከታታይ ቀናት ከሙሉ ደመወዝ ጋር ይፈቀዳል።"
-            },
-            {
-                number: 69,
-                category: "special",
-                titleEn: "Special Leave with Pay",
-                titleAm: "ከደመወዝ ጋር የሚሰጥ ልዩ ፈቃድ",
-                textEn: "Granted for court summons, voting, or participating in national duties/training organized by government authorities.",
-                textAm: "ፍርድ ቤት ሲጠራ፣ ለመምረጥ ወይም በብሔራዊ ጥሪና ሥልጠናዎች ላይ ለመሳተፍ ከሙሉ ደመወዝ ጋር ልዩ ፈቃድ ይሰጣል።",
-                takeawayEn: "Covers civic duties including court appearances, election voting, and national training.",
-                takeawayAm: "ለፍርድ ቤት ጥሪ፣ ለመምረጥ እና ለብሔራዊ ጥሪዎች የሚሰጥ የደመወዝ ፈቃድ ነው።"
-            },
-            {
-                number: 70,
-                category: "special",
-                titleEn: "Leave Without Pay",
-                titleAm: "ያለ ደመወዝ የሚሰጥ ልዩ ፈቃድ",
-                textEn: "May be granted for up to 1 year for exceptional personal reasons or education without interrupting continuity of service where government interest is verified.",
-                textAm: "በአስገዳጅ ምክንያት ወይም ለትምህርት እስከ ፩ (1) ዓመት ያለ ደመወዝ የሚሰጥ ልዩ ፈቃድ ሊፈቀድ ይችላል።",
-                takeawayEn: "Unpaid leave up to 1 year may be approved for verified education or compelling conditions.",
-                takeawayAm: "በአስገዳጅ ምክንያት ወይም ለትምህርት እስከ 1 ዓመት ያለ ደመወዝ ፈቃድ ሊሰጥ ይችላል።"
-            }
-        ];
-
-        // Global State variables
-        let currentLang = 'en';
-        let currentCategory = 'all';
-        let searchQuery = '';
-        let bookmarks = JSON.parse(localStorage.getItem('proclamation_bookmarks') || '[]');
-        let currentCalMode = 'GC'; // 'GC' or 'EC'
-
-        // Ethiopian Calendar Months Constants
-        const ecMonths = [
-            { id: 1, en: 'Meskerem', am: 'መስከረም' },
-            { id: 2, en: 'Tikimt', am: 'ጥቅምት' },
-            { id: 3, en: 'Hidar', am: 'ኅዳር' },
-            { id: 4, en: 'Tahsas', am: 'ታኅሣሥ' },
-            { id: 5, en: 'Tir', am: 'ጥር' },
-            { id: 6, en: 'Yakatit', am: 'የካቲት' },
-            { id: 7, en: 'Megabit', am: 'መጋቢት' },
-            { id: 8, en: 'Miyazia', am: 'ሚያዝያ' },
-            { id: 9, en: 'Ginbot', am: 'ግንቦት' },
-            { id: 10, en: 'Sene', am: 'ሰኔ' },
-            { id: 11, en: 'Hamle', am: 'ሐምሌ' },
-            { id: 12, en: 'Nehase', am: 'ነሐሴ' },
-            { id: 13, en: 'Pagume', am: 'ጳጉሜ' }
-        ];
-
-        // Precise Ethiopian <-> Julian Day <-> Gregorian Converter logic
-        function ethiopianToGregorian(eyear, emonth, eday) {
-            const jdn = ethiopianToJDN(eyear, emonth, eday);
-            return jdnToGregorian(jdn);
-        }
-
-        function gregorianToEthiopian(gyear, gmonth, gday) {
-            const jdn = gregorianToJDN(gyear, gmonth, gday);
-            return jdnToEthiopian(jdn);
-        }
-
-        function ethiopianToJDN(eyear, emonth, eday) {
-            const ERA = 1723856;
-            return (ERA + 365) + 365 * (eyear - 1) + Math.floor(eyear / 4) + 30 * (emonth - 1) + eday - 1;
-        }
-
-        function jdnToGregorian(jdn) {
-            let j = jdn + 32044;
-            let g = Math.floor(j / 146097);
-            let dg = j % 146097;
-            let c = Math.floor((Math.floor(dg / 36524) + 1) * 3 / 4);
-            let dc = dg - c * 36524;
-            let b = Math.floor(dc / 1461);
-            let db = dc % 1461;
-            let a = Math.floor((Math.floor(db / 365) + 1) * 3 / 4);
-            let da = db - a * 365;
-            let y = g * 400 + c * 100 + b * 4 + a;
-            let m = Math.floor((da * 5 + 308) / 153) - 2;
-            let d = da - Math.floor((m + 4) * 153 / 5) + 122;
-            let year = y - 4800 + Math.floor((m + 2) / 12);
-            let month = (m + 2) % 12 + 1;
-            let day = d + 1;
-            return new Date(year, month - 1, day);
-        }
-
-        function gregorianToJDN(gyear, gmonth, gday) {
-            let a = Math.floor((14 - gmonth) / 12);
-            let y = gyear + 4800 - a;
-            let m = gmonth + 12 * a - 3;
-            return gday + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
-        }
-
-        function jdnToEthiopian(jdn) {
-            const ERA = 1723856;
-            let r = (jdn - ERA) % 1461;
-            let n = r % 365 + 365 * Math.floor(r / 1460);
-            let eyear = 4 * Math.floor((jdn - ERA) / 1461) + Math.floor(r / 365) - Math.floor(r / 1460);
-            let emonth = Math.floor(n / 30) + 1;
-            let eday = n % 30 + 1;
-            return { year: eyear, month: emonth, day: eday };
-        }
-
-        function formatEthiopianDate(eDate) {
-            const mObj = ecMonths.find(m => m.id === eDate.month) || ecMonths[0];
-            return `${mObj.en} ${eDate.day}, ${eDate.year} E.C. (${mObj.am} ${eDate.day} ቀን ${eDate.year} ዓ.ም.)`;
-        }
-
-        function formatGregorianDate(dateObj) {
-            if (!dateObj || isNaN(dateObj.getTime())) return '';
-            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            return `${months[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`;
-        }
-
-        // Initialize Ethiopian Dropdowns for Maternity Modal
-        function initEthiopianDropdowns() {
-            const daySelect = document.getElementById('ec-day');
-            const monthSelect = document.getElementById('ec-month');
-            const yearSelect = document.getElementById('ec-year');
-
-            if (!daySelect || !monthSelect || !yearSelect) return;
-
-            daySelect.innerHTML = '';
-            for (let d = 1; d <= 30; d++) {
-                daySelect.innerHTML += `<option value="${d}">${d}</option>`;
-            }
-
-            monthSelect.innerHTML = '';
-            ecMonths.forEach(m => {
-                monthSelect.innerHTML += `<option value="${m.id}">${m.id} - ${m.en} (${m.am})</option>`;
-            });
-
-            yearSelect.innerHTML = '';
-            const currentYear = 2018; // Default E.C. Year context
-            for (let y = currentYear - 2; y <= currentYear + 5; y++) {
-                yearSelect.innerHTML += `<option value="${y}" ${y === currentYear ? 'selected' : ''}>${y} E.C.</option>`;
-            }
-        }
-
-        // Calendar Mode Switcher Function
-        function setCalendarMode(mode) {
-            currentCalMode = mode;
-            const gcBtn = document.getElementById('cal-mode-gc');
-            const ecBtn = document.getElementById('cal-mode-ec');
-            const gcContainer = document.getElementById('maternity-gc-container');
-            const ecContainer = document.getElementById('maternity-ec-container');
-
-            if (mode === 'GC') {
-                gcBtn.className = "px-3 py-1.5 rounded-md transition-all bg-pink-600 text-white shadow-sm";
-                ecBtn.className = "px-3 py-1.5 rounded-md transition-all text-slate-600 dark:text-slate-300";
-                gcContainer.classList.remove('hidden');
-                ecContainer.classList.add('hidden');
-            } else {
-                ecBtn.className = "px-3 py-1.5 rounded-md transition-all bg-pink-600 text-white shadow-sm";
-                gcBtn.className = "px-3 py-1.5 rounded-md transition-all text-slate-600 dark:text-slate-300";
-                ecContainer.classList.remove('hidden');
-                gcContainer.classList.add('hidden');
-            }
-            calculateMaternityLeave();
-        }
-
-        // Language Switcher Function
-        function setLanguage(lang) {
-            currentLang = lang;
-            ['en', 'am', 'dual'].forEach(l => {
-                const btn = document.getElementById(`lang-${l}`);
-                if (btn) {
-                    if (l === lang) {
-                        btn.className = "px-2.5 py-1.5 rounded-md transition-all bg-emerald-600 text-white shadow-sm font-semibold";
-                    } else {
-                        btn.className = "px-2.5 py-1.5 rounded-md transition-all text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white";
-                    }
-                }
-            });
-            renderArticles();
-        }
-
-        // Dark Mode Toggle
-        function toggleDarkMode() {
-            const html = document.documentElement;
-            const icon = document.getElementById('theme-icon');
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                icon.className = 'fas fa-moon text-base';
-                localStorage.setItem('theme', 'light');
-            } else {
-                html.classList.add('dark');
-                icon.className = 'fas fa-sun text-amber-400 text-base';
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        // Category Filter
-        function filterCategory(cat) {
-            currentCategory = cat;
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.className = "cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100";
-            });
-            const activeBtn = document.getElementById(`cat-${cat}`);
-            if (activeBtn) {
-                activeBtn.className = "cat-btn flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition bg-emerald-600 text-white shadow-sm";
-            }
-            renderArticles();
-        }
-
-        // Search Handlers
-        function handleSearch() {
-            const input = document.getElementById('search-input');
-            const clearBtn = document.getElementById('clear-search');
-            searchQuery = input.value.trim().toLowerCase();
-            if (searchQuery.length > 0) {
-                clearBtn.classList.remove('hidden');
-            } else {
-                clearBtn.classList.add('hidden');
-            }
-            renderArticles();
-        }
-
-        function clearSearch() {
-            const input = document.getElementById('search-input');
-            input.value = '';
-            searchQuery = '';
-            document.getElementById('clear-search').classList.add('hidden');
-            renderArticles();
-        }
-
-        // Bookmarking system
-        function toggleBookmark(artNum) {
-            const idx = bookmarks.indexOf(artNum);
-            if (idx > -1) {
-                bookmarks.splice(idx, 1);
-            } else {
-                bookmarks.push(artNum);
-            }
-            localStorage.setItem('proclamation_bookmarks', JSON.stringify(bookmarks));
-            renderArticles();
-        }
-
-        // Copy Article Text to Clipboard
-        function copyArticle(artNum) {
-            const art = articles.find(a => a.number === artNum);
-            if (!art) return;
-            const textToCopy = `Article ${art.number}: ${art.titleEn} / ${art.titleAm}\n\nEnglish:\n${art.textEn}\n\nአማርኛ:\n${art.textAm}`;
-            
-            const textarea = document.createElement('textarea');
-            textarea.value = textToCopy;
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-                document.execCommand('copy');
-                const copyBtnIcon = document.getElementById(`copy-icon-${artNum}`);
-                if (copyBtnIcon) {
-                    copyBtnIcon.className = 'fas fa-check text-emerald-500';
-                    setTimeout(() => {
-                        copyBtnIcon.className = 'far fa-copy';
-                    }, 2000);
-                }
-            } catch (err) {
-                console.error('Copy failed', err);
-            }
-            document.body.removeChild(textarea);
-        }
-
-        // Main Render Function for Proclamation Articles
-        function renderArticles() {
-            const container = document.getElementById('articles-container');
-            const noResults = document.getElementById('no-results');
-            container.innerHTML = '';
-
-            let filtered = articles.filter(art => {
-                const matchCategory = (currentCategory === 'all') || (art.category === currentCategory);
-                const matchSearch = searchQuery === '' || 
-                    art.number.toString().includes(searchQuery) ||
-                    art.titleEn.toLowerCase().includes(searchQuery) ||
-                    art.titleAm.toLowerCase().includes(searchQuery) ||
-                    art.textEn.toLowerCase().includes(searchQuery) ||
-                    art.textAm.toLowerCase().includes(searchQuery);
-                return matchCategory && matchSearch;
-            });
-
-            if (filtered.length === 0) {
-                noResults.classList.remove('hidden');
-                return;
-            } else {
-                noResults.classList.add('hidden');
-            }
-
-            filtered.forEach(art => {
-                const isBookmarked = bookmarks.includes(art.number);
-                const card = document.createElement('article');
-                card.className = "article-card bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition-all overflow-hidden p-5 sm:p-6";
-
-                let bodyHTML = '';
-                if (currentLang === 'en') {
-                    bodyHTML = `<div class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">${highlightText(art.textEn, searchQuery)}</div>`;
-                } else if (currentLang === 'am') {
-                    bodyHTML = `<div class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line font-sans">${highlightText(art.textAm, searchQuery)}</div>`;
-                } else { // Dual Mode
-                    bodyHTML = `
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-slate-100 dark:border-slate-700/50">
-                            <div class="space-y-1">
-                                <span class="text-[10px] uppercase font-bold tracking-wider text-emerald-600 dark:text-emerald-400">English Text</span>
-                                <div class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">${highlightText(art.textEn, searchQuery)}</div>
-                            </div>
-                            <div class="space-y-1 md:border-l md:border-slate-100 dark:md:border-slate-700/50 md:pl-4">
-                                <span class="text-[10px] uppercase font-bold tracking-wider text-emerald-600 dark:text-emerald-400">የአማርኛ ጽሑፍ</span>
-                                <div class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line font-sans">${highlightText(art.textAm, searchQuery)}</div>
-                            </div>
-                        </div>
-                    `;
-                }
-
-                card.innerHTML = `
-                    <div class="flex items-start justify-between gap-3 mb-3">
-                        <div class="flex items-center space-x-3">
-                            <span class="px-3 py-1 rounded-xl text-xs font-black bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-                                Article ${art.number}
-                            </span>
-                            <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-snug">
-                                ${currentLang === 'am' ? art.titleAm : art.titleEn} 
-                                ${currentLang === 'dual' ? `<span class="text-xs font-normal text-slate-400 dark:text-slate-500 block sm:inline">(${art.titleAm})</span>` : ''}
-                            </h3>
-                        </div>
-                        <div class="flex items-center space-x-1 no-print">
-                            <button onclick="copyArticle(${art.number})" class="p-2 text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition" title="Copy Article">
-                                <i id="copy-icon-${art.number}" class="far fa-copy text-sm"></i>
-                            </button>
-                            <button onclick="toggleBookmark(${art.number})" class="p-2 ${isBookmarked ? 'text-amber-500' : 'text-slate-400 hover:text-amber-500'} transition" title="Bookmark">
-                                <i class="${isBookmarked ? 'fas' : 'far'} fa-bookmark text-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    ${bodyHTML}
-
-                    <div class="mt-4 pt-3 bg-slate-50 dark:bg-slate-700/30 -mx-5 -mb-5 sm:-mx-6 sm:-mb-6 p-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center space-x-2.5">
-                        <i class="fas fa-lightbulb text-amber-500 text-xs flex-shrink-0"></i>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 font-medium leading-normal">
-                            <strong>Key Takeaway:</strong> ${currentLang === 'am' ? art.takeawayAm : art.takeawayEn}
-                        </p>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        // Highlight matching search terms safely
-        function highlightText(text, query) {
-            if (!query) return text;
-            const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            const regex = new RegExp(`(${escaped})`, 'gi');
-            return text.replace(regex, '<mark class="highlight">$1</mark>');
-        }
-
-        // Calculator Modal Handlers
-        function openCalculator(type) {
-            document.querySelectorAll('.calc-view').forEach(v => v.classList.add('hidden'));
-            const modal = document.getElementById('calculator-modal');
-            modal.classList.remove('hidden');
-
-            if (type === 'annual') {
-                document.getElementById('calc-view-annual').classList.remove('hidden');
-                calculateAnnualLeave();
-            } else if (type === 'maternity') {
-                document.getElementById('calc-view-maternity').classList.remove('hidden');
-                calculateMaternityLeave();
-            } else if (type === 'sick') {
-                document.getElementById('calc-view-sick').classList.remove('hidden');
-                calculateSickLeave();
-            }
-        }
-
-        function closeCalculator() {
-            document.getElementById('calculator-modal').classList.add('hidden');
-        }
-
-        // Annual Leave Logic
-        function calculateAnnualLeave() {
-            const years = parseInt(document.getElementById('calc-years').value) || 1;
-            let days = 20;
-            if (years > 1) {
-                days = Math.min(30, 20 + (years - 1));
-            }
-            document.getElementById('annual-days').innerText = days;
-            document.getElementById('annual-explain').innerText = `For ${years} year(s) of service, you are entitled to ${days} working days of paid annual leave under Article 61.`;
-        }
-
-        // Maternity Calculation with G.C. & E.C. Conversion
-        function calculateMaternityLeave() {
-            let dueDate;
-
-            if (currentCalMode === 'GC') {
-                const inputVal = document.getElementById('calc-maternity-date').value;
-                if (!inputVal) {
-                    dueDate = new Date();
-                } else {
-                    dueDate = new Date(inputVal);
-                }
-            } else { // E.C. Mode
-                const eDay = parseInt(document.getElementById('ec-day').value) || 1;
-                const eMonth = parseInt(document.getElementById('ec-month').value) || 1;
-                const eYear = parseInt(document.getElementById('ec-year').value) || 2018;
-                dueDate = ethiopianToGregorian(eYear, eMonth, eDay);
-            }
-
-            if (isNaN(dueDate.getTime())) return;
-
-            // Prenatal starts 30 days before due date
-            const prenatalStart = new Date(dueDate);
-            prenatalStart.setDate(prenatalStart.getDate() - 30);
-
-            // Postnatal ends 90 days after due date
-            const postnatalEnd = new Date(dueDate);
-            postnatalEnd.setDate(postnatalEnd.getDate() + 90);
-
-            // Format dates for display
-            const prenatalEC = gregorianToEthiopian(prenatalStart.getFullYear(), prenatalStart.getMonth() + 1, prenatalStart.getDate());
-            const postnatalEC = gregorianToEthiopian(postnatalEnd.getFullYear(), postnatalEnd.getMonth() + 1, postnatalEnd.getDate());
-
-            const prenatalText = `${formatEthiopianDate(prenatalEC)} / ${formatGregorianDate(prenatalStart)}`;
-            const postnatalText = `${formatEthiopianDate(postnatalEC)} / ${formatGregorianDate(postnatalEnd)}`;
-
-            document.getElementById('maternity-prenatal').innerText = prenatalText;
-            document.getElementById('maternity-postnatal').innerText = postnatalText;
-        }
-
-        // Sick Leave Breakdown Logic
-        function calculateSickLeave() {
-            const months = parseInt(document.getElementById('calc-sick-months').value) || 1;
-            let fullPay = 0;
-            let halfPay = 0;
-            let noPay = 0;
-
-            if (months <= 3) {
-                fullPay = months;
-            } else if (months <= 6) {
-                fullPay = 3;
-                halfPay = months - 3;
-            } else {
-                fullPay = 3;
-                halfPay = 3;
-                noPay = Math.min(2, months - 6);
-            }
-
-            document.getElementById('sick-full-pay').innerText = `${fullPay} Month(s)`;
-            document.getElementById('sick-half-pay').innerText = `${halfPay} Month(s)`;
-            
-            let note = `Article 66 Tiers Applied: ${fullPay} month(s) 100% pay, ${halfPay} month(s) 50% pay.`;
-            if (noPay > 0) {
-                note += ` Remaining ${noPay} month(s) without salary.`;
-            }
-            document.getElementById('sick-note').innerText = note;
-        }
-
-        // Initialize App on DOM Load
-        window.addEventListener('DOMContentLoaded', () => {
-            // Restore saved theme
-            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-                const themeIcon = document.getElementById('theme-icon');
-                if (themeIcon) themeIcon.className = 'fas fa-sun text-amber-400 text-base';
-            }
-
-            // Set default date input for maternity calculator (GC)
-            const today = new Date();
-            const todayStr = today.toISOString().split('T')[0];
-            const maternityDateInput = document.getElementById('calc-maternity-date');
-            if (maternityDateInput) maternityDateInput.value = todayStr;
-
-            // Initialize Ethiopian dropdowns
-            initEthiopianDropdowns();
-
-            // Initial render
-            setLanguage('en');
-        });
-    </script>
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
 </body>
 </html>
